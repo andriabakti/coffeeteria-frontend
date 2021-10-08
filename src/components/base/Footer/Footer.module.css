@@ -1,5 +1,10 @@
-.footer {
-  height: 20vh;
-  text-align: center;
+.foot_bg {
   background-color: #f8f8f8;
+}
+
+.foot_body {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

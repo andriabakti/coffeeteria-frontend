@@ -6,8 +6,8 @@ class Product extends Component {
   render() {
     return (
       <Container fluid>
-        <Row className={style.page}>
-          <Col md="3" className={style.sidebar}>
+        <Row className={`text-center ${style.page}`}>
+          <Col md="3" className={`${style.sidebar}`}>
             <h1>Sidebar</h1>
           </Col>
           <Col md="9">
