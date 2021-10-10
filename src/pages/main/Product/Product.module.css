@@ -6,7 +6,31 @@
 }
 
 .sidebar {
+  padding: 30px;
   border-right: 0.5px solid #9f9f9f;
+  display: flex;
+  flex-direction: column;
+}
+
+.coupon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  /* margin: auto; */
+  height: auto;
+  /* background-color: cornflowerblue; */
+}
+
+.terms {
+  padding-left: 20px;
+  text-align: left;
+  font-size: 12px;
+  margin-top: auto;
+}
+
+.terms>li {
+  list-style: none;
 }
 
 .menu {
@@ -16,5 +40,11 @@
   justify-content: flex-start;
   align-content: center;
   padding: 50px 50px 0;
-  background-color: coral;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 87vh;
 }
