@@ -1,9 +1,20 @@
 .page {
-  height: 87vh;
+  min-height: 87vh;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  /* overflow-y: auto; */
 }
 
 .sidebar {
   border-right: 0.5px solid #9f9f9f;
+}
+
+.menu {
+  /* height: 100%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center;
+  padding: 50px 50px 0;
+  background-color: coral;
 }

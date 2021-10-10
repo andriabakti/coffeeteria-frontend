@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Nav, Navbar as NavBar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import style from './Navbar.module.css'
+import logo from '../../../assets/icon.svg'
 
 const Navbar = () => {
   const link = {
@@ -13,7 +14,15 @@ const Navbar = () => {
       <Container>
         <NavBar.Brand>
           <Link to="/" style={link}>
-            CoffeeTeria
+            <img src={logo}
+              alt="CoffeeTeria logo"
+              className='d-inline-block align-top'
+              height='30'
+              width='30'
+            />{' '}
+            <span className={style.name}>
+              CoffeeTeria
+            </span>
           </Link>
         </NavBar.Brand>
         <Nav className="ml-auto">
