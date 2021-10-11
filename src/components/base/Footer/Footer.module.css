@@ -3,8 +3,33 @@
 }
 
 .foot_body {
-  height: 50vh;
+  height: 60vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.left_side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.left_side span {
+  font-size: 20px;
+}
+
+.right_side {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right_side ul {
+  margin: 0;
+  padding: 0;
+}
+
+.right_side li {
+  list-style: none;
+  margin-bottom: 5px;
 }
