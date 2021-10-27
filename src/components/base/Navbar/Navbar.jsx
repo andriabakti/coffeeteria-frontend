@@ -32,17 +32,17 @@ const Navbar = () => {
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/product" style={link}>
+            <Link to="/main/product" style={link}>
               Product
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/cart" style={link}>
+            <Link to="/main/cart" style={link}>
               Your Cart
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/history" style={link}>
+            <Link to="/main/history" style={link}>
               History
             </Link>
           </Nav.Link>

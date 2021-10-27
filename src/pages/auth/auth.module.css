@@ -1,0 +1,9 @@
+.con {
+  height: 100vh;
+}
+
+.bg {
+  height: 100vh;
+  background-size: cover;
+  background: url('../../assets/bg_auth.png') no-repeat;
+}
