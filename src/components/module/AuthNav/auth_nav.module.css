@@ -1,0 +1,11 @@
+.nav {
+  height: 17vh;
+  /* background-color: #0B132A; */
+}
+
+.brand {
+  padding-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #0B132A;
+}

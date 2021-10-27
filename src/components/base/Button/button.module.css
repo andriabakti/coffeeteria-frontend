@@ -1,0 +1,7 @@
+.button {
+  width: 150px;
+  height: 45px;
+  border-radius: 50px !important;
+  background-color: #FFba33 !important;
+  box-shadow: 1px 6px 20px rgba(255, 186, 51, 0.4);
+}

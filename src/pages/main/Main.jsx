@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 
-import Navbar from '../../components/base/Navbar/Navbar'
-import Footer from '../../components/base/Footer/Footer'
+import Navbar from '../../components/module/Navbar/Navbar'
 
 import Home from './Home/Home';
 import Product from './Product/Product'
@@ -25,7 +24,6 @@ class Main extends Component {
             {/* <Route component={NotFound} /> */}
           </Switch>
         </div>
-        <Footer />
       </div>
     );
   }
