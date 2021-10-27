@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 import Auth from './pages/auth/Auth';
 import Main from './pages/main/Main';
-// import Footer from './components/base/Footer/Footer'
+import Footer from './components/module/Footer/Footer'
 
 import './App.css';
 
@@ -18,7 +18,7 @@ class App extends Component {
             <Redirect from="/" to="/main" />
           </Switch>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     );
   }

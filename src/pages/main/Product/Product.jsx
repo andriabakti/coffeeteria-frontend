@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap'
-import Cards from '../../../components/base/Cards/Cards';
+import Cards from '../../../components/module/Cards/Cards';
 import style from './Product.module.css'
 
 class Product extends Component {
