@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Navbar from './components/base/Navbar/Navbar'
-import Footer from './components/base/Footer/Footer'
-import Home from './pages/main/Home/Home';
-import Product from './pages/main/Product/Product'
-import Cart from './pages/main/Cart/Cart';
-import History from './pages/main/History/History';
-import NotFound from './pages/NotFound/NotFound'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+
+import Auth from './pages/auth/Auth';
+import Main from './pages/main/Main';
+// import Footer from './components/base/Footer/Footer'
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Navbar className="nav" />
         <div>
           <Switch>
-            <Route component={Home} path="/" exact></Route>
-            <Route component={Product} path="/product" exact />
-            <Route component={Cart} path="/cart" exact />
-            <Route component={History} path="/history" exact />
-            <Route component={NotFound} />
+            <Route component={Auth} path="/auth" />
+            <Route component={Main} path="/main" />
+            <Redirect from="/" to="/main" />
           </Switch>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     );
   }
