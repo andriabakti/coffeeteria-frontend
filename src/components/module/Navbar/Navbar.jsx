@@ -1,10 +1,13 @@
 import React from 'react'
 import { Container, Nav, Navbar as NavBar } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+
+import Button from '../../base/Button/Button'
 import style from './Navbar.module.css'
 import logo from '../../../assets/icon.svg'
 
 const Navbar = () => {
+  const { pathname } = useLocation()
   const link = {
     textDecoration: 'none',
     color: 'inherit'
@@ -47,8 +50,22 @@ const Navbar = () => {
             </Link>
           </Nav.Link>
         </Nav>
-      </Container>
-    </NavBar>
+        {pathname === '/main' &&
+          (
+            <Nav className='ml-auto'>
+              <Nav.Link>
+                <Link to='/auth/sign-in' style={link}>
+                  Login
+                </Link>
+              </Nav.Link>
+              <Link to='/auth/sign-up'>
+                <Button text='Sign Up' type='button' />
+              </Link>
+            </Nav>
+          )
+        }
+      </Container >
+    </NavBar >
   )
 }
 
