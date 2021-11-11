@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Form from '../../../components/base/Form/Form'
+import Input from '../../../components/base/Input/Input'
 import Button from '../../../components/base/Button/Button'
 import style from './sign_up.module.css'
 
@@ -9,17 +9,17 @@ const SignUp = () => {
     <div className={`container ${style.form}`}>
       <h4>Sign Up</h4>
       <form>
-        <Form
+        <Input
           name='email'
           type='email'
           label='Email Address :'
           placeholder='Enter your email adress' />
-        <Form
+        <Input
           name='password'
           type='password'
           label='Password :'
           placeholder='Enter your password' />
-        <Form
+        <Input
           name='phone'
           type='tel'
           label='Phone Number :'
