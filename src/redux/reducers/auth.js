@@ -1,27 +1,34 @@
 const initialState = {
-  onLogin: false,
-  email: ''
+  data: {},
+  isLoading: false,
+  isError: false,
+  msg: ''
 }
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
-    case 'AUTH_VISIT_LOGIN': {
+    case 'LOGIN_PENDING':
       return {
         ...state,
-        onLogin: !state.onLogin
+        isLoading: true
       }
-    }
-    case 'CHANGE_EMAIL': {
+    case 'LOGIN_FULFILLED':
       return {
         ...state,
-        email: action.payload
+        // isLoading: false,
+        data: action.payload.data.data,
+        msg: action.payload.data.message
       }
-    }
-    default: {
+    case 'LOGIN_REJECTED':
       return {
-        ...state
+        ...state,
+        isLoading: false,
+        isError: true,
+        data: {},
+        msg: action.payload.response.data.message
       }
-    }
+    default:
+      return state
   }
 }
 
