@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { Component } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap'
 import Cards from '../../../components/module/Cards/Cards';
+import axiosApiInstances from '../../../utils/axios';
 import style from './Product.module.css'
 
 class Product extends Component {
@@ -17,7 +17,7 @@ class Product extends Component {
     this.setState({
       isLoading: true
     })
-    axios.get(`${process.env.REACT_APP_BASE_URL}/menu/?limit=12`)
+    axiosApiInstances.get(`/product/?limit=12&page=1`)
       .then((res) => {
         this.setState({
           menu: res.data.data,
