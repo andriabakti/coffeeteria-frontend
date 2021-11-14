@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Form = (props) => {
+const Input = (props) => {
   return (
-    <div className='mb-3'>
+    <div className='mb-3 form-group'>
       <label
         className='form-label'
         htmlFor={props.id}
@@ -14,9 +14,10 @@ const Form = (props) => {
         type={props.type}
         name={props.name}
         placeholder={props.placeholder}
+        onChange={props.changeEvent}
       />
     </div>
   )
 }
 
-export default Form
+export default Input
