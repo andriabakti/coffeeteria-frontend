@@ -59,7 +59,7 @@ const Navbar = () => {
                 </Link>
               </Nav.Link>
               <Link to='/auth/sign-up'>
-                <Button text='Sign Up' type='button' />
+                <Button text='Sign Up' type='button' color='yellow' />
               </Link>
             </Nav>
           )
