@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import Input from '../../../components/base/Input/Input'
@@ -10,7 +10,7 @@ import { login } from '../../../redux/actions/auth'
 const SignIn = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const loginState = useSelector((state) => state.auth)
+  // const loginState = useSelector((state) => state.auth)
 
   const [form, setForm] = useState({
     email: '',
@@ -58,7 +58,7 @@ const SignIn = () => {
           placeholder='Enter your password'
           changeEvent={(e) => handleChange(e)}
         />
-        <Button text='Login' type='submit' />
+        <Button text='Login' type='submit' color='yellow' />
       </form>
     </div>
   )

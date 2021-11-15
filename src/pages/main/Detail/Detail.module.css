@@ -1,0 +1,58 @@
+.page {
+  height: 87vh;
+  min-height: 87vh;
+  display: flex;
+}
+
+.left {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right {
+  padding-top: 50px;
+  padding-right: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.detail {
+  padding-right: 80px;
+}
+
+.desc {
+  font-size: 25px;
+}
+
+.option {
+  height: 50%;
+  padding-right: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #BCBABA;
+}
+
+.dropdown {
+  height: 65px;
+  margin-bottom: 20px;
+}
+
+.amount {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.counter {
+  display: flex;
+  height: 65px;
+  /* width: 100%; */
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+}
