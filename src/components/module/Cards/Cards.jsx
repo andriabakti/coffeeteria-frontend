@@ -5,10 +5,10 @@ import none from '../../../assets/default.jpg'
 
 class Cards extends Component {
   render() {
-    const { name, price } = this.props
+    const { name, price, image } = this.props
     return (
       <Card className={style.content}>
-        <Card.Img variant="top" src={none} />
+        <Card.Img variant="top" src={image ? image : none} />
         <Card.Body className={style.body}>
           <Card.Title>{name}</Card.Title>
           <Card.Text>

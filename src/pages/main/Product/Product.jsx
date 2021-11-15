@@ -70,7 +70,7 @@ class Product extends Component {
                   menu.map((item, index) => {
                     return (
                       <Col md="3">
-                        <Cards key={index} name={item.name} price={item.price} />
+                        <Cards key={index} name={item.name} price={item.price} image={item.image} />
                       </Col>
                     )
                   })

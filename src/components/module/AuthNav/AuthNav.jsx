@@ -40,6 +40,7 @@ const AuthNav = () => {
           <Button
             text={pathname === '/auth/sign-up' ? 'Sign In' : 'Sign Up'}
             type='button'
+            color='yellow'
           />
         </Link>
       </div>
