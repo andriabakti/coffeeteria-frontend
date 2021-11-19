@@ -1,0 +1,18 @@
+.bg {
+  min-height: 87vh;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../../../assets/bg_history.png');
+}
+
+.head {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+}
+
+.cards {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
