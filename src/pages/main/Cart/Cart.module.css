@@ -1,0 +1,21 @@
+.bg {
+  /* height: 100; */
+  min-height: 87vh;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../../../assets/bg_cart.png');
+}
+
+.container {
+  height: 100%;
+  /* margin-top: ; */
+}
+
+.title {
+  padding: 30px 0;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+}
+
+.content {
+  height: 100%;
+}
