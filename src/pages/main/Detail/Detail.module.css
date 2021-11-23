@@ -34,7 +34,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #BCBABA;
+  /* background-color: #BCBABA; */
 }
 
 .dropdown {

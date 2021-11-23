@@ -1,0 +1,5 @@
+.bg {
+  height: 87vh;
+  background-image: url('../../../assets/bg_home.png');
+  background-size: cover;
+}

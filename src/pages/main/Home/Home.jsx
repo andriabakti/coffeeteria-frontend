@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import style from './Home.module.css'
 
 class Home extends Component {
   render() {
     return (
-      <div className='text-center'>
+      <div className={`text-center text-white ${style.bg}`}>
         <h1>Home Page</h1>
       </div>
     );
