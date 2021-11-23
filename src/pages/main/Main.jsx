@@ -24,7 +24,7 @@ class Main extends Component {
           <Switch>
             <PublicRoute component={Home} path={`${path}/`} exact />
             <PrivateRoute component={Product} path={`${path}/product`} exact />
-            <PrivateRoute component={Detail} path={`${path}/detail`} exact />
+            <PrivateRoute component={Detail} path={`${path}/product/:id`} exact />
             <PrivateRoute component={Cart} path={`${path}/cart`} exact />
             <PrivateRoute component={History} path={`${path}/history`} exact />
             {/* <Route component={NotFound} /> */}
