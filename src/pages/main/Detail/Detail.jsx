@@ -1,15 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getDetail } from '../../../redux/actions/product'
+
 import Button from '../../../components/base/Button/Button'
 
 import style from './Detail.module.css'
 import img from '../../../assets/item_detail.png'
 
 const Detail = () => {
+  const { id } = useParams()
+  const dispatch = useDispatch()
+  const { detail } = useSelector(state => state.items)
+
+  const getDataDetail = () => {
+    dispatch(getDetail(id))
+  }
+
+  useEffect(() => {
+    getDataDetail()
+  })
+
   return (
     <div className={`${style.page}`}>
       <div className={`container`}>
         <div className='row h-100'>
           <div className={`col-md-5 ${style.left}`}>
+            <h1>{detail.name}</h1>
             <p>Favorite & Promo &gt; Cold Brew </p>
             <img src={img} alt='' height='550px' width='400px' />
             <p>

@@ -1,4 +1,13 @@
 .right_side {
   /* height: auto; */
-  background-color: tomato;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card {
+  padding: 30px;
+  border-radius: 20px !important;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+  /* height: 100%; */
 }
