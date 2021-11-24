@@ -1,0 +1,28 @@
+.bg {
+  background-image: url('../../../assets/bg_profile.png');
+  background-size: cover;
+  min-height: 87vh;
+}
+
+.container {
+  padding: 50px 0;
+}
+
+.content {
+  padding: 50px;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between;
+  background-color: #F8F8F8 !important;
+  border-radius: 20px !important;
+}
+
+.side_left {
+  background-color: coral;
+  height: 50vh;
+}
+
+.side_right {
+  background-color: cornflowerblue;
+  height: 50vh;
+}
