@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import PrivateRoute from '../../configs/PrivateRoute';
 
@@ -11,7 +11,8 @@ import Cart from './Cart/Cart';
 import History from './History/History';
 import PublicRoute from '../../configs/PublicRoute';
 import Detail from './Detail/Detail';
-// import NotFound from './pages/NotFound/NotFound'
+import NotFound from '../NotFound/NotFound'
+import Profile from './Profile/Profile';
 
 class Main extends Component {
   render() {
@@ -27,7 +28,8 @@ class Main extends Component {
             <PrivateRoute component={Detail} path={`${path}/product/:id`} exact />
             <PrivateRoute component={Cart} path={`${path}/cart`} exact />
             <PrivateRoute component={History} path={`${path}/history`} exact />
-            {/* <Route component={NotFound} /> */}
+            <PrivateRoute component={Profile} path={`${path}/profile`} exact />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </div>
