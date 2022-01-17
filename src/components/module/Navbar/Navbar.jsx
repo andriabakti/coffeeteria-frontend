@@ -1,71 +1,97 @@
 import React from 'react'
-import { Container, Nav, Navbar as NavBar } from 'react-bootstrap'
+// react-router
 import { Link, useLocation } from 'react-router-dom'
-
+// react-bootstrap
+import { Container, Nav } from 'react-bootstrap'
+// components
 import Button from '../../base/Button/Button'
+// style
 import style from './Navbar.module.css'
+// assets
 import logo from '../../../assets/icon.svg'
+import none from '../../../assets/default.jpg'
 
 const Navbar = () => {
   const { pathname } = useLocation()
+  const token = localStorage.getItem('token')
   const link = {
     textDecoration: 'none',
     color: 'inherit'
   }
   return (
-    <NavBar variant="light" className={style.navbar}>
+    <nav className={`navbar navbar-expand-md bg-white ${style.nav}`}>
       <Container>
-        <NavBar.Brand>
-          <Link to="/" style={link}>
-            <img src={logo}
-              alt="CoffeeTeria logo"
-              className='d-inline-block align-top'
-              height='30'
-              width='30'
-            />{' '}
-            <span className={style.name}>
-              CoffeeTeria
-            </span>
-          </Link>
-        </NavBar.Brand>
-        <Nav className="ml-auto">
+        <Link to='/main' className='navbar-brand'>
+          <img alt='CoffeeTeria_logo' height='33px' width='30px' src={logo} />
+          <span className={`${style.brand}`}>CoffeeTeria</span>
+        </Link>
+        <div className='navbar-nav mx-auto'>
           <Nav.Link>
-            <Link to="/" style={link}>
+            <Link
+              to='/main'
+              style={link}
+              className={
+                pathname !== '/main' ? `${style.page}` : `${style.page_on}`
+              }>
               Home
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/main/product" style={link}>
+            <Link
+              to='/main/product'
+              style={link}
+              className={
+                pathname !== '/main/product'
+                  ? `${style.page}`
+                  : `${style.page_on}`
+              }>
               Product
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/main/cart" style={link}>
+            <Link
+              to='/main/cart'
+              style={link}
+              className={
+                pathname !== '/main/cart' ? `${style.page}` : `${style.page_on}`
+              }>
               Your Cart
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/main/history" style={link}>
+            <Link
+              to='/main/history'
+              style={link}
+              className={
+                pathname !== '/main/history'
+                  ? `${style.page}`
+                  : `${style.page_on}`
+              }>
               History
             </Link>
           </Nav.Link>
-        </Nav>
-        {pathname === '/main' &&
-          (
-            <Nav className='ml-auto'>
-              <Nav.Link>
-                <Link to='/auth/sign-in' style={link}>
-                  Login
-                </Link>
-              </Nav.Link>
-              <Link to='/auth/sign-up'>
-                <Button text='Sign Up' type='button' color='yellow' />
-              </Link>
-            </Nav>
-          )
-        }
-      </Container >
-    </NavBar >
+        </div>
+        {token ? (
+          <div className='navbar-nav'>
+            <Link to='/main/profile' className={`${style.profile}`}>
+              <img src={none} alt='profile' width='35px' height='35px' />
+            </Link>
+          </div>
+        ) : (
+          <div className={`navbar-item ${style.auth}`}>
+            <Link to='/auth/sign-in' style={link} className={`${style.login}`}>
+              Login
+            </Link>
+            <Link to='/auth/sign-up'>
+              <Button
+                text='Sign Up'
+                type='button'
+                color='yellow' />
+            </Link>
+          </div>
+        )}
+      </Container>
+    </nav>
   )
 }
 

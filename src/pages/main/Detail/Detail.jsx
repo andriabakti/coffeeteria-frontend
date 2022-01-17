@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { getDetail } from '../../../redux/actions/product'
-
+// components
 import Button from '../../../components/base/Button/Button'
-
+// react-router
+import { useParams } from 'react-router-dom'
+// react-redux
+import { useDispatch, useSelector } from 'react-redux'
+// redux
+import { getDetail } from '../../../redux/actions/product'
+// style
 import style from './Detail.module.css'
+// assets
 import img from '../../../assets/item_detail.png'
 
 const Detail = () => {

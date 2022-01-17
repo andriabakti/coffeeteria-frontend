@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import PrivateRoute from '../../configs/PrivateRoute';
+import PublicRoute from '../../configs/PublicRoute'
+import PrivateRoute from '../../configs/PrivateRoute'
 
 import Navbar from '../../components/module/Navbar/Navbar'
 
-import Home from './Home/Home';
+import Home from './Home/Home'
 import Product from './Product/Product'
-import Cart from './Cart/Cart';
-import History from './History/History';
-import PublicRoute from '../../configs/PublicRoute';
-import Detail from './Detail/Detail';
+import Cart from './Cart/Cart'
+import History from './History/History'
+import Detail from './Detail/Detail'
+import Profile from './Profile/Profile'
 import NotFound from '../NotFound/NotFound'
-import Profile from './Profile/Profile';
 
 class Main extends Component {
   render() {
@@ -25,7 +25,11 @@ class Main extends Component {
           <Switch>
             <PublicRoute component={Home} path={`${path}/`} exact />
             <PrivateRoute component={Product} path={`${path}/product`} exact />
-            <PrivateRoute component={Detail} path={`${path}/product/:id`} exact />
+            <PrivateRoute
+              component={Detail}
+              path={`${path}/product/:id`}
+              exact
+            />
             <PrivateRoute component={Cart} path={`${path}/cart`} exact />
             <PrivateRoute component={History} path={`${path}/history`} exact />
             <PrivateRoute component={Profile} path={`${path}/profile`} exact />
@@ -33,8 +37,8 @@ class Main extends Component {
           </Switch>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Main;
+export default Main

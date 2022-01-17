@@ -1,11 +1,41 @@
-.navbar {
-  height: 13vh;
-  border-bottom: 0.5px solid #9f9f9f;
+.nav {
+  height: 110px;
   font-family: 'Rubik';
+  border-bottom: 0.5px solid #9f9f9f;
+  position: -webkit-sticky;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1;
 }
 
-.name {
+/* brand */
+.brand {
   font-size: 20px;
   font-weight: bold;
+  margin-left: 15px;
   color: #0B132A;
+}
+
+/* links */
+.page {
+  font-size: 16px;
+  color: #4F5665 !important;
+}
+
+.page_on {
+  color: #6A4029 !important;
+  font-weight: bolder !important;
+}
+
+/* auth */
+.login {
+  font-weight: 500 !important;
+  color: #0B132A !important;
+  margin-right: 35px;
+}
+
+/* profile */
+.profile>img {
+  border-radius: 50%;
+  border: 2px solid #6A4029;
 }

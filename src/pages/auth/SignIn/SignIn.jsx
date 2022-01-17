@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-
+// components
 import Input from '../../../components/base/Input/Input'
-import Button from '../../../components/base/Button/Button'
-import style from './sign_in.module.css'
+// react-router
+import { useHistory } from 'react-router-dom'
+// react-redux
+import { useDispatch } from 'react-redux'
+// redux
 import { login } from '../../../redux/actions/auth'
+// style
+import style from './SignIn.module.css'
 
 const SignIn = () => {
   const history = useHistory()
@@ -28,9 +31,9 @@ const SignIn = () => {
     e.preventDefault()
     dispatch(login(form))
       .then((result) => {
-        console.log(result);
         localStorage.setItem('token', result.value.data.data.token)
         // localStorage.setItem('token', loginState.data.token)
+        alert('Login berhasil')
         history.push('/main/product')
       })
       .catch((error) => {
@@ -39,26 +42,30 @@ const SignIn = () => {
     // console.log(loginState);
   }
   return (
-    <div className={`container ${style.form}`}>
-      <h4>Login</h4>
-      <form onSubmit={handleLogin}>
-        <Input
-          id='email'
-          name='email'
-          type='email'
-          label='Email Address :'
-          placeholder='Enter your email adress'
-          changeEvent={(e) => handleChange(e)}
-        />
-        <Input
-          id='password'
-          name='password'
-          type='password'
-          label='Password :'
-          placeholder='Enter your password'
-          changeEvent={(e) => handleChange(e)}
-        />
-        <Button text='Login' type='submit' color='yellow' />
+    <div className={`container ${style.container}`}>
+      <form className={`${style.form}`} onSubmit={handleLogin}>
+        <span>Login</span>
+        <div>
+          <Input
+            changeEvent={(e) => handleChange(e)}
+            placeholder='Enter your email adress'
+            label='Email Address :'
+            name='email'
+            type='email'
+            id='email'
+          />
+          <Input
+            changeEvent={(e) => handleChange(e)}
+            placeholder='Enter your password'
+            label='Password :'
+            name='password'
+            type='password'
+            id='password'
+          />
+          <button className={`btn ${style.btn_yellow}`} type='submit'>
+            Login
+          </button>
+        </div>
       </form>
     </div>
   )

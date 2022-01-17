@@ -1,36 +1,24 @@
 import React from 'react'
+// react-router
 import { useLocation, useHistory, Link } from 'react-router-dom'
-
+// components
 import Button from '../../base/Button/Button'
+// style
+import style from './AuthNav.module.css'
+// assets
 import logo from '../../../assets/icon.svg'
-
-import style from './auth_nav.module.css'
 
 const AuthNav = () => {
   let { pathname } = useLocation()
   let { location } = useHistory()
-  const link = {
-    textDecoration: 'none',
-    color: 'inherit'
-  }
 
   return (
-    <nav className={`navbar ${style.nav}`}>
+    <nav className={`navbar navbar-expand-md ${style.nav}`}>
       <div className='container'>
-        <div>
-          <Link to='/' style={link}>
-            <img
-              src={logo}
-              alt='logo'
-              className='align-top'
-              height='33'
-              width='30'
-            />
-            <span className={`navbar-brand ${style.brand}`}>
-              CoffeeTeria
-            </span>
-          </Link>
-        </div>
+        <Link to='/' className='navbar-brand align-top'>
+          <img alt='CoffeeTeria_logo' height='33px' width='30px' src={logo} />
+          <span className={`${style.brand}`}>CoffeeTeria</span>
+        </Link>
         <Link
           to={
             location.pathname === '/auth/sign-up'
@@ -38,7 +26,7 @@ const AuthNav = () => {
               : '/auth/sign-up'
           }>
           <Button
-            text={pathname === '/auth/sign-up' ? 'Sign In' : 'Sign Up'}
+            text={pathname === '/auth/sign-up' ? 'Login' : 'Sign Up'}
             type='button'
             color='yellow'
           />

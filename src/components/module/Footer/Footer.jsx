@@ -1,62 +1,68 @@
 import React from 'react'
+// react-bootstrap
 import { Container, Row, Col } from 'react-bootstrap'
+// style
 import style from './Footer.module.css'
+// assets
 import logo from '../../../assets/icon.svg'
+import icon_fb from '../../../assets/icon_fb.svg'
+import icon_tw from '../../../assets/icon_tw.svg'
+import icon_ig from '../../../assets/icon_ig.svg'
 
 const Footer = () => {
   return (
-    <div className={style.foot_bg}>
+    <div className={style.bg}>
       <Container>
-        <Row className={style.foot_body}>
-          <Col md="9" className={style.left_side}>
-            <div>
-              <img src={logo}
-                alt="CoffeeTeria logo"
-              />{' '}
+        <Row className={style.main}>
+          <Col md="4" className={style.left}>
+            <div className={`${style.brand}`}>
+              <img
+                alt="CoffeeTeria_logo"
+                height='33px'
+                width='30px'
+                src={logo}
+              />
               <span>
-                <b>CoffeeTeria</b>
+                CoffeeTeria
               </span>
             </div>
-            <div>
+            <div className={`${style.desc}`}>
               <p>
                 CoffeeTeria is a store that sells some good<br />
                 meals, and especially coffee. We provide<br />
                 high quality beans
               </p>
-              <caption>
-                @2021CoffeeStore
-              </caption>
+              <div>
+                <img className={`${style.btn_share}`} src={icon_fb} alt='btn_fb' />
+                <img className={`${style.btn_share}`} src={icon_tw} alt='btn_tw' />
+                <img className={`${style.btn_share}`} src={icon_ig} alt='btn_ig' />
+              </div>
+              <span>
+                @2022CoffeeTeria
+              </span>
             </div>
           </Col>
-          <Col md="3" className={style.right_side}>
-            <div>
-              <span>
-                <b>Product</b>
-              </span>
-              <ul>
-                <li>Download</li>
-                <li>Pricing</li>
-                <li>Locations</li>
-                <li>Countries</li>
-                <li>Blog</li>
-              </ul>
+          <div className={`col-md-4 ${style.right}`}>
+            <div className={`${style.section}`}>
+              <b className={`${style.title}`}>Product</b>
+              <span>Download</span>
+              <span>Pricing</span>
+              <span>Locations</span>
+              <span>Countries</span>
+              <span>Blog</span>
             </div>
-            <div>
-              <span>
-                <b>Engage</b>
-              </span>
-              <ul>
-                <li>CoffeeTeria ?</li>
-                <li>FAQ</li>
-                <li>About Us</li>
-                <li>Privacy Policy</li>
-                <li>Terms of Service</li>
-              </ul>
+            <div className={`${style.section}`}>
+              <b className={`${style.title}`}>Engage</b>
+              <span>CoffeeTeria ?</span>
+              <span>FAQ</span>
+              <span>About Us</span>
+              <span>Privacy Policy</span>
+              <span>Terms of Service</span>
             </div>
-          </Col>
+          </div>
         </Row>
       </Container>
-    </div>
+    </div >
   )
 }
 

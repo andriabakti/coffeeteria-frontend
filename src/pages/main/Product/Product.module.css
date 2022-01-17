@@ -1,5 +1,5 @@
 .page {
-  min-height: 87vh;
+  min-height: calc(100vh - 110px);
   display: flex;
   /* justify-content: center; */
   /* overflow-y: auto; */

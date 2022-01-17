@@ -1,28 +1,27 @@
 .bg {
+  font-family: 'Rubik';
+  min-height: calc(100vh - 110px);
   background-image: url('../../../assets/bg_profile.png');
   background-size: cover;
-  min-height: 87vh;
 }
 
 .container {
-  padding: 50px 0;
+  padding: 50px 30px 80px !important;
 }
 
-.content {
+.title>h2 {
+  font-weight: 500;
+  padding-left: 0;
+  margin-bottom: 30px;
+  text-shadow: 0px 6px 8px rgba(255, 255, 255, 0.26);
+}
+
+.main {
   padding: 50px;
-  display: flex !important;
+  display: flex;
   flex-direction: row !important;
-  justify-content: space-between;
+  justify-content: space-between !important;
   background-color: #F8F8F8 !important;
   border-radius: 20px !important;
-}
-
-.side_left {
-  background-color: coral;
-  height: 50vh;
-}
-
-.side_right {
-  background-color: cornflowerblue;
-  height: 50vh;
+  font-family: 'Poppins';
 }
