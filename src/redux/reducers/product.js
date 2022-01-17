@@ -8,6 +8,7 @@ const initialState = {
 
 const items = (state = initialState, action) => {
   switch (action.type) {
+    // all products
     case 'GET_ITEMS_PENDING': {
       return {
         ...state,
@@ -29,6 +30,7 @@ const items = (state = initialState, action) => {
         items: [],
         msg: action.payload.response.data.message
       }
+    // product details
     case 'GET_DETAILS_PENDING': {
       return {
         ...state,

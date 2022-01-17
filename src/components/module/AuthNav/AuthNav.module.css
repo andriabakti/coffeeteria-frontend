@@ -1,6 +1,8 @@
 .nav {
-  height: 17vh;
-  /* background-color: #0B132A; */
+  height: 110px;
+  font-family: 'Rubik';
+  padding-right: 60px;
+  padding-left: 30px;
 }
 
 .brand {

@@ -1,13 +1,77 @@
-.right_side {
-  /* height: auto; */
+.section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+/* title */
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+}
+
+.title>h4 {
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+}
+
+.title>span {
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.section>h4 {
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* card */
 .card {
-  padding: 30px;
+  font-size: 18px;
+  padding: 20px 40px;
   border-radius: 20px !important;
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
-  /* height: 100%; */
+}
+
+.card>ul>li {
+  padding-left: 0;
+}
+
+.payment {
+  margin-top: 40px;
+}
+
+/* buttons */
+.btn_pay {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.btn_card {
+  background-color: #F47B0A !important;
+}
+
+.btn_bank {
+  background-color: #895537 !important;
+}
+
+.btn_cash {
+  background-color: #FFBA33 !important;
+}
+
+.btn_brown {
+  width: 100%;
+  height: 60px;
+  font-weight: bold !important;
+  font-size: 20px !important;
+  color: #ffffff !important;
+  box-shadow: 0px 10px 20px rgba(137, 85, 55, 0.4);
+  background-color: #6A4029 !important;
+  border-radius: 20px !important;
+  margin-top: 40px;
 }
