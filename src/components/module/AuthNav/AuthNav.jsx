@@ -4,7 +4,7 @@ import { useLocation, useHistory, Link } from 'react-router-dom'
 // components
 import Button from '../../base/Button/Button'
 // style
-import style from './AuthNav.module.css'
+import style from './auth_nav.module.css'
 // assets
 import logo from '../../../assets/icon.svg'
 
@@ -28,7 +28,7 @@ const AuthNav = () => {
           <Button
             text={pathname === '/auth/sign-up' ? 'Login' : 'Sign Up'}
             type='button'
-            color='yellow'
+            color='gold'
           />
         </Link>
       </div>

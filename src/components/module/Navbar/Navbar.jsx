@@ -6,7 +6,7 @@ import { Container, Nav } from 'react-bootstrap'
 // components
 import Button from '../../base/Button/Button'
 // style
-import style from './Navbar.module.css'
+import style from './navbar.module.css'
 // assets
 import logo from '../../../assets/icon.svg'
 import none from '../../../assets/default.jpg'
@@ -20,18 +20,20 @@ const Navbar = () => {
   }
   return (
     <nav className={`navbar navbar-expand-md bg-white ${style.nav}`}>
-      <Container>
-        <Link to='/main' className='navbar-brand'>
-          <img alt='CoffeeTeria_logo' height='33px' width='30px' src={logo} />
-          <span className={`${style.brand}`}>CoffeeTeria</span>
-        </Link>
-        <div className='navbar-nav mx-auto'>
+      <Container className={`${style.container}`}>
+        <div className={`col-lg-4 ${style.left}`}>
+          <Link to='/main' className='navbar-brand'>
+            <img alt='CoffeeTeria_logo' height='33px' width='30px' src={logo} />
+            <span className={`${style.brand}`}>CoffeeTeria</span>
+          </Link>
+        </div>
+        <div className={`navbar-nav col-lg-4 ${style.center}`}>
           <Nav.Link>
             <Link
               to='/main'
               style={link}
               className={
-                pathname !== '/main' ? `${style.page}` : `${style.page_on}`
+                pathname === '/main' ? `${style.page_on}` : `${style.page}`
               }>
               Home
             </Link>
@@ -41,9 +43,13 @@ const Navbar = () => {
               to='/main/product'
               style={link}
               className={
-                pathname !== '/main/product'
-                  ? `${style.page}`
-                  : `${style.page_on}`
+                pathname !== '/main' &&
+                  pathname !== '/main/product/' &&
+                  pathname !== '/main/cart' &&
+                  pathname !== '/main/history' &&
+                  pathname !== '/main/profile'
+                  ? `${style.page_on}`
+                  : `${style.page}`
               }>
               Product
             </Link>
@@ -53,7 +59,7 @@ const Navbar = () => {
               to='/main/cart'
               style={link}
               className={
-                pathname !== '/main/cart' ? `${style.page}` : `${style.page_on}`
+                pathname === '/main/cart' ? `${style.page_on}` : `${style.page}`
               }>
               Your Cart
             </Link>
@@ -63,30 +69,33 @@ const Navbar = () => {
               to='/main/history'
               style={link}
               className={
-                pathname !== '/main/history'
-                  ? `${style.page}`
-                  : `${style.page_on}`
+                pathname === '/main/history'
+                  ? `${style.page_on}`
+                  : `${style.page}`
               }>
               History
             </Link>
           </Nav.Link>
         </div>
         {token ? (
-          <div className='navbar-nav'>
-            <Link to='/main/profile' className={`${style.profile}`}>
+          <div className={`col-lg-4 navbar-nav ${style.right}`}>
+            <Link
+              to='/main/profile'
+              className={
+                pathname === '/main/profile'
+                  ? `${style.profile_on}`
+                  : `${style.profile}`
+              }>
               <img src={none} alt='profile' width='35px' height='35px' />
             </Link>
           </div>
         ) : (
-          <div className={`navbar-item ${style.auth}`}>
+          <div className={`col-lg-4 navbar-item ${style.right}`}>
             <Link to='/auth/sign-in' style={link} className={`${style.login}`}>
               Login
             </Link>
             <Link to='/auth/sign-up'>
-              <Button
-                text='Sign Up'
-                type='button'
-                color='yellow' />
+              <Button text='Sign Up' type='button' color='gold' />
             </Link>
           </div>
         )}

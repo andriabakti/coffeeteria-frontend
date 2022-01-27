@@ -2,7 +2,7 @@ import React from 'react'
 // react-bootstrap
 import { Container, Row, Col } from 'react-bootstrap'
 // style
-import style from './Footer.module.css'
+import style from './footer.module.css'
 // assets
 import logo from '../../../assets/icon.svg'
 import icon_fb from '../../../assets/icon_fb.svg'

@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 // redux
 import { login } from '../../../redux/actions/auth'
 // style
-import style from './SignIn.module.css'
+import style from './sign_in.module.css'
 
 const SignIn = () => {
   const history = useHistory()
@@ -62,7 +62,7 @@ const SignIn = () => {
             type='password'
             id='password'
           />
-          <button className={`btn ${style.btn_yellow}`} type='submit'>
+          <button className={`btn ${style.btn_gold}`} type='submit'>
             Login
           </button>
         </div>

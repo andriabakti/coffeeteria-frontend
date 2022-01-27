@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+// react-router
 import { Route, Switch } from 'react-router-dom'
-
+// components
+import Navbar from '../../components/module/Navbar/Navbar'
+// routes
 import PublicRoute from '../../configs/PublicRoute'
 import PrivateRoute from '../../configs/PrivateRoute'
-
-import Navbar from '../../components/module/Navbar/Navbar'
-
+// pages
 import Home from './Home/Home'
 import Product from './Product/Product'
 import Cart from './Cart/Cart'
