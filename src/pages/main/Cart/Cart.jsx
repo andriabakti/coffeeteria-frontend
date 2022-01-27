@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SideLeft from './components/SideLeft/SideLeft';
 import SideRight from './components/SideRight/SideRight';
 // style
-import style from './Cart.module.css'
+import style from './cart.module.css'
 
 class Cart extends Component {
   render() {

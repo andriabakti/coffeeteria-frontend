@@ -1,22 +1,13 @@
 import React from 'react'
-// react-router
-import { useHistory } from 'react-router-dom'
 // react-redux
 import { useSelector } from 'react-redux'
 // style
-import style from './SideLeft.module.css'
+import style from './side_left.module.css'
 // asset
 import img from '../../../../../assets/default.jpg'
 
-const SideLeft = () => {
-  const history = useHistory()
+const SideLeft = (props) => {
   const { profile } = useSelector((state) => state.auth)
-
-  const logOut = () => {
-    localStorage.removeItem('token')
-    alert('Anda berhasil log out')
-    history.push('/main')
-  }
 
   return (
     <div className={`col-md-3 ${style.container}`}>
@@ -29,7 +20,7 @@ const SideLeft = () => {
           <span>{profile.email}</span>
         </div>
         <button
-          className={`btn ${style.btn_sm} ${style.btn_yellow}`}
+          className={`btn ${style.btn_sm} ${style.btn_gold}`}
           type='button'>
           Choose photo
         </button>
@@ -56,13 +47,13 @@ const SideLeft = () => {
           Save Change
         </button>
         <button
-          className={`btn ${style.btn_md} ${style.btn_yellow}`}
+          className={`btn ${style.btn_md} ${style.btn_gold}`}
           type='button'>
           Cancel
         </button>
         <button
           className={`btn ${style.btn_md} ${style.btn_white}`}
-          onClick={logOut}
+          onClick={props.onShow}
           type='button'>
           Log out
         </button>

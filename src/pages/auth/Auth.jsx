@@ -8,7 +8,7 @@ import AuthNav from '../../components/module/AuthNav/AuthNav'
 // routes
 import PublicRoute from '../../configs/PublicRoute'
 // style
-import style from './Auth.module.css'
+import style from './auth.module.css'
 
 class Auth extends Component {
   render() {

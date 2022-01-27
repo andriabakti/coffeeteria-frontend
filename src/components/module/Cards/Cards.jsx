@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+// react-bootstrap
 import { Card } from 'react-bootstrap'
-import style from './Cards.module.css'
+// style
+import style from './cards.module.css'
+// assets
 import none from '../../../assets/default.jpg'
 
 class Cards extends Component {

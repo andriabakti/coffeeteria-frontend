@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Spinner } from 'react-bootstrap'
+// component
 import Cards from '../../../components/module/Cards/Cards'
-// import axiosApiInstances from '../../../utils/axios';
-import style from './Product.module.css'
+// react=bootstrap
+import { Container, Row, Col, Spinner } from 'react-bootstrap'
+// react-redux
 import { connect } from 'react-redux'
+// redux
 import { getData } from '../../../redux/actions/product'
+// style
+import style from './product.module.css'
 
 class Product extends Component {
   constructor() {
@@ -95,6 +99,7 @@ const mapStateToProps = (state) => ({
   products: state.items.items,
   isLoading: state.items.isLoading
 })
+
 const mapDispatchToProps = (dispatch) => ({
   getProduct: () => dispatch(getData())
 })

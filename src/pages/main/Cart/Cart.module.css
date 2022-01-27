@@ -1,5 +1,5 @@
 .bg {
-  font-family: 'Rubik';
+  font-family: 'Rubik', sans-serif;
   min-height: calc(100vh - 110px);
   background-image: url('../../../assets/bg_cart.png');
   background-size: cover;
@@ -20,5 +20,5 @@
 .main {
   display: flex;
   justify-content: space-between;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
 }

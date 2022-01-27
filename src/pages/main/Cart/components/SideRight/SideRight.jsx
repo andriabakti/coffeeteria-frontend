@@ -1,6 +1,6 @@
 import React from 'react'
 // style
-import style from './SideRight.module.css'
+import style from './side_right.module.css'
 // assets
 import icon_card from '../../../../../assets/icon_card.svg'
 import icon_bank from '../../../../../assets/icon_bank.svg'
@@ -32,30 +32,24 @@ const SideRight = () => {
         <h4 className='text-white'>Payment method</h4>
         <div className={`card ${style.card}`}>
           <div className={`list-group list-group-flush`}>
-            <div className="list-group-item form-check">
-              <input className="form-check-input" type="radio" name='payment' />
-              <button className={`btn ${style.btn_pay} ${style.btn_card}`}>
-                <img src={icon_card} alt="icon_bank" height='17px' width='17px' />
-              </button>
-              <label className='form-check-label'>
+            <div className={`list-group-item form-check ${style.pay_method}`}>
+              <input className="form-check-input" type="radio" name='payment' id='payment-1' />
+              <label className='form-check-label' htmlFor='payment-1'>
+                <img className={`${style.icon_pay} ${style.icon_card}`} src={icon_card} alt="icon_bank" />
                 Card
               </label>
             </div>
-            <div className={`list-group-item form-check`}>
-              <input className="form-check-input" type="radio" name='payment' />
-              <button className={`btn ${style.btn_pay} ${style.btn_bank}`}>
-                <img src={icon_bank} alt="icon_bank" height='17px' width='17px' />
-              </button>
-              <label className='form-check-label'>
+            <div className={`list-group-item form-check ${style.pay_method}`}>
+              <input className="form-check-input" type="radio" name='payment' id='payment-2' />
+              <label className='form-check-label' htmlFor='payment-2'>
+                <img className={`btn ${style.icon_pay} ${style.icon_bank}`} src={icon_bank} alt="icon_bank" />
                 Bank account
               </label>
             </div>
-            <div className="list-group-item form-check">
-              <input className="form-check-input" type="radio" name='payment' />
-              <button className={`btn ${style.btn_pay} ${style.btn_cash}`}>
-                <img src={icon_cash} alt="icon_bank" height='17px' width='17px' />
-              </button>
-              <label className='form-check-label'>
+            <div className={`list-group-item form-check ${style.pay_method}`}>
+              <input className="form-check-input" type="radio" name='payment' id='payment-3' />
+              <label className='form-check-label' htmlFor='payment-3'>
+                <img className={`btn ${style.icon_pay} ${style.icon_cash}`} src={icon_cash} alt="icon_bank" />
                 Cash on delivery
               </label>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 // style
-import style from './SideRight.module.css'
+import style from './side_right.module.css'
 // asset
 import icon_edit from '../../../../../assets/icon_edit.svg'
 

@@ -1,7 +1,7 @@
 .bg {
-  font-family: 'Rubik';
   padding: 70px 0 90px;
   background-color: #f8f8f8;
+  font-family: 'Rubik', sans-serif;
 }
 
 .main {

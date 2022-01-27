@@ -1,6 +1,6 @@
 import React from 'react'
 // style
-import style from './SideLeft.module.css'
+import style from './side_left.module.css'
 // assets
 import img from '../../../../../assets/default.jpg'
 

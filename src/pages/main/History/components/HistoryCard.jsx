@@ -1,23 +1,25 @@
 import React from 'react'
-import style from './HistoryCard.module.css'
+// style
+import style from './history_card.module.css'
+// assets
 import img from '../../../../assets/default.jpg'
 
 const HistoryCard = () => {
   return (
     <div className={`card mb-4 ${style.cards}`}>
       <div className={`row g-0`}>
-        <div className={`col-md-4`}>
+        <div className={`col-lg-4`}>
           <div className={`${style.img_body}`}>
-            <img src={img} alt="..." className={`${style.img}`} />
+            <img src={img} alt="product_img" className={`${style.img}`} />
           </div>
         </div>
-        <div className={`col-md-8`}>
+        <div className={`col-lg-8`}>
           <div className={`card-body text-start ${style.text}`}>
-            <h5 className={`card-title`}>Veggie tomato mix</h5>
-            <p className={`mb-0`}>IDR 34.000</p>
+            <h5 className={`card-title`}>Product Name</h5>
+            <p className={`mb-0`}>IDR 00.000</p>
             <div className={`${style.check}`}>
               <p className={`card-text mb-auto`}>
-                Delivered
+                Status
               </p>
               <input
                 className={`form-check-input`}
@@ -29,7 +31,7 @@ const HistoryCard = () => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 
