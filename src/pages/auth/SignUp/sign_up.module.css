@@ -1,7 +1,7 @@
 .container {
   font-family: 'Rubik', sans-serif;
-  height: calc(100vh - 110px);
-  padding: 0px 70px 60px 50px !important;
+  height: calc(100vh - 90px);
+  padding: 20px 50px 70px 0 !important;
 }
 
 /* form */

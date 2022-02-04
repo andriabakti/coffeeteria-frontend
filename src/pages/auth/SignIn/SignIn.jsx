@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 // components
 import Input from '../../../components/base/Input/Input'
+// react-helmet
+import { Helmet } from 'react-helmet'
 // react-router
 import { useHistory } from 'react-router-dom'
 // react-redux
@@ -39,20 +41,24 @@ const SignIn = () => {
       .catch((error) => {
         console.log(error)
       })
-    // console.log(loginState);
   }
   return (
     <div className={`container ${style.container}`}>
+      <Helmet>
+        <title>Login - CoffeeTeria</title>
+        <meta name='description' content='This is Login Page' />
+      </Helmet>
       <form className={`${style.form}`} onSubmit={handleLogin}>
         <span>Login</span>
         <div>
           <Input
             changeEvent={(e) => handleChange(e)}
-            placeholder='Enter your email adress'
+            placeholder='Enter your email address'
             label='Email Address :'
             name='email'
             type='email'
             id='email'
+            required='required'
           />
           <Input
             changeEvent={(e) => handleChange(e)}
@@ -61,8 +67,12 @@ const SignIn = () => {
             name='password'
             type='password'
             id='password'
+            required='required'
           />
-          <button className={`btn ${style.btn_gold}`} type='submit'>
+          <button
+            className={`btn ${style.btn_gold} ${(form.email === '' || form.password === '') && 'disabled'
+              }`}
+            type='submit'>
             Login
           </button>
         </div>

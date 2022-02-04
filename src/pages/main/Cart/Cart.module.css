@@ -1,11 +1,17 @@
-.bg {
+.container {
+  max-height: 100vh !important;
+  /* overflow-y: hidden !important; */
+}
+
+.main {
+  /* overflow-y: auto !important; */
   font-family: 'Rubik', sans-serif;
-  min-height: calc(100vh - 110px);
+  /* max-height: calc(100vh - 90px) !important; */
   background-image: url('../../../assets/bg_cart.png');
   background-size: cover;
 }
 
-.container {
+.content {
   padding: 50px 30px 80px !important;
 }
 
@@ -17,7 +23,7 @@
 }
 
 /* main */
-.main {
+.section {
   display: flex;
   justify-content: space-between;
   font-family: 'Poppins', sans-serif;

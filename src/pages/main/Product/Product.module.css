@@ -1,50 +1,7 @@
-.page {
-  min-height: calc(100vh - 110px);
-  display: flex;
-  /* justify-content: center; */
-  /* overflow-y: auto; */
+.container {
+  max-height: 100vh !important;
 }
 
-.sidebar {
-  padding: 30px;
-  border-right: 0.5px solid #9f9f9f;
-  display: flex;
-  flex-direction: column;
-}
-
-.coupon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  /* margin: auto; */
-  height: auto;
-  /* background-color: cornflowerblue; */
-}
-
-.terms {
-  padding-left: 20px;
-  text-align: left;
-  font-size: 12px;
-  margin-top: auto;
-}
-
-.terms>li {
-  list-style: none;
-}
-
-.menu {
-  /* height: 100%; */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: center;
-  padding: 50px 50px 0;
-}
-
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 87vh;
+.main {
+  max-height: calc(100vh - 90px) !important;
 }

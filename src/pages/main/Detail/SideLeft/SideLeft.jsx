@@ -9,9 +9,9 @@ const SideLeft = (props) => {
     <div className={`col-md-6 ${style.section}`}>
       <div className={`${style.img}`}>
         {props.image ? (
-          <img src={props.image} alt='item_img' width='400' height='auto' />
+          <img src={props.image} alt='item_img' />
         ) : (
-          <img src={img} alt='item_img' width='510' height='auto' />
+          <img src={img} alt='item_img' />
         )}
       </div>
       <span className={`${style.text}`}>

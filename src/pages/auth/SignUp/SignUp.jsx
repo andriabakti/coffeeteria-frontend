@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 // components
 import Input from '../../../components/base/Input/Input'
+// react-helmet
+import { Helmet } from 'react-helmet'
 // react-router
 import { useHistory } from 'react-router-dom'
 // react-redux
@@ -36,11 +38,15 @@ const SignUp = () => {
         history.push('/auth/sign-in')
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error)
       })
   }
   return (
     <div className={`container ${style.container}`}>
+      <Helmet>
+        <title>Sign Up - CoffeeTeria</title>
+        <meta name='description' content='This is sign up page' />
+      </Helmet>
       <form className={`${style.form}`} onSubmit={handleLogin}>
         <span>Sign Up</span>
         <div>
@@ -51,6 +57,7 @@ const SignUp = () => {
             name='email'
             type='email'
             id='email'
+            required='required'
           />
           <Input
             changeEvent={(e) => handleChange(e)}
@@ -59,6 +66,7 @@ const SignUp = () => {
             name='password'
             type='password'
             id='password'
+            required='required'
           />
           <Input
             changeEvent={(e) => handleChange(e)}
@@ -67,8 +75,15 @@ const SignUp = () => {
             name='phone'
             type='tel'
             id='phone'
+            required='required'
           />
-          <button className={`btn ${style.btn_gold}`} type='submit'>
+          <button
+            className={`btn ${style.btn_gold} ${(form.email === '' ||
+              form.password === '' ||
+              form.phone === '') &&
+              'disabled'
+              }`}
+            type='submit'>
             Sign Up
           </button>
         </div>

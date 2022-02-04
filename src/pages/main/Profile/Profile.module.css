@@ -1,11 +1,16 @@
-.bg {
+.container {
+  max-height: 100vh !important;
+}
+
+.main {
+  /* overflow-y: auto; */
+  /* max-height: calc(100vh - 90px); */
   font-family: 'Rubik', sans-serif;
-  min-height: calc(100vh - 110px);
   background-image: url('../../../assets/bg_profile.png');
   background-size: cover;
 }
 
-.container {
+.content {
   padding: 50px 30px 80px !important;
 }
 
@@ -15,7 +20,7 @@
   text-shadow: 0px 6px 8px rgba(255, 255, 255, 0.26);
 }
 
-.main {
+.section {
   padding: 50px;
   display: flex;
   flex-direction: row !important;

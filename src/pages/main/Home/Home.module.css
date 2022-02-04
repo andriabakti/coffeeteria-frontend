@@ -1,5 +1,8 @@
-.bg {
-  height: calc(100vh - 110px);
-  background-image: url('../../../assets/bg_home.png');
-  background-size: cover;
+.container {
+  max-height: calc(100vh - 90px);
+}
+
+.main {
+  max-height: calc(100vh - 90px) !important;
+  /* overflow-y: auto !important; */
 }

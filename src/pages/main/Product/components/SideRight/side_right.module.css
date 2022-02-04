@@ -1,0 +1,17 @@
+/* loading */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 90px);
+}
+
+
+/* section: menu */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 120px 105px 0 50px !important;
+  border-left: 0.5px solid #9f9f9f;
+}

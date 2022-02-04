@@ -56,6 +56,10 @@
   padding-left: 0 !important;
 }
 
+.pay_method:hover {
+  cursor: pointer;
+}
+
 .pay_method>input:checked {
   background: #6A4029 !important;
   outline: 1px solid #6A4029;

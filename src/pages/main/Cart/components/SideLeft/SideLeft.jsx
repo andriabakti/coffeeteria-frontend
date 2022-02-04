@@ -1,51 +1,81 @@
 import React from 'react'
+// react-redux
+import { useSelector, useDispatch } from 'react-redux'
+// redux
+import { removeItem } from '../../../../../redux/actions/cart'
 // style
 import style from './side_left.module.css'
 // assets
 import img from '../../../../../assets/default.jpg'
+// numeral
+import numeral from 'numeral'
 
 const SideLeft = () => {
+  numeral.locale('es')
+  const { cart, subTotal, taxAndFee, shipping, total } = useSelector(
+    (state) => state.cart
+  )
+  const dispatch = useDispatch()
+
+  const handleDelete = (idx) => {
+    dispatch(removeItem(idx))
+  }
   return (
     <div className={`col-md-6`}>
       <div className={`card ${style.container}`}>
-        <h2 className={`text-center ${style.title}`}>
-          Order Summary
-        </h2>
+        <h2 className={`text-center ${style.title}`}>Order Summary</h2>
         <div className={`${style.list}`}>
-          <div className={`${style.items_list}`}>
-            <div className={`${style.img}`}>
-              <img
-                alt='items_img'
-                height='90px'
-                width='80px'
-                src={img}
-              />
-            </div>
-            <div className={`${style.amount}`}>
-              <span>Hazelnut Latte</span>
-              <span>x 1</span>
-              <span>Regular</span>
-            </div>
-            <span>IDR 24.0</span>
-          </div>
+          {
+            cart.map((item, index) => (
+              !item ? (
+                <div className='bg-dark'>
+                  {/* <h2 className={`text-center ${style.title}`}> */}
+                  There's no item in your cart
+                  {/* </h2> */}
+                </div>
+              ) : (
+                <div
+                  className={`position-relative ${style.items_list}`}
+                  key={index}>
+                  <div className={`${style.img}`}>
+                    <img src={!item.image ? img : item.image} alt='product' />
+                  </div>
+                  <div className={`${style.amount}`}>
+                    <span>{item.name}</span>
+                    <span>x {item.quantity}</span>
+                    <span>{item.size}</span>
+                  </div>
+                  <span>
+                    IDR {numeral(item.price * item.quantity).format('0,0')}
+                  </span>
+                  <button
+                    className={`btn btn-warning position-absolute top-0 start-100 translate-middle border ${style.btn_delete}`}
+                    onClick={() => handleDelete(index)}>
+                    <i
+                      className='fas fa-trash-alt'
+                      style={{ color: '#6A4029' }}></i>
+                  </button>
+                </div>
+              )))
+          }
         </div>
         <hr />
         <div className={`${style.list}`}>
           <div className={`${style.detail}`}>
             <span>SUBTOTAL</span>
-            <span>IDR 24.000</span>
+            <span>IDR {numeral(subTotal).format('0,0')}</span>
           </div>
           <div className={`${style.detail}`}>
             <span>TAX & FEES</span>
-            <span>IDR 20.000</span>
+            <span>IDR {numeral(taxAndFee).format('0,0')}</span>
           </div>
           <div className={`${style.detail}`}>
             <span>SHIPPING</span>
-            <span>IDR 10.000</span>
+            <span>IDR {numeral(shipping).format('0,0')}</span>
           </div>
           <div className={`${style.detail} ${style.total}`}>
             <h4>TOTAL</h4>
-            <h4>IDR 54.000</h4>
+            <h4>IDR {numeral(total).format('0,0')}</h4>
           </div>
         </div>
       </div>

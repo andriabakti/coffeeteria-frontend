@@ -1,11 +1,13 @@
-export const increaseCount = () => {
+export const addCart = (data) => {
   return {
-    type: 'INCREASE'
+    type: 'ADD_CART',
+    payload: data
   }
 }
 
-export const decreaseCount = () => {
+export const removeItem = (id) => {
   return {
-    type: 'DECREASE'
+    type: 'REMOVE_ITEM',
+    payload: id
   }
 }

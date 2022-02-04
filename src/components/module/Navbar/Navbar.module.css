@@ -1,39 +1,58 @@
 .nav {
-  height: 110px;
+  height: 90px;
   font-family: 'Rubik', sans-serif;
   border-bottom: 0.5px solid #9f9f9f !important;
   position: -webkit-sticky;
   position: sticky !important;
   top: 0 !important;
-  z-index: 1;
+  z-index: 2;
 }
 
 .container {
-  padding-left: 30px !important;
-  padding-right: 30px !important;
   display: flex;
   justify-content: space-between;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
 }
 
 /* section: left */
-/* brand */
 .brand {
+  display: flex;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.brand:hover {
+  -webkit-filter: drop-shadow(0px 6px 20px rgba(106, 64, 41, 0.8));
+  filter: drop-shadow(0px 6px 20px rgba(106, 64, 41, 0.8));
+}
+
+.brand>span {
   font-size: 20px;
   font-weight: bold;
   margin-left: 15px;
-  color: #0B132A;
-  /* margin-left: 30px; */
+  color: #0B132A !important;
+}
+
+.brand>span:active {
+  color: #4F5665 !important;
 }
 
 /* section: center */
 .center {
-  justify-content: center;
+  justify-content: space-between;
 }
 
 /* links */
 .page {
   font-size: 16px;
   color: #4F5665 !important;
+}
+
+.page:hover {
+  padding-bottom: 3px;
+  border-bottom: 3px solid #6A4029;
 }
 
 .page_on {
@@ -55,14 +74,64 @@
   margin-right: 35px;
 }
 
+.login:hover {
+  padding-bottom: 3px;
+  border-bottom: 3px solid #6A4029;
+}
+
+.login:active {
+  color: #4F5665 !important;
+}
+
 /* profile */
+.profile {
+  width: 35px;
+  height: 35px;
+}
+
 .profile>img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.profile>img:hover {
+  outline: 3px solid #6A4029;
+  -webkit-filter: drop-shadow(0px 6px 20px rgba(106, 64, 41, 0.8));
+  filter: drop-shadow(0px 6px 20px rgba(106, 64, 41, 0.8));
+}
+
+.profile_on {
+  width: 35px;
+  height: 35px;
 }
 
 .profile_on>img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  border: 2px solid #6A4029;
+  -o-object-fit: cover;
+  object-fit: cover;
+  outline: 3px solid #6A4029 !important;
   -webkit-filter: drop-shadow(0px 6px 20px rgba(106, 64, 41, 0.8));
   filter: drop-shadow(0px 6px 20px rgba(106, 64, 41, 0.8));
+}
+
+.btn_gold {
+  width: 150px;
+  height: 45px;
+  border-radius: 50px !important;
+  background-color: #FFba33 !important;
+  box-shadow: 1px 6px 20px rgba(255, 186, 51, 0.4);
+  color: #6A4029 !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+}
+
+.btn_gold:hover {
+  font-weight: bolder !important;
+  border: 3px solid #6A4029;
+  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
 }
