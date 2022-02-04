@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
-// react-bootstrap
-import { Card } from 'react-bootstrap'
+import React from 'react'
 // style
 import style from './cards.module.css'
 // assets
 import none from '../../../assets/default.jpg'
+// numeral
+import numeral from 'numeral'
 
-class Cards extends Component {
-  render() {
-    const { name, price, image, clickEvent } = this.props
-    return (
-      <Card className={style.content} onClick={clickEvent}>
-        <Card.Img variant="top" src={image ? image : none} />
-        <Card.Body className={style.body}>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            {price}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    );
-  }
+const Cards = ({ name, price, image, clickEvent }) => {
+  numeral.locale('es')
+  const formatted = numeral(price).format('0,0')
+  return (
+    <div className={`card border-0 ${style.container}`} onClick={clickEvent}>
+      <img className={`${style.image}`} src={image ? image : none} alt='product' />
+      <div className={`card-body ${style.body}`}>
+        <h5 className="card-title">{name}</h5>
+        <span className='card-text'>IDR {formatted}</span>
+      </div>
+    </div>
+  )
 }
 
-export default Cards;
+export default Cards

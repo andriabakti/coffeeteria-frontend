@@ -1,29 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
+// react-helmet
+import { Helmet } from 'react-helmet'
 // components
 import SideLeft from './components/SideLeft/SideLeft';
 import SideRight from './components/SideRight/SideRight';
+import Footer from '../../../components/module/Footer/Footer';
 // style
 import style from './cart.module.css'
 
-class Cart extends Component {
-  render() {
-    return (
-      <div className={`${style.bg}`}>
-        <div className={`container ${style.container}`}>
+const Cart = () => {
+  return (
+    <div className={`${style.container}`}>
+      <Helmet>
+        <title>Your Cart - CoffeeTeria</title>
+        <meta name='description' content='This is Cart Page' />
+      </Helmet>
+      <div className={`${style.main}`}>
+        <div className={`container ${style.content}`}>
           <div className={`row ${style.title}`}>
             <h2 className={`text-white`}>
               Checkout your<br />
               item now!
             </h2>
           </div>
-          <div className={`row ${style.main}`}>
+          <div className={`row ${style.section}`}>
             <SideLeft />
             <SideRight />
           </div>
         </div>
+        <Footer />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Cart;

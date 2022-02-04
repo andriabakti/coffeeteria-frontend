@@ -3,15 +3,13 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 // react-bootstrap
 import { Container, Nav } from 'react-bootstrap'
-// components
-import Button from '../../base/Button/Button'
 // style
 import style from './navbar.module.css'
 // assets
 import logo from '../../../assets/icon.svg'
-import none from '../../../assets/default.jpg'
+import blank from '../../../assets/blank_profile.jpg'
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { pathname } = useLocation()
   const token = localStorage.getItem('token')
   const link = {
@@ -19,12 +17,12 @@ const Navbar = () => {
     color: 'inherit'
   }
   return (
-    <nav className={`navbar navbar-expand-md bg-white ${style.nav}`}>
+    <nav className={`navbar navbar-expand-lg bg-white ${style.nav}`}>
       <Container className={`${style.container}`}>
-        <div className={`col-lg-4 ${style.left}`}>
-          <Link to='/main' className='navbar-brand'>
-            <img alt='CoffeeTeria_logo' height='33px' width='30px' src={logo} />
-            <span className={`${style.brand}`}>CoffeeTeria</span>
+        <div className={`col-lg-4`}>
+          <Link to='/main' className={`navbar-brand ${style.brand}`} >
+            <img alt='CoffeeTeria' height='30px' width='30px' src={logo} />
+            <span>CoffeeTeria</span>
           </Link>
         </div>
         <div className={`navbar-nav col-lg-4 ${style.center}`}>
@@ -86,16 +84,23 @@ const Navbar = () => {
                   ? `${style.profile_on}`
                   : `${style.profile}`
               }>
-              <img src={none} alt='profile' width='35px' height='35px' />
+              <img src={blank} alt='profile' />
             </Link>
           </div>
         ) : (
-          <div className={`col-lg-4 navbar-item ${style.right}`}>
-            <Link to='/auth/sign-in' style={link} className={`${style.login}`}>
-              Login
-            </Link>
+          <div className={`col-lg-4 navbar-nav ${style.right}`}>
+            <Nav.Link>
+              <Link to='/auth/sign-in' style={link} className={`${style.login}`}>
+                Login
+              </Link>
+            </Nav.Link>
             <Link to='/auth/sign-up'>
-              <Button text='Sign Up' type='button' color='gold' />
+              <button
+                className={`btn ${style.btn_gold}`}
+                type='button'
+              >
+                Sign Up
+              </button>
             </Link>
           </div>
         )}

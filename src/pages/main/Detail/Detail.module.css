@@ -1,9 +1,14 @@
-.bg {
-  height: 100%;
-  /* min-height: calc(100vh - 110px); */
+.container {
+  max-height: 100vh !important;
+  /* overflow-y: hidden !important; */
 }
 
-.container {
+.main {
+  max-height: calc(100vh - 90px) !important;
+  /* overflow-y: auto !important; */
+}
+
+.content {
   padding: 25px 30px 50px !important;
 }
 
@@ -15,14 +20,19 @@
   margin-bottom: 40px;
 }
 
+.crumb_page:hover {
+  padding-bottom: 3px !important;
+  border-bottom: 3px solid #6A4029 !important;
+}
+
 .crumb_active {
   color: #6A4029;
   font-weight: bold;
   --bs-breadcrumb-divider: '>';
 }
 
-/* main */
-.main {
+/* section */
+.section {
   display: flex;
   justify-content: space-between;
 }

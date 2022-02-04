@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 // style
 import style from './side_left.module.css'
 // asset
-import img from '../../../../../assets/default.jpg'
+import blank from '../../../../../assets/blank_profile.jpg'
 
 const SideLeft = (props) => {
   const { profile } = useSelector((state) => state.auth)
@@ -13,7 +13,9 @@ const SideLeft = (props) => {
     <div className={`col-md-3 ${style.container}`}>
       <div className={`${style.section}`}>
         <div className={`${style.img_box}`}>
-          <img src={img} alt='profile' width='185px' height='185px' />
+          <div className={`${style.img}`}>
+            <img src={blank} alt='profile' />
+          </div>
           <span>
             <b>{profile.username}</b>
           </span>
@@ -21,17 +23,17 @@ const SideLeft = (props) => {
         </div>
         <button
           className={`btn ${style.btn_sm} ${style.btn_gold}`}
-          type='button'>
+          type='button' disabled>
           Choose photo
         </button>
         <button
           className={`btn ${style.btn_sm} ${style.btn_brown}`}
-          type='button'>
+          type='button' disabled>
           Remove photo
         </button>
         <button
           className={`btn ${style.btn_md} ${style.btn_white}`}
-          type='button'>
+          type='button' disabled>
           Edit Password
         </button>
       </div>
@@ -42,13 +44,13 @@ const SideLeft = (props) => {
           the change?
         </span>
         <button
-          className={`btn ${style.btn_md} ${style.btn_brown} ${style.btn_shade}`}
-          type='button'>
+          className={`btn ${style.btn_md} ${style.btn_brown}`}
+          type='button' disabled>
           Save Change
         </button>
         <button
           className={`btn ${style.btn_md} ${style.btn_gold}`}
-          type='button'>
+          type='button' disabled>
           Cancel
         </button>
         <button

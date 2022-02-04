@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import SideLeft from './components/SideLeft/SideLeft'
 import SideRight from './components/SideRight/SideRight'
 import ExitModal from './components/ExitModal/ExitModal'
+import Footer from '../../../components/module/Footer/Footer'
+// react-helmet
+import { Helmet } from 'react-helmet'
 // react-redux
 import { useSelector } from 'react-redux'
 // style
@@ -14,24 +17,27 @@ const Profile = () => {
   const handleShow = () => setShow(!show)
 
   return (
-    <>
-      <div className={`${style.bg}`}>
-        <div className={`container ${style.container}`}>
+    <div className={`${style.container}`}>
+      <Helmet>
+        <title>Your Profile - CoffeeTeria</title>
+        <meta name='description' content='This is Profile Page' />
+      </Helmet>
+      <div className={`${style.main}`}>
+        <div className={`container ${style.content}`}>
           <div className={`row ${style.title}`}>
-            {profile.role === 'admin' ? (
-              <h2 className={`text-white`}>Admin Profile</h2>
-            ) : (
-              <h2 className={`text-white`}>User Profile</h2>
-            )}
+            <h2 className={`text-white`}>
+              {profile.role === 'admin' ? 'Admin' : 'User'} Profile
+            </h2>
           </div>
-          <div className={`row card ${style.main}`}>
+          <div className={`row card ${style.section}`}>
             <SideLeft onShow={handleShow} />
             <SideRight />
           </div>
         </div>
-        <ExitModal show={show} onHide={handleShow} />
+        <Footer />
       </div>
-    </>
+      <ExitModal show={show} onHide={handleShow} />
+    </div>
   )
 }
 

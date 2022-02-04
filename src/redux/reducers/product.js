@@ -53,9 +53,7 @@ const items = (state = initialState, action) => {
         msg: action.payload.response.data.message
       }
     default: {
-      return {
-        ...state
-      }
+      return state
     }
   }
 }

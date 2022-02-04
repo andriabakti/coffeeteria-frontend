@@ -1,14 +1,14 @@
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
 import auth from './auth';
 import items from './product';
 import cart from './cart';
-import history from './history'
+import order from './order'
 
-const reducer = combineReducers({
+const reducer = {
   auth,
   items,
   cart,
-  history
-})
+  order,
+}
 
 export default reducer

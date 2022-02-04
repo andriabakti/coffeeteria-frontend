@@ -1,10 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 // react-router
 import { useHistory } from 'react-router-dom'
-// react-redux
-import { useSelector, useDispatch } from 'react-redux'
-// redux
-import { increaseCount, decreaseCount } from '../../../../redux/actions/cart'
 // style
 import style from './side_right.module.css'
 // numeral
@@ -12,17 +8,28 @@ import numeral from 'numeral'
 
 const SideRight = (props) => {
   numeral.locale('es')
-  const price = numeral(props.price)
+  const price = numeral(props.detail.price)
   const history = useHistory()
-  const { count } = useSelector((state) => state.cart)
-  const dispatch = useDispatch()
+  // const { count } = useSelector((state) => state.cart)
+  // const dispatch = useDispatch()
 
+  const [size, setSize] = useState('')
+  const [delivery, setDelivery] = useState('')
+  const [quantity, setQuantity] = useState(0)
+
+  const sizePick = (e) => {
+    setSize(e.target.value)
+  }
+
+  const deliveryPick = (e) => {
+    setDelivery(e.target.value)
+  }
   const increase = () => {
-    dispatch(increaseCount())
+    setQuantity(quantity + 1)
   }
 
   const decrease = () => {
-    dispatch(decreaseCount())
+    setQuantity(quantity - 1)
   }
 
   const checkOut = () => {
@@ -32,54 +39,79 @@ const SideRight = (props) => {
   return (
     <div className={`col-md-5 ${style.section}`}>
       <div className={style.detail}>
-        <h6 className={`${style.title}`}>
-          {props.name}
-        </h6>
+        <h6 className={`${style.title}`}>{props.detail.name}</h6>
         <h3>IDR {price.format('0,0')}</h3>
         <div className={style.desc}>
-          {!props.desc
+          {!props.detail.description
             ? 'There is no any description yet for this product.'
-            : props.desc}
+            : props.detail.description}
         </div>
       </div>
       <div className={style.option}>
         <select
           className={`mb-4 form-select ${style.dropdown}`}
-          aria-label='Default select'>
-          <option selected disabled hidden>
+          aria-label='Default select'
+          onChange={(e) => sizePick(e)}
+          disabled={props.detail.category_id !== 1 && 'disabled'}
+          defaultValue='Select Size'
+          required>
+          <option disabled hidden>
             Select Size
           </option>
-          <option value='R'>R</option>
-          <option value='L'>L</option>
-          <option value='XL'>XL</option>
+          <option value='Regular'>R</option>
+          <option value='Large'>L</option>
+          <option value='Extra Large'>XL</option>
         </select>
         <select
           className={`mb-4 form-select ${style.dropdown}`}
-          aria-label='Default select'>
-          <option selected disabled hidden>
+          aria-label='Default select'
+          onChange={(e) => deliveryPick(e)}
+          defaultValue='Select Delivery Methods'
+          required>
+          <option disabled hidden>
             Select Delivery Methods
           </option>
-          <option value='Dine in'>Dine in</option>
+          <option value='Dine-in'>Dine in</option>
           <option value='Door Delivery'>Door Delivery</option>
-          <option value='Pick up'>Pick up</option>
+          <option value='Pick-up'>Pick up</option>
         </select>
         <div className={`mb-4 ${style.amount}`}>
           <div className={`col-md-4 btn-group ${style.counter}`} role='group'>
-            <button className='btn btn-white' type='button' onClick={increase} >
+            <button className='btn btn-white' type='button' onClick={increase}>
               +
             </button>
-            <div className='btn btn-white'>
-              <b>{count}</b>
+            <div className='btn bg-white'>
+              <b>{quantity}</b>
             </div>
-            <button className={`btn btn-white ${count === 0 && 'disabled'}`} type='button' onClick={decrease}>
+            <button
+              className={`btn btn-white ${quantity === 0 && 'disabled'}`}
+              type='button'
+              onClick={decrease}>
               -
             </button>
           </div>
-          <button className={`col-md-7 btn ${style.btn_gold}`} type='submit'>
-            Add to Cart
-          </button>
+          {props.detail.category_id !== 1 ? (
+            <button
+              className={`col-md-7 btn ${style.btn_gold}
+            ${(delivery === '' || quantity === 0) && 'disabled'}`}
+              type='submit'
+              onClick={() => props.addToCart({ size, delivery, quantity })}>
+              Add to Cart
+            </button>
+          ) : (
+            <button
+              className={`col-md-7 btn ${style.btn_gold}
+            ${(size === '' || delivery === '' || quantity === 0) && 'disabled'}`}
+              type='submit'
+              onClick={() => props.addToCart({ size, delivery, quantity })}>
+              Add to Cart
+            </button>
+          )}
         </div>
-        <button className={`btn ${style.btn_brown}`} type='button' onClick={checkOut}>
+        <button
+          className={`btn ${style.btn_brown}`}
+          type='button'
+          onClick={checkOut}>
           Checkout
         </button>
       </div>

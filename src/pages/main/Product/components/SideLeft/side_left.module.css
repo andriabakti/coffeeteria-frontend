@@ -1,0 +1,29 @@
+.sidebar {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 90px);
+  background-color: white;
+  z-index: 1;
+}
+
+.coupon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  /* margin: auto; */
+  height: auto;
+  /* background-color: cornflowerblue; */
+}
+
+.terms {
+  padding-left: 20px;
+  text-align: left;
+  font-size: 12px;
+  margin-top: auto;
+}
+
+.terms>li {
+  list-style: none;
+}

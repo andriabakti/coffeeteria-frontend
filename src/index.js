@@ -1,20 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 // bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "bootstrap/dist/js/bootstrap.min.js";
 // redux
+import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
-import store from './redux/store'
+import configureStore from './redux/store'
 // numeral
 import 'numeral/locales'
+// style
+import './index.css'
+
+const { store, persistor } = configureStore()
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<PersistGate loading={null} persistor={persistor}>
+			<App />
+		</PersistGate>
 	</Provider>,
 	document.getElementById('root')
 )

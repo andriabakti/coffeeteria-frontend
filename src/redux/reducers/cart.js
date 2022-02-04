@@ -1,26 +1,55 @@
 const initialState = {
-  cart: {},
-  count: 0
+  cart: [],
+  subTotal: 0,
+  taxAndFee: 0,
+  shipping: 0,
+  total: 0
 }
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
-    case 'INCREASE': {
+    case 'ADD_CART': {
+      const items = [...state.cart, action.payload]
+      const subTotal = items.reduce(
+        (result, item) => result + item.price * item.quantity,
+        0
+      )
+      const tax = (subTotal * 10) / 100
+      const ship = items.find(item =>
+        item.delivery === 'Door Delivery' && true)
+      const shipCost = !ship ? 0 : 10000
       return {
         ...state,
-        count: state.count + 1
+        cart: items,
+        subTotal: subTotal,
+        taxAndFee: tax,
+        shipping: shipCost,
+        total: subTotal + tax
       }
     }
-    case 'DECREASE': {
+    case 'REMOVE_ITEM': {
+      const items = state.cart.filter(
+        (_item, index) => index !== action.payload
+      )
+      const subTotal = items.reduce(
+        (result, item) => result + item.price * item.quantity,
+        0
+      )
+      const tax = (subTotal * 10) / 100
+      const ship = items.find(item =>
+        item.delivery === 'Door Delivery' && true)
+      const shipCost = !ship ? 0 : 10000
       return {
         ...state,
-        count: state.count - 1
+        cart: items,
+        subTotal: subTotal,
+        taxAndFee: tax,
+        shipping: shipCost,
+        total: subTotal + shipCost + tax
       }
     }
     default: {
-      return {
-        ...state
-      }
+      return state
     }
   }
 }

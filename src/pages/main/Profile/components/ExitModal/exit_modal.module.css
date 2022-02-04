@@ -26,17 +26,29 @@
 .modal_footer>button {
   height: 55px;
   width: 130px;
-  border-radius: 10px;
+  border-radius: 10px !important;
   font-weight: 700;
   font-size: 17px;
 }
 
 .btn_white {
-  border: 3px solid #6A4029;
-  color: #6A4029;
+  border: 3px solid #6A4029 !important;
+  color: #6A4029 !important;
+}
+
+.btn_white:hover {
+  background-color: #FFBA33 !important;
+  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
 }
 
 .btn_brown {
-  background-color: #6A4029;
-  color: #FFFFFF;
+  background-color: #6A4029 !important;
+  color: #FFFFFF !important;
+}
+
+.btn_brown:hover {
+  border: 3px solid #6A4029 !important;
+  background-color: #FFBA33 !important;
+  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
+  color: #6A4029 !important;
 }

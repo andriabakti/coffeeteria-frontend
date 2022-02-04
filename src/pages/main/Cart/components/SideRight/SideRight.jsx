@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+// react-redux
+import { useSelector, useDispatch } from 'react-redux'
+// redux
+import { purchaseOrders } from '../../../../../redux/actions/order'
 // style
 import style from './side_right.module.css'
 // assets
@@ -7,6 +11,17 @@ import icon_bank from '../../../../../assets/icon_bank.svg'
 import icon_cash from '../../../../../assets/icon_cash.svg'
 
 const SideRight = () => {
+  const { cart, total } = useSelector((state) => state.cart)
+  const { id } = useSelector((state) => state.auth.profile)
+  const [payment, setPayment] = useState('')
+  const dispatch = useDispatch()
+  const paymentPick = (e) => {
+    setPayment(e.target.value)
+  }
+  const handlePurchase = (payment) => {
+    dispatch(purchaseOrders({ id, total, payment, items: cart }))
+    alert('Items have purchased successfully')
+  }
   return (
     <div className={`col-md-5 ${style.container}`}>
       <div className={`${style.section}`}>
@@ -15,16 +30,14 @@ const SideRight = () => {
           <span className='text-white'>edit</span>
         </div>
         <div className={`card ${style.card}`}>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
+          <ul className='list-group list-group-flush'>
+            <li className='list-group-item'>
               <b>Delivery</b> to Iskandar Street
             </li>
-            <li className="list-group-item">
+            <li className='list-group-item'>
               Km 5 refinery road oppsite republic road, effurun, Jakarta
             </li>
-            <li className="list-group-item">
-              +62 81348287878
-            </li>
+            <li className='list-group-item'>+62 81348287878</li>
           </ul>
         </div>
       </div>
@@ -33,30 +46,67 @@ const SideRight = () => {
         <div className={`card ${style.card}`}>
           <div className={`list-group list-group-flush`}>
             <div className={`list-group-item form-check ${style.pay_method}`}>
-              <input className="form-check-input" type="radio" name='payment' id='payment-1' />
+              <input
+                onChange={(e) => paymentPick(e)}
+                className='form-check-input'
+                type='radio'
+                value='Card'
+                id='payment-1'
+                name='payment'
+              />
               <label className='form-check-label' htmlFor='payment-1'>
-                <img className={`${style.icon_pay} ${style.icon_card}`} src={icon_card} alt="icon_bank" />
+                <img
+                  className={`${style.icon_pay} ${style.icon_card}`}
+                  src={icon_card}
+                  alt='icon_bank'
+                />
                 Card
               </label>
             </div>
             <div className={`list-group-item form-check ${style.pay_method}`}>
-              <input className="form-check-input" type="radio" name='payment' id='payment-2' />
+              <input
+                onChange={(e) => paymentPick(e)}
+                className='form-check-input'
+                type='radio'
+                value='Bank'
+                id='payment-2'
+                name='payment'
+              />
               <label className='form-check-label' htmlFor='payment-2'>
-                <img className={`btn ${style.icon_pay} ${style.icon_bank}`} src={icon_bank} alt="icon_bank" />
+                <img
+                  className={`btn ${style.icon_pay} ${style.icon_bank}`}
+                  src={icon_bank}
+                  alt='icon_bank'
+                />
                 Bank account
               </label>
             </div>
             <div className={`list-group-item form-check ${style.pay_method}`}>
-              <input className="form-check-input" type="radio" name='payment' id='payment-3' />
+              <input
+                onChange={(e) => paymentPick(e)}
+                className='form-check-input'
+                type='radio'
+                value='COD'
+                id='payment-3'
+                name='payment'
+              />
               <label className='form-check-label' htmlFor='payment-3'>
-                <img className={`btn ${style.icon_pay} ${style.icon_cash}`} src={icon_cash} alt="icon_bank" />
+                <img
+                  className={`btn ${style.icon_pay} ${style.icon_cash}`}
+                  src={icon_cash}
+                  alt='icon_bank'
+                />
                 Cash on delivery
               </label>
             </div>
           </div>
         </div>
       </div>
-      <button className={`btn ${style.btn_brown}`} type='button'>
+      <button
+        className={`btn ${style.btn_brown}`}
+        onClick={() => handlePurchase(payment)}
+        type='button'
+        disabled={payment === '' ? 'disabled' : ''}>
         Confirm and Pay
       </button>
     </div>

@@ -18,6 +18,7 @@ const Input = (props) => {
         type={props.type}
         name={props.name}
         id={props.id}
+        required={props.required}
       />
     </div>
   )
