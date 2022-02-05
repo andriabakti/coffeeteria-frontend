@@ -1,6 +1,6 @@
 import React from 'react'
 // style
-import style from './cards.module.css'
+import style from './Cards.module.css'
 // assets
 import none from '../../../assets/default.jpg'
 // numeral

@@ -3,7 +3,7 @@ import axiosApiInstances from '../../utils/axios'
 export const getData = () => {
   return {
     type: 'GET_ITEMS',
-    payload: axiosApiInstances.get('/product/?limit=12&page=1')
+    payload: axiosApiInstances.get(`/product/?limit=8&page=1`)
   }
 }
 

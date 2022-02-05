@@ -6,7 +6,7 @@ import Footer from '../../../components/module/Footer/Footer'
 // react-helmet
 import { Helmet } from 'react-helmet'
 // style
-import style from './product.module.css'
+import style from './Product.module.css'
 
 const Product = () => {
   return (

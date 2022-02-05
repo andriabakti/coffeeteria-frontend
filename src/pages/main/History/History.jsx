@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 //  redux
 import { getHistory } from '../../../redux/actions/order'
 // style
-import style from './history.module.css'
+import style from './History.module.css'
 
 const History = () => {
   const { history } = useSelector((state) => state.order)

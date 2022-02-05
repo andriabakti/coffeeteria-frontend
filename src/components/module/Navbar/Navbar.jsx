@@ -1,10 +1,8 @@
 import React from 'react'
 // react-router
 import { Link, useLocation } from 'react-router-dom'
-// react-bootstrap
-import { Container, Nav } from 'react-bootstrap'
 // style
-import style from './navbar.module.css'
+import style from './Navbar.module.css'
 // assets
 import logo from '../../../assets/icon.svg'
 import blank from '../../../assets/blank_profile.jpg'
@@ -18,7 +16,7 @@ const Navbar = (props) => {
   }
   return (
     <nav className={`navbar navbar-expand-lg bg-white ${style.nav}`}>
-      <Container className={`${style.container}`}>
+      <div className={`container ${style.container}`}>
         <div className={`col-lg-4`}>
           <Link to='/main' className={`navbar-brand ${style.brand}`} >
             <img alt='CoffeeTeria' height='30px' width='30px' src={logo} />
@@ -26,7 +24,7 @@ const Navbar = (props) => {
           </Link>
         </div>
         <div className={`navbar-nav col-lg-4 ${style.center}`}>
-          <Nav.Link>
+          <div className='nav-link'>
             <Link
               to='/main'
               style={link}
@@ -35,8 +33,8 @@ const Navbar = (props) => {
               }>
               Home
             </Link>
-          </Nav.Link>
-          <Nav.Link>
+          </div>
+          <div className='nav-link'>
             <Link
               to='/main/product'
               style={link}
@@ -51,8 +49,8 @@ const Navbar = (props) => {
               }>
               Product
             </Link>
-          </Nav.Link>
-          <Nav.Link>
+          </div>
+          <div className='nav-link'>
             <Link
               to='/main/cart'
               style={link}
@@ -61,8 +59,8 @@ const Navbar = (props) => {
               }>
               Your Cart
             </Link>
-          </Nav.Link>
-          <Nav.Link>
+          </div>
+          <div className='nav-link'>
             <Link
               to='/main/history'
               style={link}
@@ -73,7 +71,7 @@ const Navbar = (props) => {
               }>
               History
             </Link>
-          </Nav.Link>
+          </div>
         </div>
         {token ? (
           <div className={`col-lg-4 navbar-nav ${style.right}`}>
@@ -89,11 +87,11 @@ const Navbar = (props) => {
           </div>
         ) : (
           <div className={`col-lg-4 navbar-nav ${style.right}`}>
-            <Nav.Link>
+            <div className='nav-link'>
               <Link to='/auth/sign-in' style={link} className={`${style.login}`}>
                 Login
               </Link>
-            </Nav.Link>
+            </div>
             <Link to='/auth/sign-up'>
               <button
                 className={`btn ${style.btn_gold}`}
@@ -104,7 +102,7 @@ const Navbar = (props) => {
             </Link>
           </div>
         )}
-      </Container>
+      </div>
     </nav>
   )
 }

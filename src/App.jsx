@@ -6,6 +6,8 @@ import Auth from './pages/auth/Auth';
 import Main from './pages/main/Main';
 // components
 // import Footer from './components/module/Footer/Footer'
+// react-custom-scrollbars
+// import { Scrollbars } from 'react-custom-scrollbars-2'
 // style
 import './App.css';
 

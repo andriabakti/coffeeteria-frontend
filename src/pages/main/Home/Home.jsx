@@ -5,13 +5,20 @@ import { Helmet } from 'react-helmet'
 import Footer from '../../../components/module/Footer/Footer';
 import SectionOne from './components/SectionOne/SectionOne';
 import SectionTwo from './components/SectionTwo/SectionTwo';
-import SectionThree from './components/SectionThree/SectionThree';
+
 // style
-import style from './home.module.css'
+import style from './Home.module.css'
 
 const Home = () => {
+  // const toTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     left: 0,
+  //     behavior: 'smooth'
+  //   })
+  // }
   return (
-    <div className={`col ${style.container}`}>
+    <div className={`${style.container}`}>
       <Helmet>
         <title>Home - CoffeeTeria</title>
         <meta name='description' content='Home Page' />
@@ -19,8 +26,8 @@ const Home = () => {
       <div className={`${style.main}`}>
         <SectionOne />
         <SectionTwo />
-        <SectionThree />
         <Footer />
+        {/* <button className="btn btn-dark" onClick={toTop}>Up</button> */}
       </div>
     </div>
   );

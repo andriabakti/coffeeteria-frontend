@@ -1,12 +1,10 @@
 import React from 'react';
-// react-bootstrap
-import { Col } from 'react-bootstrap'
 // style
 import style from './side_left.module.css'
 
 const SideLeft = () => {
   return (
-    <Col md='3' className={`${style.sidebar}`}>
+    <div className={`col-md-3 ${style.sidebar}`}>
       <div className='mb-auto'>
         <h4>Promo Today</h4>
         <p>
@@ -31,7 +29,8 @@ const SideLeft = () => {
         <li>3. Buy 1 get 1 only for new user</li>
         <li>4. Should make member card to apply coupon</li>
       </div>
-    </Col>);
+    </div>
+  );
 };
 
 export default SideLeft;

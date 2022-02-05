@@ -1,6 +1,6 @@
 import React from 'react'
 // style
-import style from './input.module.css'
+import style from './Input.module.css'
 
 const Input = (props) => {
   return (
