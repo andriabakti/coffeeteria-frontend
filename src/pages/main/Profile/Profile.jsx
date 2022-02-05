@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet'
 // react-redux
 import { useSelector } from 'react-redux'
 // style
-import style from './profile.module.css'
+import style from './Profile.module.css'
 
 const Profile = () => {
   const { profile } = useSelector((state) => state.auth)

@@ -1,10 +1,8 @@
 import React from 'react'
 // react-router
 import { Link, useLocation } from 'react-router-dom'
-// react-bootstrap
-import { Container, Row, Col } from 'react-bootstrap'
 // style
-import style from './footer.module.css'
+import style from './Footer.module.css'
 // assets
 import logo from '../../../assets/icon.svg'
 import icon_fb from '../../../assets/icon_fb.svg'
@@ -19,7 +17,7 @@ const Footer = (props) => {
   }
   return (
     <div className={style.bg}>
-      <Container>
+      <div className='container'>
         {(pathname === '/auth/sign-in' ||
           pathname === '/auth/sign-up' ||
           pathname === '/main') && (
@@ -52,13 +50,12 @@ const Footer = (props) => {
               </div>
             </div>
           )}
-        <Row
-          className={
-            pathname === '/auth/sign-in' || pathname === '/auth/sign-up'
-              ? style.main_other
-              : style.main
-          }>
-          <Col lg='4' className={style.left}>
+        <div
+          className={`row ${pathname === '/auth/sign-in' || pathname === '/auth/sign-up'
+            ? style.main_other
+            : style.main
+            }`}>
+          <div className={`col-lg-4 ${style.left}`}>
             <Link to='/main' style={link} className={`${style.brand}`}>
               <img alt='CoffeeTeria' height='30px' width='30px' src={logo} />
               <span>CoffeeTeria</span>
@@ -90,7 +87,7 @@ const Footer = (props) => {
               </div>
               <span>@2022CoffeeTeria</span>
             </div>
-          </Col>
+          </div>
           <div className={`col-lg-4 ${style.right}`}>
             <div className={`${style.section}`}>
               <b className={`${style.title}`}>Product</b>
@@ -109,8 +106,8 @@ const Footer = (props) => {
               <span>Terms of Service</span>
             </div>
           </div>
-        </Row>
-      </Container>
+        </div>
+      </div>
     </div>
   )
 }

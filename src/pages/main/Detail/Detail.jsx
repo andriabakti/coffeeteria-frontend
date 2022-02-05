@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getDetail } from '../../../redux/actions/product'
 import { addCart } from '../../../redux/actions/cart'
 // style
-import style from './detail.module.css'
+import style from './Detail.module.css'
 
 const Detail = () => {
   const link = {

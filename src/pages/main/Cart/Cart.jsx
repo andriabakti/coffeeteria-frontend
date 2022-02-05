@@ -6,7 +6,7 @@ import SideLeft from './components/SideLeft/SideLeft';
 import SideRight from './components/SideRight/SideRight';
 import Footer from '../../../components/module/Footer/Footer';
 // style
-import style from './cart.module.css'
+import style from './Cart.module.css'
 
 const Cart = () => {
   return (
