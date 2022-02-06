@@ -4,9 +4,9 @@ import { Modal } from 'react-bootstrap'
 // react-router
 import { useHistory } from 'react-router-dom'
 // style
-import style from './exit_modal.module.css'
+import style from './ModalExit.module.css'
 
-const ExitModal = (props) => {
+const ModalExit = (props) => {
   const history = useHistory()
 
   const logOut = () => {
@@ -15,7 +15,9 @@ const ExitModal = (props) => {
     history.push('/main')
   }
   return (
-    <Modal show={props.show} className={`${style.modal}`} centered>
+    <Modal show={props.show}
+      dialogClassName={style['border-radius']}
+      className={`${style.modal}`} centered>
       <div className={`${style.modal_box}`}>
         <Modal.Body className={`${style.modal_body}`}>
           Are you sure want to log out ?
@@ -33,4 +35,4 @@ const ExitModal = (props) => {
   )
 }
 
-export default ExitModal
+export default ModalExit

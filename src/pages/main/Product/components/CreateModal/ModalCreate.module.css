@@ -2,17 +2,47 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.border-radius div {
+  border-radius: 20px !important;
+}
+
 .modal_box {
-  height: 220px;
+  /* height: 220px; */
   justify-content: center !important;
 }
 
 .modal_body {
   height: 60%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   font-size: 20px;
+  padding: 30px;
+  /* background-color: tomato; */
+}
+
+.row {
+  justify-content: space-between;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  /* -moz-column-gap: 40px; */
+  /* column-gap: 40px; */
+}
+
+/* .preview { */
+/* width: 400px; */
+/* height: 250px; */
+/* } */
+
+.preview>div>img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 /* footer */
@@ -20,6 +50,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 /* buttons */
