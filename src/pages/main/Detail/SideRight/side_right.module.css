@@ -27,6 +27,8 @@
   font-size: 20px;
   text-align: justify;
   text-justify: inter-word;
+  word-wrap: break-word;
+  /* background-color: tan; */
 }
 
 /* div: option */

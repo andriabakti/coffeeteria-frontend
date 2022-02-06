@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // react-custom-scrollbars
 // import { Scrollbars } from 'react-custom-scrollbars-2'
 // react-router
@@ -11,11 +11,15 @@ import { getData } from '../../../../../redux/actions/product'
 import ItemCard from '../../../../../components/module/Cards/Cards'
 // style
 import style from './side_right.module.css'
+import ModalCreate from '../CreateModal/ModalCreate'
 
 const SideRight = () => {
   const { items, isLoading } = useSelector((state) => state.items)
+  const { profile } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const history = useHistory()
+  const [show, setShow] = useState(false)
+  const handleShow = () => setShow(!show)
   // const [page, setPage] = useState(1)
 
   // const handleScroll = () => {
@@ -40,27 +44,34 @@ const SideRight = () => {
     dispatch(getData())
   }, [dispatch])
   return (
-    <div className={`col-md-9 p-0 ${style.side_right}`}>
+    <div className={`col-md-9 p-0 ${style.container}`}>
       <div
-        className={`container-fluid
-          ${isLoading ? style.loading : style.menu}`}>
+        className={`${isLoading ? style.loading : style.menu}`}>
         {isLoading ? (
-          <div class="spinner-border text-warning" role="status">
-            <span class="visually-hidden">Loading</span>
+          <div className="spinner-border text-warning" role="status">
+            <span className="visually-hidden">Loading</span>
           </div>
         ) : (
-          items.map((item) => (
-            <div className='col-md-3' key={item.id}>
-              <ItemCard
-                name={item.name}
-                price={item.price}
-                image={item.image}
-                clickEvent={() => history.push(`/main/product/${item.id}`)}
-              />
-            </div>
-          ))
+          <div className={`${style.card}`}>
+            {items.map((item) => (
+              <div className={`col-md-3`} key={item.id}>
+                <ItemCard
+                  name={item.name}
+                  price={item.price}
+                  image={item.image}
+                  clickEvent={() => history.push(`/main/product/${item.id}`)}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        {profile.role === 'admin' && (
+          <button className={`btn text-white ${style.btn_create}`} onClick={handleShow}>
+            Add new product
+          </button>
         )}
       </div>
+      <ModalCreate show={show} onHide={handleShow} />
     </div>
   )
 }

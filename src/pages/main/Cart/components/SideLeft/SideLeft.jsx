@@ -25,38 +25,38 @@ const SideLeft = () => {
       <div className={`card ${style.container}`}>
         <h2 className={`text-center ${style.title}`}>Order Summary</h2>
         <div className={`${style.list}`}>
-          {
+          {cart === [] ? (
+            <div className='bg-dark'>
+              <h2 className={`text-center ${style.title}`}>
+                There's no item in your cart
+              </h2>
+            </div>
+          ) : (
             cart.map((item, index) => (
-              !item ? (
-                <div className='bg-dark'>
-                  {/* <h2 className={`text-center ${style.title}`}> */}
-                  There's no item in your cart
-                  {/* </h2> */}
+              <div
+                className={`position-relative ${style.items_list}`}
+                key={index}>
+                <div className={`${style.img}`}>
+                  <img src={!item.image ? img : item.image} alt='product' />
                 </div>
-              ) : (
-                <div
-                  className={`position-relative ${style.items_list}`}
-                  key={index}>
-                  <div className={`${style.img}`}>
-                    <img src={!item.image ? img : item.image} alt='product' />
-                  </div>
-                  <div className={`${style.amount}`}>
-                    <span>{item.name}</span>
-                    <span>x {item.quantity}</span>
-                    <span>{item.size}</span>
-                  </div>
-                  <span>
-                    IDR {numeral(item.price * item.quantity).format('0,0')}
-                  </span>
-                  <button
-                    className={`btn btn-warning position-absolute top-0 start-100 translate-middle border ${style.btn_delete}`}
-                    onClick={() => handleDelete(index)}>
-                    <i
-                      className='fas fa-trash-alt'
-                      style={{ color: '#6A4029' }}></i>
-                  </button>
+                <div className={`${style.amount}`}>
+                  <span>{item.name}</span>
+                  <span>x {item.quantity}</span>
+                  <span>{item.size}</span>
                 </div>
-              )))
+                <span>
+                  IDR {numeral(item.price * item.quantity).format('0,0')}
+                </span>
+                <button
+                  className={`btn btn-warning position-absolute top-0 start-100 translate-middle border ${style.btn_delete}`}
+                  onClick={() => handleDelete(index)}>
+                  <i
+                    className='fas fa-trash-alt'
+                    style={{ color: '#6A4029' }}></i>
+                </button>
+              </div>
+            ))
+          )
           }
         </div>
         <hr />

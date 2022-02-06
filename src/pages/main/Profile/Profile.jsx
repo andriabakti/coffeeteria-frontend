@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // components
 import SideLeft from './components/SideLeft/SideLeft'
 import SideRight from './components/SideRight/SideRight'
-import ExitModal from './components/ExitModal/ExitModal'
+import ModalExit from './components/ModalExit/ModalExit'
 import Footer from '../../../components/module/Footer/Footer'
 // react-helmet
 import { Helmet } from 'react-helmet'
@@ -36,7 +36,7 @@ const Profile = () => {
         </div>
         <Footer />
       </div>
-      <ExitModal show={show} onHide={handleShow} />
+      <ModalExit show={show} onHide={handleShow} />
     </div>
   )
 }
