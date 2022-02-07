@@ -32,10 +32,10 @@ const SideRight = () => {
         <div className={`card ${style.card}`}>
           <ul className='list-group list-group-flush'>
             <li className='list-group-item'>
-              <b>Delivery</b> to Iskandar Street
+              <b>Delivery</b> to
             </li>
-            <li className='list-group-item'>
-              Km 5 refinery road oppsite republic road, effurun, Jakarta
+            <li className={`list-group-item ${style.address}`}>
+              Iskandar Street km 5 refinery road oppsite republic road, effurun, Jakarta
             </li>
             <li className='list-group-item'>+62 81348287878</li>
           </ul>

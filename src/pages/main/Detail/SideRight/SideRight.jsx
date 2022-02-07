@@ -5,8 +5,10 @@ import { useHistory } from 'react-router-dom'
 import style from './side_right.module.css'
 // numeral
 import numeral from 'numeral'
+import { useSelector } from 'react-redux'
 
 const SideRight = (props) => {
+  const { profile } = useSelector((state) => state.auth)
   numeral.locale('es')
   const price = numeral(props.detail.price)
   const history = useHistory()
@@ -52,7 +54,7 @@ const SideRight = (props) => {
           className={`mb-4 form-select ${style.dropdown}`}
           aria-label='Default select'
           onChange={(e) => sizePick(e)}
-          disabled={props.detail.category_id !== 1 && 'disabled'}
+          disabled={(props.detail.category_id !== 1 || profile.role === 'admin') && 'disabled'}
           defaultValue='Select Size'
           required>
           <option disabled hidden>
@@ -67,6 +69,7 @@ const SideRight = (props) => {
           aria-label='Default select'
           onChange={(e) => deliveryPick(e)}
           defaultValue='Select Delivery Methods'
+          disabled={profile.role === 'admin' && 'disabled'}
           required>
           <option disabled hidden>
             Select Delivery Methods
@@ -77,7 +80,9 @@ const SideRight = (props) => {
         </select>
         <div className={`mb-4 ${style.amount}`}>
           <div className={`col-md-4 btn-group ${style.counter}`} role='group'>
-            <button className='btn btn-white' type='button' onClick={increase}>
+            <button className='btn btn-white' type='button'
+              disabled={profile.role === 'admin' && 'disabled'}
+              onClick={increase}>
               +
             </button>
             <div className='btn bg-white'>
@@ -86,6 +91,7 @@ const SideRight = (props) => {
             <button
               className={`btn btn-white ${quantity === 0 && 'disabled'}`}
               type='button'
+              disabled={profile.role === 'admin' && 'disabled'}
               onClick={decrease}>
               -
             </button>

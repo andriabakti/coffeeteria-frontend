@@ -25,11 +25,11 @@ const SideLeft = () => {
       <div className={`card ${style.container}`}>
         <h2 className={`text-center ${style.title}`}>Order Summary</h2>
         <div className={`${style.list}`}>
-          {cart === [] ? (
-            <div className='bg-dark'>
-              <h2 className={`text-center ${style.title}`}>
+          {cart.length <= 0 ? (
+            <div className=''>
+              <h4 className={`text-center ${style.title}`}>
                 There's no item in your cart
-              </h2>
+              </h4>
             </div>
           ) : (
             cart.map((item, index) => (

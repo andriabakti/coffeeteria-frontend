@@ -44,6 +44,12 @@
   padding-left: 0;
 }
 
+.address {
+  text-align: justify;
+  text-justify: inter-word;
+  word-wrap: break-word;
+}
+
 .payment {
   margin-top: 40px;
 }

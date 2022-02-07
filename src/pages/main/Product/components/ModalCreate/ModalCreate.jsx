@@ -4,7 +4,7 @@ import style from './ModalCreate.module.css'
 import blank from '../../../../../assets/default.jpg'
 import { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { addProduct, getData } from '../../../../../redux/actions/product'
+import { addProduct } from '../../../../../redux/actions/product'
 
 const ModalCreate = (props) => {
   const ref = useRef()
@@ -54,11 +54,11 @@ const ModalCreate = (props) => {
       addProduct(formData)
     )
     alert('New product added successfully')
+    handleClose()
   }
   const handleClose = () => {
     setPreview(ref.current.value = null)
     props.onHide()
-    getData()
   }
   return (
     <Modal

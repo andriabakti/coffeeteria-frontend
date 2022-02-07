@@ -86,3 +86,11 @@
   /* -o-object-fit: cover; */
   /* object-fit: cover; */
 }
+
+.btn_delete {
+  width: 35px;
+  height: 35px;
+  border-radius: 50% !important;
+  background-color: #6A4029 !important;
+  padding: 0 !important;
+}

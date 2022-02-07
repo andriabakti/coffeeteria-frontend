@@ -11,7 +11,7 @@ import { getData } from '../../../../../redux/actions/product'
 import ItemCard from '../../../../../components/module/Cards/Cards'
 // style
 import style from './side_right.module.css'
-import ModalCreate from '../CreateModal/ModalCreate'
+import ModalCreate from '../ModalCreate/ModalCreate'
 
 const SideRight = () => {
   const { items, isLoading } = useSelector((state) => state.items)
@@ -20,6 +20,7 @@ const SideRight = () => {
   const history = useHistory()
   const [show, setShow] = useState(false)
   const handleShow = () => setShow(!show)
+
   // const [page, setPage] = useState(1)
 
   // const handleScroll = () => {
@@ -47,7 +48,7 @@ const SideRight = () => {
     <div className={`col-md-9 p-0 ${style.container}`}>
       <div
         className={`${isLoading ? style.loading : style.menu}`}>
-        {isLoading ? (
+        {isLoading || items.length <= 0 ? (
           <div className="spinner-border text-warning" role="status">
             <span className="visually-hidden">Loading</span>
           </div>
@@ -56,10 +57,12 @@ const SideRight = () => {
             {items.map((item) => (
               <div className={`col-md-3`} key={item.id}>
                 <ItemCard
+                  id={item.id}
                   name={item.name}
                   price={item.price}
                   image={item.image}
                   clickEvent={() => history.push(`/main/product/${item.id}`)}
+                // deleteEvent={}
                 />
               </div>
             ))}
