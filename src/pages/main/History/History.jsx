@@ -31,7 +31,7 @@ const History = () => {
             <h2>Let's see what you have bought!</h2>
             <p>Select item to delete</p>
           </div>
-          {history === [] ? (
+          {history.length <= 0 ? (
             <div className={`text-center text-white ${style.empty}`}>
               <h2>
                 You have no history yet

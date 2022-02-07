@@ -20,3 +20,10 @@ export const addProduct = (data) => {
     payload: axiosApiInstances.post('/product', data)
   }
 }
+
+export const deleteProduct = (id) => {
+  return {
+    type: 'DELETE_PRODUCT',
+    payload: axiosApiInstances.delete(`/product/${id}`)
+  }
+}
