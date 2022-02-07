@@ -20,11 +20,11 @@ const Cards = ({ id, name, price, image, clickEvent }) => {
   const dispatch = useDispatch()
   // const history = useHistory()
 
-  const handleDelete = (itemId) => {
-    dispatch(deleteProduct(itemId))
+  const handleDelete = async (itemId) => {
+    await dispatch(deleteProduct(itemId))
     alert('Product deleted successfully!')
     handleOpen()
-    dispatch(getData())
+    await dispatch(getData())
     // history.push('/main/product')
   }
   return (
