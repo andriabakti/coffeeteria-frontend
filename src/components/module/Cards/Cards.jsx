@@ -9,7 +9,6 @@ import numeral from 'numeral'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteProduct, getData } from '../../../redux/actions/product'
 import ModalDelete from '../../../pages/main/Product/components/ModalDelete/ModalDelete'
-// import { useHistory } from 'react-router-dom'
 
 const Cards = ({ id, name, price, image, clickEvent }) => {
   numeral.locale('es')
@@ -18,14 +17,12 @@ const Cards = ({ id, name, price, image, clickEvent }) => {
   const handleOpen = () => setOpen(!open)
   const { profile } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-  // const history = useHistory()
 
   const handleDelete = async (itemId) => {
     await dispatch(deleteProduct(itemId))
     alert('Product deleted successfully!')
     handleOpen()
     await dispatch(getData())
-    // history.push('/main/product')
   }
   return (
     <>

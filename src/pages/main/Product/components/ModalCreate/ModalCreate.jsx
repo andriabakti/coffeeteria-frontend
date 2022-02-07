@@ -5,7 +5,6 @@ import blank from '../../../../../assets/default.jpg'
 import { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { addProduct, getData } from '../../../../../redux/actions/product'
-// import { useHistory } from 'react-router-dom'
 
 const ModalCreate = (props) => {
   const ref = useRef()
@@ -16,7 +15,6 @@ const ModalCreate = (props) => {
   const [preview, setPreview] = useState(null)
   const [desc, setDesc] = useState('')
   const [category, setCategory] = useState('')
-  // const history = useHistory()
 
   const formData = new FormData()
   formData.append('name', name)
@@ -51,14 +49,13 @@ const ModalCreate = (props) => {
     const category = parseInt(e.target.value)
     setCategory(category)
   }
-  const handleCreate = () => {
-    dispatch(
+  const handleCreate = async () => {
+    await dispatch(
       addProduct(formData)
     )
     alert('New product added successfully')
-    // history.push('/main/product')
     handleClose()
-    dispatch(getData())
+    await dispatch(getData())
   }
   const handleClose = () => {
     setPreview(ref.current.value = null)

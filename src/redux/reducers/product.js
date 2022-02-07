@@ -76,8 +76,29 @@ const items = (state = initialState, action) => {
         ...state,
         msg: action.payload.response.data.message,
         isLoading: false,
-        isError: true,
-        items: []
+        isError: true
+      }
+    // delete product
+    case 'DELETE_PRODUCT_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        isError: false
+      }
+    }
+    case 'DELETE_PRODUCT_FULFILLED':
+      return {
+        ...state,
+        msg: action.payload.data.message,
+        isLoading: false,
+        isError: false,
+      }
+    case 'DELETE_PRODUCT_REJECTED':
+      return {
+        ...state,
+        msg: action.payload.response.data.message,
+        isLoading: false,
+        isError: true
       }
     default: {
       return state
