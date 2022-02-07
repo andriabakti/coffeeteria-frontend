@@ -7,8 +7,9 @@ import icon_edit from '../../../assets/icon_edit.svg'
 // numeral
 import numeral from 'numeral'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteProduct } from '../../../redux/actions/product'
+import { deleteProduct, getData } from '../../../redux/actions/product'
 import ModalDelete from '../../../pages/main/Product/components/ModalDelete/ModalDelete'
+// import { useHistory } from 'react-router-dom'
 
 const Cards = ({ id, name, price, image, clickEvent }) => {
   numeral.locale('es')
@@ -17,17 +18,21 @@ const Cards = ({ id, name, price, image, clickEvent }) => {
   const handleOpen = () => setOpen(!open)
   const { profile } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
+  // const history = useHistory()
 
   const handleDelete = (itemId) => {
     dispatch(deleteProduct(itemId))
     alert('Product deleted successfully!')
+    handleOpen()
+    dispatch(getData())
+    // history.push('/main/product')
   }
   return (
     <>
       <div
         className={`card border-0 position-relative ${profile.role === 'admin' ? style.content : style.container
           }`}
-        onClick={(profile.role !== 'admin') && clickEvent}>
+        onClick={profile.role !== 'admin' && clickEvent}>
         <img
           className={`${style.image}`}
           src={image ? image : none}
@@ -41,9 +46,7 @@ const Cards = ({ id, name, price, image, clickEvent }) => {
           <button
             className={`btn position-absolute top-50 start-100 translate-middle ${style.btn_delete}`}
             onClick={handleOpen}>
-            <i
-              className='fas fa-trash-alt'
-              style={{ color: '#ffffff' }}></i>
+            <i className='fas fa-trash-alt' style={{ color: '#ffffff' }}></i>
           </button>
         )}
         {profile.role === 'admin' && (
@@ -54,7 +57,11 @@ const Cards = ({ id, name, price, image, clickEvent }) => {
           </button>
         )}
       </div>
-      <ModalDelete show={open} onHide={handleOpen} deleteItem={() => handleDelete(id)} />
+      <ModalDelete
+        show={open}
+        onHide={handleOpen}
+        deleteItem={() => handleDelete(id)}
+      />
     </>
   )
 }
