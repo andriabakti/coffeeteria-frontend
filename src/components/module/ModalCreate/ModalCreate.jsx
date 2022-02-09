@@ -1,10 +1,10 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 import style from './ModalCreate.module.css'
-import blank from '../../../../../assets/default.jpg'
+import blank from '../../../assets/default.jpg'
 import { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { addProduct, getData } from '../../../../../redux/actions/product'
+import { addProduct, getData } from '../../../redux/actions/product'
 
 const ModalCreate = (props) => {
   const ref = useRef()
@@ -46,8 +46,7 @@ const ModalCreate = (props) => {
     setDesc(e.target.value)
   }
   const handleCategory = (e) => {
-    const category = parseInt(e.target.value)
-    setCategory(category)
+    setCategory(e.target.value)
   }
   const handleCreate = async () => {
     await dispatch(
@@ -55,7 +54,7 @@ const ModalCreate = (props) => {
     )
     alert('New product added successfully')
     handleClose()
-    await dispatch(getData())
+    await dispatch(getData(1, ''))
   }
   const handleClose = () => {
     setPreview(ref.current.value = null)
@@ -121,8 +120,10 @@ const ModalCreate = (props) => {
                   <option disabled hidden>
                     Choose...
                   </option>
-                  <option value='1'>Drink</option>
-                  <option value='2'>Food</option>
+                  <option value={1}>Coffee</option>
+                  <option value={2}>Non Coffee</option>
+                  <option value={3}>Food</option>
+                  <option value={4}>Add-on</option>
                 </select>
               </div>
             </div>

@@ -11,39 +11,24 @@ import { getData } from '../../../../../redux/actions/product'
 import ItemCard from '../../../../../components/module/Cards/Cards'
 // style
 import style from './side_right.module.css'
-import ModalCreate from '../ModalCreate/ModalCreate'
+import ModalCreate from '../../../../../components/module/ModalCreate/ModalCreate'
+import { useLocation } from 'react-router-dom'
+import qs from 'query-string'
+import Pagination from '../../../../../components/module/Pagination/Pagination'
 
 const SideRight = () => {
-  const { items, isLoading } = useSelector((state) => state.items)
+  const { items, pages, isLoading } = useSelector((state) => state.items)
   const { profile } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const history = useHistory()
   const [show, setShow] = useState(false)
   const handleShow = () => setShow(!show)
-
-  // const [page, setPage] = useState(1)
-
-  // const handleScroll = () => {
-  // setPage(page + 1)
-  // setPage((current) => current + 1)
-  // }
-  // window.onscroll = () => {
-  // if (
-  //   window.innerHeight + document.documentElement.scrollTop + 50 >=
-  //   document.documentElement.offsetHeight
-  // document.documentElement.scrollTop >= 3000
-  // ) {
-  // handleScroll()
-  // }
-  // }
+  const location = useLocation()
 
   useEffect(() => {
-    // console.log('inner height:', window.innerHeight);
-    // console.log('document scrolltop:', document.documentElement.scrollTop);
-    // console.log('document offset height:', document.documentElement.offsetHeight);
-    // {/* <h2>Page: {page}</h2> */}
-    dispatch(getData())
-  }, [dispatch])
+    const parsed = qs.parse(location.search)
+    dispatch(getData(pages.current_page, parsed.search))
+  }, [dispatch, location, pages.current_page])
   return (
     <div className={`col-md-9 p-0 ${style.container}`}>
       <div
@@ -62,12 +47,12 @@ const SideRight = () => {
                   price={item.price}
                   image={item.image}
                   clickEvent={() => history.push(`/main/product/${item.id}`)}
-                // deleteEvent={}
                 />
               </div>
             ))}
           </div>
         )}
+        <Pagination />
         {profile.role === 'admin' && (
           <button className={`btn text-white ${style.btn_create}`} onClick={handleShow}>
             Add new product

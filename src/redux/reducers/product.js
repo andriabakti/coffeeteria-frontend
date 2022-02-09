@@ -1,5 +1,6 @@
 const initialState = {
   items: [],
+  pages: {},
   detail: {},
   isLoading: false,
   isError: false,
@@ -22,6 +23,7 @@ const items = (state = initialState, action) => {
         isLoading: false,
         isError: false,
         items: action.payload.data.data,
+        pages: action.payload.data.page_info,
         msg: action.payload.data.message
       }
     case 'GET_ITEMS_REJECTED':
@@ -72,6 +74,46 @@ const items = (state = initialState, action) => {
         isError: false,
       }
     case 'ADD_PRODUCT_REJECTED':
+      return {
+        ...state,
+        msg: action.payload.response.data.message,
+        isLoading: false,
+        isError: true
+      }
+    // edit page
+    case 'CHANGE_PAGE':
+      return {
+        ...state,
+        pages: {
+          current_page: action.payload
+        }
+      }
+    // edit detail
+    case 'CHANGE_DETAIL': {
+      return {
+        ...state,
+        detail: {
+          ...state.detail,
+          ...action.payload
+        }
+      }
+    }
+    // edit product
+    case 'UPDATE_PRODUCT_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        isError: false
+      }
+    }
+    case 'UPDATE_PRODUCT_FULFILLED':
+      return {
+        ...state,
+        msg: action.payload.data.message,
+        isLoading: false,
+        isError: false,
+      }
+    case 'UPDATE_PRODUCT_REJECTED':
       return {
         ...state,
         msg: action.payload.response.data.message,

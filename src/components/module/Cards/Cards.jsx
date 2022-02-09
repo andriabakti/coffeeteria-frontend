@@ -8,7 +8,7 @@ import icon_edit from '../../../assets/icon_edit.svg'
 import numeral from 'numeral'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteProduct, getData } from '../../../redux/actions/product'
-import ModalDelete from '../../../pages/main/Product/components/ModalDelete/ModalDelete'
+import ModalDelete from '../ModalDelete/ModalDelete'
 
 const Cards = ({ id, name, price, image, clickEvent }) => {
   numeral.locale('es')
@@ -22,14 +22,14 @@ const Cards = ({ id, name, price, image, clickEvent }) => {
     await dispatch(deleteProduct(itemId))
     alert('Product deleted successfully!')
     handleOpen()
-    await dispatch(getData())
+    await dispatch(getData(1, ''))
   }
   return (
     <>
       <div
         className={`card border-0 position-relative ${profile.role === 'admin' ? style.content : style.container
           }`}
-        onClick={profile.role !== 'admin' && clickEvent}>
+        onClick={profile.role !== 'admin' ? clickEvent : undefined}>
         <img
           className={`${style.image}`}
           src={image ? image : none}

@@ -12,8 +12,6 @@ const SideRight = (props) => {
   numeral.locale('es')
   const price = numeral(props.detail.price)
   const history = useHistory()
-  // const { count } = useSelector((state) => state.cart)
-  // const dispatch = useDispatch()
 
   const [size, setSize] = useState('')
   const [delivery, setDelivery] = useState('')
@@ -54,7 +52,12 @@ const SideRight = (props) => {
           className={`mb-4 form-select ${style.dropdown}`}
           aria-label='Default select'
           onChange={(e) => sizePick(e)}
-          disabled={(props.detail.category_id !== 1 || profile.role === 'admin') && 'disabled'}
+          disabled={
+            (props.detail.category_id !== 1 ||
+              props.detail.category_id !== 2 ||
+              profile.role === 'admin') &&
+            'disabled'
+          }
           defaultValue='Select Size'
           required>
           <option disabled hidden>
@@ -80,7 +83,9 @@ const SideRight = (props) => {
         </select>
         <div className={`mb-4 ${style.amount}`}>
           <div className={`col-md-4 btn-group ${style.counter}`} role='group'>
-            <button className='btn btn-white' type='button'
+            <button
+              className='btn btn-white'
+              type='button'
               disabled={profile.role === 'admin' && 'disabled'}
               onClick={increase}>
               +
@@ -96,7 +101,7 @@ const SideRight = (props) => {
               -
             </button>
           </div>
-          {props.detail.category_id !== 1 ? (
+          {props.detail.category_id !== 1 || props.detail.category_id !== 2 ? (
             <button
               className={`col-md-7 btn ${style.btn_gold}
             ${(delivery === '' || quantity === 0) && 'disabled'}`}
@@ -107,7 +112,8 @@ const SideRight = (props) => {
           ) : (
             <button
               className={`col-md-7 btn ${style.btn_gold}
-            ${(size === '' || delivery === '' || quantity === 0) && 'disabled'}`}
+            ${(size === '' || delivery === '' || quantity === 0) && 'disabled'
+                }`}
               type='submit'
               onClick={() => props.addToCart({ size, delivery, quantity })}>
               Add to Cart

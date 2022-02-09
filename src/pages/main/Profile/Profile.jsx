@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // components
 import SideLeft from './components/SideLeft/SideLeft'
 import SideRight from './components/SideRight/SideRight'
-import ModalExit from './components/ModalExit/ModalExit'
+import ModalExit from '../../../components/module/ModalExit/ModalExit'
 import Footer from '../../../components/module/Footer/Footer'
 // react-helmet
 import { Helmet } from 'react-helmet'
