@@ -10,7 +10,7 @@ import { useParams, Link } from 'react-router-dom'
 // react-redux
 import { useDispatch, useSelector } from 'react-redux'
 // redux
-import { getDetail, changeDetail, updateProduct } from '../../../redux/actions/product'
+import { getData, getDetail, changeDetail, updateProduct } from '../../../redux/actions/product'
 import { addCart } from '../../../redux/actions/cart'
 // style
 import style from './Detail.module.css'
@@ -50,6 +50,7 @@ const Detail = () => {
     await dispatch(updateProduct(formData, detail.id))
     alert('Product berhasil diupdate')
     history.push('/main/product')
+    await dispatch(getData(1, ''))
   }
 
   const handleAddCart = (items) => {
