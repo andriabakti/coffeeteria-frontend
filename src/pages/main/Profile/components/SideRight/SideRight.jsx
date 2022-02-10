@@ -3,8 +3,25 @@ import React from 'react'
 import style from './side_right.module.css'
 // asset
 import icon_edit from '../../../../../assets/icon_edit.svg'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeProfile } from '../../../../../redux/actions/user'
+import DatePicker from 'react-date-picker'
+// import moment from 'moment'
 
 const SideRight = () => {
+  const dispatch = useDispatch()
+  const { detailTemp } = useSelector((state) => state.user)
+
+  const handleDate = (date) => {
+    dispatch(changeProfile({
+      birth_date: date
+    }))
+  }
+  const handleChange = (e) => {
+    dispatch(changeProfile({
+      [e.target.name]: e.target.value
+    }))
+  }
   return (
     <div className={`col-md-8 ${style.container}`}>
       <div className={`${style.title}`}>
@@ -23,6 +40,9 @@ const SideRight = () => {
             </label>
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
+              onChange={handleChange}
+              value={detailTemp.email}
+              name='email'
               type='email'
               id='email'
             />
@@ -35,7 +55,10 @@ const SideRight = () => {
             </label>
             <textarea
               className={`form-control ${style.input_area} ${style.input_md}`}
+              onChange={handleChange}
+              value={detailTemp.address}
               type='textarea'
+              name='address'
               id='address'
             />
           </div>
@@ -49,6 +72,9 @@ const SideRight = () => {
             </label>
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
+              onChange={handleChange}
+              value={detailTemp.phone}
+              name='phone'
               id='phone'
               type='tel'
             />
@@ -66,6 +92,9 @@ const SideRight = () => {
             </label>
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
+              onChange={handleChange}
+              value={detailTemp.username}
+              name='username'
               id='name'
               type='text'
             />
@@ -78,6 +107,9 @@ const SideRight = () => {
             </label>
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
+              onChange={handleChange}
+              value={detailTemp.first_name}
+              name='first_name'
               id='firstname'
               type='text'
             />
@@ -90,30 +122,35 @@ const SideRight = () => {
             </label>
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
+              onChange={handleChange}
+              value={detailTemp.last_name}
+              name='last_name'
               id='lastname'
               type='text'
             />
           </div>
         </div>
         <div className={`col-md-4 ${style}`}>
-          <div className={`${style.input_box}`}>
-            <label className={`form-label ${style.input_label}`} htmlFor='date'>
-              MM/DD/YYYY :
-            </label>
-            <input
-              className={`form-control ${style.input_area} ${style.input_sm}`}
-              id='date'
-              type='date'
-            />
-          </div>
+          <label className={`form-label ${style.input_label}`} htmlFor='date'>
+            DD/MM/YYYY :
+          </label>
+          {/* <div className={`${style.input_box}`}> */}
+          <DatePicker
+            // className={`form-control ${style.input_area} ${style.input_sm}`}
+            onChange={handleDate}
+            value={detailTemp.birth_date === null ? null : detailTemp.birth_date}
+            dateFromat='y-M-dd'
+            id='date'
+          />
+          {/* </div> */}
         </div>
       </div>
       <div className={`${style.section}`}>
         <div className='form-check'>
           <input
             className={`form-check-input ${style.check}`}
-            value='option1'
-            defaultChecked
+            onChange={handleChange}
+            value={(detailTemp.gender === '2' || detailTemp.gender === null) && 1}
             name='gender'
             type='radio'
             id='male'
@@ -125,7 +162,8 @@ const SideRight = () => {
         <div className='form-check'>
           <input
             className={`form-check-input ${style.check}`}
-            value='option2'
+            onChange={handleChange}
+            value={(detailTemp.gender === '1' || detailTemp.gender === null) && 2}
             name='gender'
             type='radio'
             id='female'

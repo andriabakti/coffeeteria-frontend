@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 // components
 import SideLeft from './components/SideLeft/SideLeft'
 import SideRight from './components/SideRight/SideRight'
@@ -7,14 +8,20 @@ import Footer from '../../../components/module/Footer/Footer'
 // react-helmet
 import { Helmet } from 'react-helmet'
 // react-redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { getUserDetail } from '../../../redux/actions/user'
 // style
 import style from './Profile.module.css'
 
 const Profile = () => {
+  const dispatch = useDispatch()
   const { profile } = useSelector((state) => state.auth)
   const [show, setShow] = useState(false)
   const handleShow = () => setShow(!show)
+
+  useEffect(() => {
+    dispatch(getUserDetail(profile.id))
+  }, [dispatch, profile])
 
   return (
     <div className={`${style.container}`}>
