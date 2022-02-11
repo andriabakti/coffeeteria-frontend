@@ -6,21 +6,18 @@ import icon_edit from '../../../../../assets/icon_edit.svg'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeProfile } from '../../../../../redux/actions/user'
 import DatePicker from 'react-date-picker'
-// import moment from 'moment'
+import moment from 'moment'
 
-const SideRight = () => {
+const SideRight = (props) => {
   const dispatch = useDispatch()
-  const { detailTemp } = useSelector((state) => state.user)
-
-  const handleDate = (date) => {
-    dispatch(changeProfile({
-      birth_date: date
-    }))
-  }
+  const { detail, detailTemp } = useSelector((state) => state.user)
+  const formatted = moment(detailTemp.birth_date).startOf('day')._d
   const handleChange = (e) => {
-    dispatch(changeProfile({
-      [e.target.name]: e.target.value
-    }))
+    dispatch(
+      changeProfile({
+        [e.target.name]: e.target.value
+      })
+    )
   }
   return (
     <div className={`col-md-8 ${style.container}`}>
@@ -137,9 +134,15 @@ const SideRight = () => {
           {/* <div className={`${style.input_box}`}> */}
           <DatePicker
             // className={`form-control ${style.input_area} ${style.input_sm}`}
-            onChange={handleDate}
-            value={detailTemp.birth_date === null ? null : detailTemp.birth_date}
-            dateFromat='y-M-dd'
+            onChange={props.changeDate}
+            value={
+              detailTemp.birth_date !== null ? formatted : new Date()
+            }
+            yearPlaceholder='yyyy'
+            monthPlaceholder='mm'
+            dayPlaceholder='dd'
+            showLeadingZeros={true}
+            locale='en-au'
             id='date'
           />
           {/* </div> */}
@@ -150,12 +153,18 @@ const SideRight = () => {
           <input
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
-            value={(detailTemp.gender === '2' || detailTemp.gender === null) && 1}
+            value={
+              (detailTemp.gender === 'female' || detailTemp.gender === '') &&
+              'male'
+            }
+            defaultChecked={detail.gender === 'male' ? true : false}
             name='gender'
             type='radio'
             id='male'
           />
-          <label className={`form-check-label ${style.input_label}`} htmlFor='male'>
+          <label
+            className={`form-check-label ${style.input_label}`}
+            htmlFor='male'>
             Male
           </label>
         </div>
@@ -163,7 +172,11 @@ const SideRight = () => {
           <input
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
-            value={(detailTemp.gender === '1' || detailTemp.gender === null) && 2}
+            value={
+              (detailTemp.gender === 'male' || detailTemp.gender === '') &&
+              'female'
+            }
+            defaultChecked={detail.gender === 'female' ? true : false}
             name='gender'
             type='radio'
             id='female'
@@ -175,7 +188,7 @@ const SideRight = () => {
           </label>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 

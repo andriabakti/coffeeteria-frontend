@@ -1,51 +1,20 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 // react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // style
 import style from './side_left.module.css'
 // asset
 import blank from '../../../../../assets/blank_profile.jpg'
-import { getUserDetail, changeProfile, updateProfile } from '../../../../../redux/actions/user'
-import { useHistory } from 'react-router-dom'
-import moment from 'moment'
+import { resetChange } from '../../../../../redux/actions/user'
+
 
 const SideLeft = (props) => {
-  const history = useHistory()
   const ref = useRef()
-  const [image, setImage] = useState()
-  const { detail, detailTemp } = useSelector((state) => state.user)
   const dispatch = useDispatch()
+  const { detail, detailTemp } = useSelector((state) => state.user)
 
-  const handleImage = (e) => {
-    const imageFile = e.target.files[0]
-    setImage(imageFile)
-    dispatch(changeProfile({
-      image: URL.createObjectURL(imageFile)
-    }))
-  }
-
-  const removeImage = () => {
-    dispatch(changeProfile({
-      image: null
-    }))
-  }
-
-  const newProfile = new FormData()
-  newProfile.append('first_name', detailTemp.first_name)
-  newProfile.append('last_name', detailTemp.last_name)
-  newProfile.append('birth_date', moment(detailTemp.birth_date).format('YYYY-MM-DD'))
-  newProfile.append('gender', detailTemp.gender)
-  newProfile.append('address', detailTemp.address)
-  newProfile.append('image', image)
-  newProfile.append('username', detailTemp.username)
-  newProfile.append('email', detailTemp.email)
-  newProfile.append('phone', detailTemp.phone)
-
-  const editProfile = async () => {
-    await dispatch(updateProfile(newProfile, detail.id))
-    alert('Profile berhasil diupdate')
-    await dispatch(getUserDetail(detail.id))
-    history.push('/main/profile')
+  const cancelChange = () => {
+    dispatch(resetChange())
   }
 
   return (
@@ -61,7 +30,7 @@ const SideLeft = (props) => {
           <span>{detail.email}</span>
         </div>
         <div>
-          <input hidden ref={ref} onChange={handleImage} type="file" name="image" id="image" />
+          <input hidden ref={ref} onChange={props.changeImage} type="file" name="image" id="image" />
           <button
             className={`btn ${style.btn_sm} ${style.btn_gold}`}
             type='button' onClick={() => ref.current.click()}>
@@ -70,7 +39,7 @@ const SideLeft = (props) => {
         </div>
         <button
           className={`btn ${style.btn_sm} ${style.btn_brown}`}
-          type='button' onClick={removeImage}>
+          type='button' onClick={props.resetImage}>
           Remove photo
         </button>
         <button
@@ -87,12 +56,12 @@ const SideLeft = (props) => {
         </span>
         <button
           className={`btn ${style.btn_md} ${style.btn_brown}`}
-          type='button' onClick={editProfile}>
+          type='button' onClick={props.handleUpdate}>
           Save Change
         </button>
         <button
           className={`btn ${style.btn_md} ${style.btn_gold}`}
-          type='button' disabled>
+          type='button' onClick={cancelChange}>
           Cancel
         </button>
         <button

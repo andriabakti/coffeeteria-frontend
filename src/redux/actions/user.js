@@ -14,6 +14,12 @@ export const changeProfile = (data) => {
   }
 }
 
+export const resetChange = () => {
+  return {
+    type: 'RESET_CHANGE'
+  }
+}
+
 export const updateProfile = (data, id) => {
   return {
     type: 'UPDATE_PROFILE',

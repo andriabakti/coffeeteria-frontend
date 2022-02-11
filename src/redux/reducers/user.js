@@ -21,7 +21,7 @@ const user = (state = initialState, action) => {
         ...state,
         msg: action.payload.data.message,
         detail: action.payload.data.data[0],
-        detailTemp: { ...state.detail },
+        detailTemp: action.payload.data.data[0],
         isLoading: false,
         isError: false
       }
@@ -44,6 +44,13 @@ const user = (state = initialState, action) => {
           ...state.detailTemp,
           ...action.payload
         }
+      }
+    }
+    // reset change
+    case 'RESET_CHANGE': {
+      return {
+        ...state,
+        detailTemp: state.detail
       }
     }
     // update user profile
