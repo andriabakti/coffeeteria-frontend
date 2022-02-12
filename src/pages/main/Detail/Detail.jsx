@@ -19,14 +19,13 @@ import { useHistory } from 'react-router-dom'
 
 
 const Detail = () => {
-
   const link = {
     textDecoration: 'none',
     color: 'inherit'
   }
   const { id } = useParams()
   const dispatch = useDispatch()
-  const { detail } = useSelector((state) => state.items)
+  const { detail, detailTemp } = useSelector((state) => state.product)
   const { profile } = useSelector((state) => state.auth)
   const [image, setImage] = useState()
   const history = useHistory()
@@ -40,17 +39,17 @@ const Detail = () => {
   }
 
   const formData = new FormData()
-  formData.append('name', detail.name)
-  formData.append('price', detail.price)
+  formData.append('name', detailTemp.name)
+  formData.append('price', detailTemp.price)
   formData.append('image', image)
-  formData.append('description', detail.description)
-  formData.append('category_id', detail.category_id)
+  formData.append('description', detailTemp.description)
+  formData.append('category_id', detailTemp.category_id)
 
   const editProduct = async () => {
     await dispatch(updateProduct(formData, detail.id))
     alert('Product berhasil diupdate')
+    await dispatch(getData(1, '', ''))
     history.push('/main/product')
-    await dispatch(getData(1, ''))
   }
 
   const handleAddCart = (items) => {
@@ -78,12 +77,12 @@ const Detail = () => {
                   Product
                 </Link>
               </li>
-              {profile.role !== 'admin' ? (
-                <li
-                  className={`breadcrumb-item ${style.crumb_active}`}
-                  aria-current='page'>
-                  {detail.name}
-                </li>) : (
+              <li
+                className={`breadcrumb-item ${style.crumb_active}`}
+                aria-current='page'>
+                {detail.name}
+              </li>
+              {profile.role === 'admin' && (
                 <li
                   className={`breadcrumb-item ${style.crumb_active}`}
                   aria-current='page'>

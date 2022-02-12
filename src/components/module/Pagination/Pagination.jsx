@@ -6,7 +6,7 @@ import { changePage } from '../../../redux/actions/product'
 
 const Pagination = () => {
   const dispatch = useDispatch()
-  const { pages } = useSelector((state) => state.items)
+  const { pages } = useSelector((state) => state.product)
 
   const handlePageClick = (e) => {
     const selectedPage = e.selected + 1

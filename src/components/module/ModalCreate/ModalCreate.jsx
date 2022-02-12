@@ -54,7 +54,7 @@ const ModalCreate = (props) => {
     )
     alert('New product added successfully')
     handleClose()
-    await dispatch(getData(1, ''))
+    await dispatch(getData(1, '', ''))
   }
   const handleClose = () => {
     setPreview(ref.current.value = null)

@@ -25,26 +25,19 @@ const Main = () => {
     left: 0,
     behavior: 'smooth'
   })
-  // const [page, setPage] = useState(1)
 
-  // const handleOnScroll = (e) => {
-  //   const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
-  //   if (scrollHeight - scrollTop <= clientHeight) {
-  //     setPage(page + 1);
-  //   }
-  // }
   const { path } = useRouteMatch()
   return (
     <div className={`${style.container}`}>
       <Navbar />
       <Switch>
         <PublicRoute component={Home} path={`${path}`} exact />
-        <PrivateRoute component={Product} path={`${path}/product`} exact />
         <PrivateRoute
-          component={Detail}
-          path={`${path}/product/:id`}
+          component={Product}
+          path={`${path}/product`}
           exact
         />
+        <PrivateRoute component={Detail} path={`${path}/product/:id`} exact />
         <PrivateRoute component={Cart} path={`${path}/cart`} exact />
         <PrivateRoute component={History} path={`${path}/history`} exact />
         <PrivateRoute component={Profile} path={`${path}/profile`} exact />

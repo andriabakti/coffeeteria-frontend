@@ -2,12 +2,13 @@ const initialState = {
   items: [],
   pages: {},
   detail: {},
+  detailTemp: {},
   isLoading: false,
   isError: false,
   msg: ''
 }
 
-const items = (state = initialState, action) => {
+const product = (state = initialState, action) => {
   switch (action.type) {
     // all products
     case 'GET_ITEMS_PENDING': {
@@ -46,6 +47,7 @@ const items = (state = initialState, action) => {
       return {
         ...state,
         detail: action.payload.data.data[0],
+        detailTemp: action.payload.data.data[0],
         msg: action.payload.data.message,
         isLoading: false,
         isError: false
@@ -92,8 +94,8 @@ const items = (state = initialState, action) => {
     case 'CHANGE_DETAIL': {
       return {
         ...state,
-        detail: {
-          ...state.detail,
+        detailTemp: {
+          ...state.detailTemp,
           ...action.payload
         }
       }
@@ -148,4 +150,4 @@ const items = (state = initialState, action) => {
   }
 }
 
-export default items
+export default product

@@ -23,7 +23,7 @@ const PartCenter = () => {
       </div>
       <div className='nav-link'>
         <Link
-          to='/main/product'
+          to={`/main/product`}
           style={link}
           className={
             pathname !== '/main' &&
@@ -39,7 +39,7 @@ const PartCenter = () => {
       </div>
       <div className='nav-link'>
         <Link
-          to='/main/cart'
+          to={'/main/cart'}
           style={link}
           className={
             pathname === '/main/cart' ? `${style.page_on}` : `${style.page}`

@@ -3,20 +3,23 @@ import React from 'react'
 import { Link, useLocation, useHistory } from 'react-router-dom'
 import style from './PartRight.module.css'
 import blank from '../../../../assets/blank_profile.jpg'
+import qs from 'query-string'
 
 const PartRight = () => {
-  const { pathname } = useLocation()
+  const { pathname, search } = useLocation()
+  const parsed = qs.parse(search)
   const history = useHistory()
   const token = localStorage.getItem('token')
   const link = {
     textDecoration: 'none',
     color: 'inherit'
   }
-
   const handleSearch = (e) => {
-    e.key === 'Enter' && (
-      history.push(`/main/product?search=${e.target.value}`)
-    )
+    e.key === 'Enter' &&
+      history.push(
+        `/main/product?${parsed.filter ? `filter=${parsed.filter}&` : ''
+        }search=${e.target.value}`
+      )
   }
   return (
     <>
@@ -30,6 +33,7 @@ const PartRight = () => {
               placeholder='Search'
               aria-label='Search'
               onKeyPress={handleSearch}
+              name='search'
             />
           </div>
           <Link

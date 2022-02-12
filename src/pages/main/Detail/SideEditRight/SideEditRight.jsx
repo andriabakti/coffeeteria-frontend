@@ -2,13 +2,14 @@ import React from 'react'
 // style
 import style from './side_edit_right.module.css'
 // numeral
-import numeral from 'numeral'
+// import numeral from 'numeral'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeDetail } from '../../../../redux/actions/product'
+import { numFormatter } from '../../../../utils/numeral'
 
 const SideEditRight = (props) => {
-  numeral.locale('es')
-  const { detail } = useSelector((state) => state.items)
+  // numeral.locale('es')
+  const { detailTemp } = useSelector((state) => state.product)
   const dispatch = useDispatch()
   const handleChange = (e) => {
     dispatch(changeDetail({
@@ -24,19 +25,19 @@ const SideEditRight = (props) => {
           <label forhtml="name" className="form-label">Name</label>
           <input type="text" className="form-control form-control-lg" name='name' id="name" placeholder="name"
             onChange={handleChange}
-            value={detail.name} />
+            value={detailTemp.name} />
         </div>
         <div className="mb-3">
           <label forhtml="price" className="form-label">Price</label>
           <input type="text" className="form-control form-control-lg" name='price' id="price" placeholder="price"
             onChange={handleChange}
-            value={`IDR ${numeral(detail.price).format('0,0')}`} />
+            value={`IDR ${numFormatter(detailTemp.price)}`} />
         </div>
         <div className="mb-3">
           <label forhtml="description" className="form-label">Description</label>
           <textarea className="form-control" name='description' id="description" rows="3"
             onChange={handleChange}
-            value={detail.description}>
+            value={detailTemp.description}>
           </textarea>
         </div>
       </div>
@@ -49,7 +50,7 @@ const SideEditRight = (props) => {
         // defaultValue='Select Category'
         onChange={handleChange}
         name='category_id'
-        value={detail.category_id}
+        value={detailTemp.category_id}
         required>
         <option disabled hidden>
           Select category

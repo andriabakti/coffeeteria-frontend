@@ -6,7 +6,7 @@ import img from '../../../../assets/default.jpg'
 // import { useSelector } from 'react-redux'
 
 const SideLeft = (props) => {
-  // const { detail } = useSelector((state) => state.items)
+  // const { detail } = useSelector((state) => state.product)
 
   return (
     <div className={`col-md-6 ${style.section}`}>

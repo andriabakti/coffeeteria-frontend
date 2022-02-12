@@ -8,10 +8,11 @@ import style from './side_left.module.css'
 // assets
 import img from '../../../../../assets/default.jpg'
 // numeral
-import numeral from 'numeral'
+// import numeral from 'numeral'
+import { numFormatter } from '../../../../../utils/numeral'
 
 const SideLeft = () => {
-  numeral.locale('es')
+  // numeral.locale('es')
   const { cart, subTotal, taxAndFee, shipping, total } = useSelector(
     (state) => state.cart
   )
@@ -45,7 +46,7 @@ const SideLeft = () => {
                   <span>{item.size}</span>
                 </div>
                 <span>
-                  IDR {numeral(item.price * item.quantity).format('0,0')}
+                  IDR {numFormatter(item.price * item.quantity)}
                 </span>
                 <button
                   className={`btn btn-warning position-absolute top-0 start-100 translate-middle border ${style.btn_delete}`}
@@ -63,19 +64,19 @@ const SideLeft = () => {
         <div className={`${style.list}`}>
           <div className={`${style.detail}`}>
             <span>SUBTOTAL</span>
-            <span>IDR {numeral(subTotal).format('0,0')}</span>
+            <span>IDR {numFormatter(subTotal)}</span>
           </div>
           <div className={`${style.detail}`}>
             <span>TAX & FEES</span>
-            <span>IDR {numeral(taxAndFee).format('0,0')}</span>
+            <span>IDR {numFormatter(taxAndFee)}</span>
           </div>
           <div className={`${style.detail}`}>
             <span>SHIPPING</span>
-            <span>IDR {numeral(shipping).format('0,0')}</span>
+            <span>IDR {numFormatter(shipping)}</span>
           </div>
           <div className={`${style.detail} ${style.total}`}>
             <h4>TOTAL</h4>
-            <h4>IDR {numeral(total).format('0,0')}</h4>
+            <h4>IDR {numFormatter(total)}</h4>
           </div>
         </div>
       </div>

@@ -5,14 +5,15 @@ import style from './Cards.module.css'
 import none from '../../../assets/default.jpg'
 import icon_edit from '../../../assets/icon_edit.svg'
 // numeral
-import numeral from 'numeral'
+// import numeral from 'numeral'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteProduct, getData } from '../../../redux/actions/product'
 import ModalDelete from '../ModalDelete/ModalDelete'
+import { numFormatter } from '../../../utils/numeral'
 
 const Cards = ({ id, name, price, image, clickEvent }) => {
-  numeral.locale('es')
-  const formatted = numeral(price).format('0,0')
+  // numeral.locale('es')
+  // const formatted = numeral(price).format('0,0')
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(!open)
   const { profile } = useSelector((state) => state.auth)
@@ -21,8 +22,8 @@ const Cards = ({ id, name, price, image, clickEvent }) => {
   const handleDelete = async (itemId) => {
     await dispatch(deleteProduct(itemId))
     alert('Product deleted successfully!')
+    await dispatch(getData(1, '', ''))
     handleOpen()
-    await dispatch(getData(1, ''))
   }
   return (
     <>
@@ -37,7 +38,7 @@ const Cards = ({ id, name, price, image, clickEvent }) => {
         />
         <div className={`card-body text-center ${style.body}`}>
           <h5 className='card-title'>{name}</h5>
-          <span className='card-text'>IDR {formatted}</span>
+          <span className='card-text'>IDR {numFormatter(price)}</span>
         </div>
         {profile.role === 'admin' && (
           <button

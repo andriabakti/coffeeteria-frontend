@@ -4,13 +4,12 @@ import { useHistory } from 'react-router-dom'
 // style
 import style from './side_right.module.css'
 // numeral
-import numeral from 'numeral'
+// import numeral from 'numeral'
 import { useSelector } from 'react-redux'
+import { numFormatter } from '../../../../utils/numeral'
 
-const SideRight = (props) => {
+const SideRight = ({ detail, addToCart }) => {
   const { profile } = useSelector((state) => state.auth)
-  numeral.locale('es')
-  const price = numeral(props.detail.price)
   const history = useHistory()
 
   const [size, setSize] = useState('')
@@ -39,12 +38,12 @@ const SideRight = (props) => {
   return (
     <div className={`col-md-5 ${style.section}`}>
       <div className={style.detail}>
-        <h6 className={`${style.title}`}>{props.detail.name}</h6>
-        <h3>IDR {price.format('0,0')}</h3>
+        <h6 className={`${style.title}`}>{detail.name}</h6>
+        <h3>IDR {numFormatter(detail.price)}</h3>
         <div className={style.desc}>
-          {!props.detail.description
+          {!detail.description
             ? 'There is no any description yet for this product.'
-            : props.detail.description}
+            : detail.description}
         </div>
       </div>
       <div className={style.option}>
@@ -53,8 +52,8 @@ const SideRight = (props) => {
           aria-label='Default select'
           onChange={(e) => sizePick(e)}
           disabled={
-            (props.detail.category_id !== 1 ||
-              props.detail.category_id !== 2 ||
+            (detail.category_id !== 1 ||
+              detail.category_id !== 2 ||
               profile.role === 'admin') &&
             'disabled'
           }
@@ -101,12 +100,12 @@ const SideRight = (props) => {
               -
             </button>
           </div>
-          {props.detail.category_id !== 1 || props.detail.category_id !== 2 ? (
+          {detail.category_id !== 1 || detail.category_id !== 2 ? (
             <button
               className={`col-md-7 btn ${style.btn_gold}
             ${(delivery === '' || quantity === 0) && 'disabled'}`}
               type='submit'
-              onClick={() => props.addToCart({ size, delivery, quantity })}>
+              onClick={() => addToCart({ size, delivery, quantity })}>
               Add to Cart
             </button>
           ) : (
@@ -115,7 +114,7 @@ const SideRight = (props) => {
             ${(size === '' || delivery === '' || quantity === 0) && 'disabled'
                 }`}
               type='submit'
-              onClick={() => props.addToCart({ size, delivery, quantity })}>
+              onClick={() => addToCart({ size, delivery, quantity })}>
               Add to Cart
             </button>
           )}

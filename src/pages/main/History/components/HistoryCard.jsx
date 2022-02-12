@@ -4,11 +4,12 @@ import style from './history_card.module.css'
 // assets
 // import img from '../../../../assets/default.jpg'
 // numeral
-import numeral from 'numeral'
+// import numeral from 'numeral'
+import { numFormatter } from '../../../../utils/numeral'
 
 const HistoryCard = (props) => {
-  numeral.locale('es')
-  const totalPrice = numeral(props.price * props.quantity).format('0,0')
+  // numeral.locale('es')
+  const totalPrice = numFormatter(props.price * props.quantity)
   return (
     <div className={`card mb-4 ${style.cards}`}>
       <div className={`row g-0`}>
