@@ -2,8 +2,8 @@ import React from 'react';
 // react-router
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 // page bases
-import Auth from './pages/Auth/Auth';
-import Main from './pages/Main/Main';
+import Auth from './pages/auth/Auth';
+import Main from './pages/main/Main';
 import './App.css';
 
 const App = () => {
