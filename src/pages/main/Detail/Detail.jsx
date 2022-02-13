@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 // components
 import SideLeft from './SideLeft/SideLeft'
 import SideRight from './SideRight/SideRight'
-import Footer from '../../../components/module/Footer/Footer'
+import Footer from '../../../components/Footer/Footer'
 // react-helmet
 import { Helmet } from 'react-helmet'
 // react-router
@@ -10,11 +10,11 @@ import { useParams, Link } from 'react-router-dom'
 // react-redux
 import { useDispatch, useSelector } from 'react-redux'
 // redux
-import { getData, getDetail, changeDetail, updateProduct } from '../../../redux/actions/product'
+import { getProduct, getDetail, changeDetail, updateProduct } from '../../../redux/actions/product'
 import { addCart } from '../../../redux/actions/cart'
 // style
 import style from './Detail.module.css'
-import SideEditRight from './SideEditRight/SideEditRight'
+import SideRightAdmin from './SideRightAdmin/SideRightAdmin'
 import { useHistory } from 'react-router-dom'
 
 
@@ -48,7 +48,7 @@ const Detail = () => {
   const editProduct = async () => {
     await dispatch(updateProduct(formData, detail.id))
     alert('Product berhasil diupdate')
-    await dispatch(getData(1, '', ''))
+    await dispatch(getProduct(1, '', ''))
     history.push('/main/product')
   }
 
@@ -96,7 +96,7 @@ const Detail = () => {
             {profile.role !== 'admin' ? (
               <SideRight detail={detail} addToCart={handleAddCart} />
             ) : (
-              <SideEditRight handleUpdate={editProduct} />
+              <SideRightAdmin handleUpdate={editProduct} />
             )
             }
           </div>

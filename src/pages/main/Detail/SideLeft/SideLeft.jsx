@@ -1,8 +1,8 @@
 import React from 'react'
 // style
-import style from './side_left.module.css'
+import style from './SideLeft.module.css'
 // assets
-import img from '../../../../assets/default.jpg'
+import img from '../../../../assets/images/blank_img.jpg'
 // import { useSelector } from 'react-redux'
 
 const SideLeft = (props) => {

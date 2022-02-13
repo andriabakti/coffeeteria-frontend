@@ -48,6 +48,12 @@ const cart = (state = initialState, action) => {
         total: subTotal + shipCost + tax
       }
     }
+    case 'RESET_CART': {
+      return {
+        ...state,
+        cart: []
+      }
+    }
     default: {
       return state
     }

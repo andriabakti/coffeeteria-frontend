@@ -1,6 +1,6 @@
 import axiosApiInstances from '../../utils/axios'
 
-export const getData = (page, search, filter) => {
+export const getProduct = (page, search, filter) => {
   // console.log(page);
   return {
     type: 'GET_ITEMS',

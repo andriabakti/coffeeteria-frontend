@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // components
-import Input from '../../../components/base/Input/Input'
+import InputAuth from '../../../components/InputAuth/InputAuth'
 // react-helmet
 import { Helmet } from 'react-helmet'
 // react-router
@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux'
 // redux
 import { login } from '../../../redux/actions/auth'
 // style
-import style from './sign_in.module.css'
+import style from './SignIn.module.css'
 
 const SignIn = () => {
   const history = useHistory()
@@ -51,7 +51,7 @@ const SignIn = () => {
       <form className={`${style.form}`} onSubmit={handleLogin}>
         <span>Login</span>
         <div>
-          <Input
+          <InputAuth
             changeEvent={(e) => handleChange(e)}
             placeholder='Enter your email address'
             label='Email Address :'
@@ -60,7 +60,7 @@ const SignIn = () => {
             id='email'
             required='required'
           />
-          <Input
+          <InputAuth
             changeEvent={(e) => handleChange(e)}
             placeholder='Enter your password'
             label='Password :'

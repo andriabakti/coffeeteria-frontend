@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 // components
-import SideLeft from './components/SideLeft/SideLeft'
-import SideRight from './components/SideRight/SideRight'
-import ModalExit from '../../../components/module/ModalExit/ModalExit'
-import Footer from '../../../components/module/Footer/Footer'
+import SideLeft from './SideLeft/SideLeft'
+import SideRight from './SideRight/SideRight'
+import ModalExit from '../../../components/ModalExit/ModalExit'
+import Footer from '../../../components/Footer/Footer'
 // react-helmet
 import { Helmet } from 'react-helmet'
 // react-redux

@@ -11,3 +11,9 @@ export const removeItem = (id) => {
     payload: id
   }
 }
+
+export const resetCart = () => {
+  return {
+    type: 'RESET_CART'
+  }
+}

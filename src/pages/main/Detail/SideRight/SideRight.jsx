@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // react-router
 import { useHistory } from 'react-router-dom'
 // style
-import style from './side_right.module.css'
+import style from './SideRight.module.css'
 // numeral
 // import numeral from 'numeral'
 import { useSelector } from 'react-redux'
