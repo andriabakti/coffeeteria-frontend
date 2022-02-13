@@ -16,7 +16,7 @@ import Profile from './Profile/Profile'
 import NotFound from '../NotFound/NotFound'
 import ScrollTop from '../../components/ScrollTop/ScrollTop'
 // style
-import style from './Main.module.css'
+// import style from './Main.module.css'
 // import { useState } from 'react'
 
 const Main = () => {
@@ -28,7 +28,7 @@ const Main = () => {
 
   const { path } = useRouteMatch()
   return (
-    <div className={`${style.container}`}>
+    <div>
       <NavBar />
       <Switch>
         <RoutePublic component={Home} path={`${path}`} exact />
