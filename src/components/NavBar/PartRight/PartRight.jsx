@@ -4,9 +4,11 @@ import { Link, useLocation, useHistory } from 'react-router-dom'
 import style from './PartRight.module.css'
 import blank from '../../../assets/images/blank_profile.jpg'
 import qs from 'query-string'
+import { useSelector } from 'react-redux'
 
 const PartRight = () => {
   const { pathname, search } = useLocation()
+  const { detail } = useSelector((state) => state.user)
   const parsed = qs.parse(search)
   const history = useHistory()
   const token = localStorage.getItem('token')
@@ -43,7 +45,7 @@ const PartRight = () => {
                 ? `${style.profile_on}`
                 : `${style.profile}`
             }>
-            <img src={blank} alt='profile' />
+            <img src={detail.image ? detail.image : blank} alt='profile' />
           </Link>
         </div>
       ) : (

@@ -21,8 +21,9 @@ const Profile = () => {
   const dispatch = useDispatch()
   const { profile } = useSelector((state) => state.auth)
   const { detail, detailTemp, msg } = useSelector((state) => state.user)
-  const [date, setDate] = useState()
-  const [image, setImage] = useState()
+  const getDate = moment(detailTemp.birth_date).format('YYYY-MM-DD')
+  const [date, setDate] = useState(getDate)
+  const [image, setImage] = useState(detailTemp.image)
   const [show, setShow] = useState(false)
   const handleShow = () => setShow(!show)
 

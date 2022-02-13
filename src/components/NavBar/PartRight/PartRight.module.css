@@ -33,6 +33,7 @@
   border-radius: 50%;
   -o-object-fit: cover;
   object-fit: cover;
+  outline: 1px solid #4F5665;
 }
 
 .profile>img:hover {
