@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // components
-import Input from '../../../components/base/Input/Input'
+import InputAuth from '../../../components/InputAuth/InputAuth'
 // react-helmet
 import { Helmet } from 'react-helmet'
 // react-router
@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux'
 // redux
 import { register } from '../../../redux/actions/auth'
 // style
-import style from './sign_up.module.css'
+import style from './SignUp.module.css'
 
 const SignUp = () => {
   const history = useHistory()
@@ -50,7 +50,7 @@ const SignUp = () => {
       <form className={`${style.form}`} onSubmit={handleLogin}>
         <span>Sign Up</span>
         <div>
-          <Input
+          <InputAuth
             changeEvent={(e) => handleChange(e)}
             placeholder='Enter your email adress'
             label='Email Address :'
@@ -59,7 +59,7 @@ const SignUp = () => {
             id='email'
             required='required'
           />
-          <Input
+          <InputAuth
             changeEvent={(e) => handleChange(e)}
             placeholder='Enter your password'
             label='Password :'
@@ -68,7 +68,7 @@ const SignUp = () => {
             id='password'
             required='required'
           />
-          <Input
+          <InputAuth
             changeEvent={(e) => handleChange(e)}
             placeholder='Enter your phone number'
             label='Phone Number :'

@@ -1,18 +1,16 @@
 import React from 'react'
 // react-router
 import { Switch, Redirect, useRouteMatch } from 'react-router-dom'
-// react-custom-scrollbars
-// import { Scrollbars } from 'react-custom-scrollbars-2'
 // components
 import SignUp from './SignUp/SignUp'
 import SignIn from './SignIn/SignIn'
-import AuthNav from '../../components/module/AuthNav/AuthNav'
-import Footer from '../../components/module/Footer/Footer'
-import ButtonUp from '../../components/module/ButtonUp/ButtonUp'
+import AuthNav from '../../components/NavAuth/NavAuth'
+import Footer from '../../components/Footer/Footer'
+import ScrollTop from '../../components/ScrollTop/ScrollTop'
 // routes
-import PublicRoute from '../../configs/PublicRoute'
+import RoutePublic from '../../configs/RoutePublic'
 // style
-import style from './auth.module.css'
+import style from './Auth.module.css'
 
 const Auth = () => {
   window.scrollTo(0, 0)
@@ -26,13 +24,13 @@ const Auth = () => {
         <div className={`col-md-6 px-0`}>
           <AuthNav />
           <Switch>
-            <PublicRoute
+            <RoutePublic
               component={SignUp}
               path={`${path}/sign-up`}
               restricted={true}
               exact
             />
-            <PublicRoute
+            <RoutePublic
               component={SignIn}
               path={`${path}/sign-in`}
               restricted={true}
@@ -43,7 +41,7 @@ const Auth = () => {
         </div>
       </div>
       <Footer />
-      <ButtonUp />
+      <ScrollTop />
     </div>
   )
 }

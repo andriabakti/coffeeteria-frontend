@@ -2,10 +2,10 @@ import React from 'react'
 // react-router
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
 // components
-import Navbar from '../../components/module/Navbar/Navbar'
+import NavBar from '../../components/NavBar/NavBar'
 // routes
-import PublicRoute from '../../configs/PublicRoute'
-import PrivateRoute from '../../configs/PrivateRoute'
+import RoutePublic from '../../configs/RoutePublic'
+import RoutePrivate from '../../configs/RoutePrivate'
 // pages
 import Home from './Home/Home'
 import Product from './Product/Product'
@@ -14,9 +14,9 @@ import History from './History/History'
 import Detail from './Detail/Detail'
 import Profile from './Profile/Profile'
 import NotFound from '../NotFound/NotFound'
-import ButtonUp from '../../components/module/ButtonUp/ButtonUp'
+import ScrollTop from '../../components/ScrollTop/ScrollTop'
 // style
-import style from './main.module.css'
+import style from './Main.module.css'
 // import { useState } from 'react'
 
 const Main = () => {
@@ -25,32 +25,25 @@ const Main = () => {
     left: 0,
     behavior: 'smooth'
   })
-  // const [page, setPage] = useState(1)
 
-  // const handleOnScroll = (e) => {
-  //   const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
-  //   if (scrollHeight - scrollTop <= clientHeight) {
-  //     setPage(page + 1);
-  //   }
-  // }
   const { path } = useRouteMatch()
   return (
     <div className={`${style.container}`}>
-      <Navbar />
+      <NavBar />
       <Switch>
-        <PublicRoute component={Home} path={`${path}`} exact />
-        <PrivateRoute component={Product} path={`${path}/product`} exact />
-        <PrivateRoute
-          component={Detail}
-          path={`${path}/product/:id`}
+        <RoutePublic component={Home} path={`${path}`} exact />
+        <RoutePrivate
+          component={Product}
+          path={`${path}/product`}
           exact
         />
-        <PrivateRoute component={Cart} path={`${path}/cart`} exact />
-        <PrivateRoute component={History} path={`${path}/history`} exact />
-        <PrivateRoute component={Profile} path={`${path}/profile`} exact />
+        <RoutePrivate component={Detail} path={`${path}/product/:id`} exact />
+        <RoutePrivate component={Cart} path={`${path}/cart`} exact />
+        <RoutePrivate component={History} path={`${path}/history`} exact />
+        <RoutePrivate component={Profile} path={`${path}/profile`} exact />
         <Route component={NotFound} />
       </Switch>
-      <ButtonUp />
+      <ScrollTop />
     </div>
   )
 }

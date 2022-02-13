@@ -7,7 +7,7 @@
   /* overflow-y: auto !important; */
   font-family: 'Rubik', sans-serif;
   /* max-height: calc(100vh - 90px) !important; */
-  background-image: url('../../../assets/bg_cart.png');
+  background-image: url('../../../assets/images/bg_cart.png');
   background-size: cover;
 }
 

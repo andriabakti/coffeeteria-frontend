@@ -6,7 +6,7 @@
   /* overflow-y: auto; */
   /* max-height: calc(100vh - 90px); */
   font-family: 'Rubik', sans-serif;
-  background-image: url('../../../assets/bg_profile.png');
+  background-image: url('../../../assets/images/bg_profile.png');
   background-size: cover;
 }
 

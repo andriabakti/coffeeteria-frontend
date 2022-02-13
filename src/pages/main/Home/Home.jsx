@@ -2,9 +2,9 @@ import React from 'react';
 // react-helmet
 import { Helmet } from 'react-helmet'
 // components
-import Footer from '../../../components/module/Footer/Footer';
-import SectionOne from './components/SectionOne/SectionOne';
-import SectionTwo from './components/SectionTwo/SectionTwo';
+import Footer from '../../../components/Footer/Footer';
+import SectionOne from './SectionOne/SectionOne';
+import SectionTwo from './SectionTwo/SectionTwo';
 
 // style
 import style from './Home.module.css'

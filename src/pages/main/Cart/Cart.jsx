@@ -2,9 +2,9 @@ import React from 'react';
 // react-helmet
 import { Helmet } from 'react-helmet'
 // components
-import SideLeft from './components/SideLeft/SideLeft';
-import SideRight from './components/SideRight/SideRight';
-import Footer from '../../../components/module/Footer/Footer';
+import SideLeft from './SideLeft/SideLeft';
+import SideRight from './SideRight/SideRight';
+import Footer from '../../../components/Footer/Footer';
 // style
 import style from './Cart.module.css'
 

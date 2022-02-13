@@ -1,0 +1,20 @@
+/* section: center */
+.center {
+  justify-content: space-between;
+}
+
+/* links */
+.page {
+  font-size: 16px;
+  color: #4F5665 !important;
+}
+
+.page:hover {
+  padding-bottom: 3px;
+  border-bottom: 3px solid #6A4029;
+}
+
+.page_on {
+  color: #6A4029 !important;
+  font-weight: bolder !important;
+}

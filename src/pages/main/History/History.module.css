@@ -1,6 +1,6 @@
 .container {
   min-height: calc(100vh - 90px) !important;
-  background-image: url('../../../assets/bg_history.png');
+  background-image: url('../../../assets/images/bg_history.png');
   background-size: cover;
   background-position: center;
 }
