@@ -66,7 +66,7 @@ const Profile = () => {
   newProfile.append('first_name', detailTemp.first_name)
   newProfile.append('last_name', detailTemp.last_name)
   newProfile.append('birth_date', date)
-  newProfile.append('gender', detailTemp.gender)
+  newProfile.append('gender', parseInt(detailTemp.gender))
   newProfile.append('address', detailTemp.address)
   newProfile.append('image', image)
   newProfile.append('username', detailTemp.username)
