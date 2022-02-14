@@ -154,7 +154,7 @@ const SideRight = (props) => {
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'female' || detailTemp.gender === '') && 1
+              (detailTemp.gender === 'female' || detailTemp.gender === '') && '1'
             }
             defaultChecked={detail.gender === 'male' ? true : false}
             name='gender'
@@ -172,7 +172,7 @@ const SideRight = (props) => {
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'male' || detailTemp.gender === '') && 2
+              (detailTemp.gender === 'male' || detailTemp.gender === '') && '2'
             }
             defaultChecked={detail.gender === 'female' ? true : false}
             name='gender'
