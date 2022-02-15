@@ -4,11 +4,9 @@ import style from './CardHistory.module.css'
 // assets
 // import img from '../../../../assets/images/blank_img.jpg'
 // numeral
-// import numeral from 'numeral'
 import { numFormatter } from '../../utils/numeral'
 
-const CardHistory = (props) => {
-  // numeral.locale('es')
+export const CardHistory = (props) => {
   const totalPrice = numFormatter(props.price * props.quantity)
   return (
     <div className={`card mb-4 ${style.cards}`}>
@@ -39,5 +37,3 @@ const CardHistory = (props) => {
     </div>
   )
 }
-
-export default CardHistory

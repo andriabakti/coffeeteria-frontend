@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 import style from './NavBar.module.css'
 // assets
 import logo from '../../assets/icons/icon.svg'
-import PartCenter from './PartCenter/PartCenter'
-import PartRight from './PartRight/PartRight'
+import { PartCenter } from './PartCenter/PartCenter'
+import { PartRight } from './PartRight/PartRight'
 
-const NavBar = (props) => {
+export const NavBar = () => {
   return (
     <nav className={`navbar navbar-expand-lg bg-white ${style.nav}`}>
       <div className={`container ${style.container}`}>
@@ -25,4 +25,3 @@ const NavBar = (props) => {
   )
 }
 
-export default NavBar

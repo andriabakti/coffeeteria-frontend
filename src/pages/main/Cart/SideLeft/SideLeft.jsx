@@ -11,7 +11,7 @@ import img from '../../../../assets/images/blank_img.jpg'
 // import numeral from 'numeral'
 import { numFormatter } from '../../../../utils/numeral'
 
-const SideLeft = () => {
+export const SideLeft = () => {
   // numeral.locale('es')
   const { cart, subTotal, taxAndFee, shipping, total } = useSelector(
     (state) => state.cart
@@ -83,5 +83,3 @@ const SideLeft = () => {
     </div>
   )
 }
-
-export default SideLeft

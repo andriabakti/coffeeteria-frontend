@@ -1,14 +1,13 @@
 import React from 'react';
 // react-helmet
-import { Helmet } from 'react-helmet'
+import Helmet from 'react-helmet'
 // components
-import SideLeft from './SideLeft/SideLeft';
-import SideRight from './SideRight/SideRight';
-import Footer from '../../../components/Footer/Footer';
+import { SideLeft } from './SideLeft/SideLeft';
+import { SideRight } from './SideRight/SideRight';
 // style
 import style from './Cart.module.css'
 
-const Cart = () => {
+export const Cart = () => {
   return (
     <div className={`${style.container}`}>
       <Helmet>
@@ -28,10 +27,7 @@ const Cart = () => {
             <SideRight />
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   );
 }
-
-export default Cart;

@@ -12,7 +12,7 @@ import icon_bank from '../../../../assets/icons/icon_bank.svg'
 import icon_cash from '../../../../assets/icons/icon_cash.svg'
 import { useHistory } from 'react-router-dom'
 
-const SideRight = () => {
+export const SideRight = () => {
   const history = useHistory()
   const { cart, total } = useSelector((state) => state.cart)
   const { id } = useSelector((state) => state.auth.profile)
@@ -117,5 +117,3 @@ const SideRight = () => {
     </div>
   )
 }
-
-export default SideRight

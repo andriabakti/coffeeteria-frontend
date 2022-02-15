@@ -6,7 +6,7 @@ import blank from '../../../assets/images/blank_profile.jpg'
 import qs from 'query-string'
 import { useSelector } from 'react-redux'
 
-const PartRight = () => {
+export const PartRight = () => {
   const { pathname, search } = useLocation()
   const { detail } = useSelector((state) => state.user)
   const parsed = qs.parse(search)
@@ -65,5 +65,3 @@ const PartRight = () => {
     </>
   )
 }
-
-export default PartRight

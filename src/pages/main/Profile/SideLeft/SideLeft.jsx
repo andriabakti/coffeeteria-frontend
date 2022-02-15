@@ -8,7 +8,7 @@ import blank from '../../../../assets/images/blank_profile.jpg'
 import { resetChange } from '../../../../redux/actions/user'
 
 
-const SideLeft = (props) => {
+export const SideLeft = (props) => {
   const ref = useRef()
   const dispatch = useDispatch()
   const { detail, detailTemp } = useSelector((state) => state.user)
@@ -74,5 +74,3 @@ const SideLeft = (props) => {
     </div>
   )
 }
-
-export default SideLeft

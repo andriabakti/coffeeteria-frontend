@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 // components
-import SideLeft from './SideLeft/SideLeft'
-import SideRight from './SideRight/SideRight'
-import Footer from '../../../components/Footer/Footer'
+import { SideLeft } from './SideLeft/SideLeft'
+import { SideRight } from './SideRight/SideRight'
 // react-helmet
-import { Helmet } from 'react-helmet'
+import Helmet from 'react-helmet'
 // react-router
 import { useParams, Link } from 'react-router-dom'
 // react-redux
@@ -14,11 +13,11 @@ import { getProduct, getDetail, changeDetail, updateProduct } from '../../../red
 import { addCart } from '../../../redux/actions/cart'
 // style
 import style from './Detail.module.css'
-import SideRightAdmin from './SideRightAdmin/SideRightAdmin'
+import { SideEdit } from './SideEdit/SideEdit'
 import { useHistory } from 'react-router-dom'
 
 
-const Detail = () => {
+export const Detail = () => {
   const link = {
     textDecoration: 'none',
     color: 'inherit'
@@ -96,15 +95,12 @@ const Detail = () => {
             {profile.role !== 'admin' ? (
               <SideRight detail={detail} addToCart={handleAddCart} />
             ) : (
-              <SideRightAdmin handleUpdate={editProduct} />
+              <SideEdit handleUpdate={editProduct} />
             )
             }
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   )
 }
-
-export default Detail

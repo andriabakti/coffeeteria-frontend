@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import style from './TabsBar.module.css'
 
-const TabsBar = () => {
+export const TabsBar = () => {
   const history = useHistory()
   return (
     <ul className={`nav justify-content-center ${style.wrapper}`}>
@@ -45,5 +45,3 @@ const TabsBar = () => {
     </ul>
   )
 }
-
-export default TabsBar

@@ -2,7 +2,7 @@ import React from 'react'
 // style
 import style from './InputAuth.module.css'
 
-const InputAuth = (props) => {
+export const InputAuth = (props) => {
   return (
     <div className={`mb-3 ${style.box}`}>
       <label
@@ -23,5 +23,3 @@ const InputAuth = (props) => {
     </div>
   )
 }
-
-export default InputAuth

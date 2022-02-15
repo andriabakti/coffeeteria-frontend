@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import style from './PartCenter.module.css'
 
 
-const PartCenter = () => {
+export const PartCenter = () => {
   const { pathname } = useLocation()
   const link = {
     textDecoration: 'none',
@@ -62,5 +62,3 @@ const PartCenter = () => {
     </div>
   )
 };
-
-export default PartCenter;

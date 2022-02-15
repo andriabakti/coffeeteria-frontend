@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal } from 'react-bootstrap'
 import style from './ModalDelete.module.css'
 
-const ModalDelete = (props) => {
+export const ModalDelete = (props) => {
   return (
     <Modal show={props.show}
       dialogClassName={style['border-radius']}
@@ -24,5 +24,3 @@ const ModalDelete = (props) => {
     </Modal>
   )
 };
-
-export default ModalDelete;

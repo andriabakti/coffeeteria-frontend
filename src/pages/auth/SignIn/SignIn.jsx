@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 // components
-import InputAuth from '../../../components/InputAuth/InputAuth'
+import { InputAuth } from '../../../components/InputAuth/InputAuth'
 // react-helmet
-import { Helmet } from 'react-helmet'
+import Helmet from 'react-helmet'
 // react-router
 import { useHistory } from 'react-router-dom'
 // react-redux
@@ -12,7 +12,7 @@ import { login } from '../../../redux/actions/auth'
 // style
 import style from './SignIn.module.css'
 
-const SignIn = () => {
+export const SignIn = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   // const loginState = useSelector((state) => state.auth)
@@ -80,5 +80,3 @@ const SignIn = () => {
     </div>
   )
 }
-
-export default SignIn

@@ -2,13 +2,13 @@ import React from 'react';
 // react-router
 import { Link } from 'react-router-dom'
 // style
-import style from './SectionOne.module.css'
+import style from './SectionUpper.module.css'
 // assets
 import icon_user from '../../../../assets/icons/icon_user.svg'
 import icon_location from '../../../../assets/icons/icon_location.svg'
 import icon_like from '../../../../assets/icons/icon_like.svg'
 
-const SectionOne = () => {
+export const SectionUpper = () => {
   return (
     <div className={`text-white ${style.container}`}>
       <div className={`container ${style.main}`}>
@@ -67,5 +67,3 @@ const SectionOne = () => {
     </div >
   )
 };
-
-export default SectionOne;

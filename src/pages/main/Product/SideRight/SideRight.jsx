@@ -8,17 +8,17 @@ import { useSelector, useDispatch } from 'react-redux'
 // redux
 import { getProduct } from '../../../../redux/actions/product'
 // components
-import ItemCard from '../../../../components/CardProduct/CardProduct'
+import { CardProduct } from '../../../../components/CardProduct/CardProduct'
 // style
 import style from './SideRight.module.css'
-import ModalCreate from '../../../../components/ModalCreate/ModalCreate'
+import { ModalCreate } from '../../../../components/ModalCreate/ModalCreate'
 import { useLocation } from 'react-router-dom'
 import qs from 'query-string'
-import Pagination from '../../../../components/Pagination/Pagination'
-import TabsBar from '../../../../components/TabsBar/TabsBar'
+import { Pagination } from '../../../../components/Pagination/Pagination'
+import { TabsBar } from '../../../../components/TabsBar/TabsBar'
 // import CardBox from '../CardBox/CardBox'
 
-const SideRight = () => {
+export const SideRight = () => {
   const { items, pages, isLoading } = useSelector((state) => state.product)
   const { profile } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
@@ -50,7 +50,7 @@ const SideRight = () => {
           <div className={`${style.card}`}>
             {items.map((item) => (
               <div className={`col-md-3`} key={item.id}>
-                <ItemCard
+                <CardProduct
                   id={item.id}
                   name={item.name}
                   price={item.price}
@@ -74,5 +74,3 @@ const SideRight = () => {
     </div>
   )
 }
-
-export default SideRight

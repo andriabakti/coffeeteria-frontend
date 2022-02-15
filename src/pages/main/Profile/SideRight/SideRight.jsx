@@ -8,9 +8,9 @@ import { changeProfile } from '../../../../redux/actions/user'
 import DatePicker from 'react-date-picker'
 import moment from 'moment'
 
-const SideRight = (props) => {
+export const SideRight = (props) => {
   const dispatch = useDispatch()
-  const { detail, detailTemp } = useSelector((state) => state.user)
+  const { detailTemp } = useSelector((state) => state.user)
   const formatted = moment(detailTemp.birth_date).startOf('day')._d
   const handleChange = (e) => {
     dispatch(
@@ -154,9 +154,10 @@ const SideRight = (props) => {
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'female' || detailTemp.gender === '') && '1'
+              (detailTemp.gender === 'female' || detailTemp.gender === null || detailTemp.gender === '') && 'male'
             }
-            defaultChecked={detail.gender === 'male' ? true : false}
+            defaultChecked={detailTemp.gender === 'male' && true}
+            required={detailTemp.gender === null ? true : false}
             name='gender'
             type='radio'
             id='male'
@@ -172,9 +173,10 @@ const SideRight = (props) => {
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'male' || detailTemp.gender === '') && '2'
+              (detailTemp.gender === 'male' || detailTemp.gender === null || detailTemp.gender === '') && 'female'
             }
-            defaultChecked={detail.gender === 'female' ? true : false}
+            defaultChecked={detailTemp.gender === 'female' && true}
+            required={detailTemp.gender === null ? true : false}
             name='gender'
             type='radio'
             id='female'
@@ -189,5 +191,3 @@ const SideRight = (props) => {
     </div>
   )
 }
-
-export default SideRight

@@ -5,7 +5,7 @@ import style from './SideLeft.module.css'
 import img from '../../../../assets/images/blank_img.jpg'
 // import { useSelector } from 'react-redux'
 
-const SideLeft = (props) => {
+export const SideLeft = (props) => {
   // const { detail } = useSelector((state) => state.product)
 
   return (
@@ -27,4 +27,3 @@ const SideLeft = (props) => {
   )
 }
 
-export default SideLeft

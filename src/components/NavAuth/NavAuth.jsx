@@ -6,7 +6,7 @@ import style from './NavAuth.module.css'
 // assets
 import logo from '../../assets/icons/icon.svg'
 
-const NavAuth = () => {
+export const NavAuth = () => {
   let { pathname } = useLocation()
   let { location } = useHistory()
 
@@ -36,5 +36,3 @@ const NavAuth = () => {
     </nav >
   )
 }
-
-export default NavAuth

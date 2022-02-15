@@ -6,7 +6,7 @@ import { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { addProduct, getProduct } from '../../redux/actions/product'
 
-const ModalCreate = (props) => {
+export const ModalCreate = (props) => {
   const ref = useRef()
   const dispatch = useDispatch()
   const [name, setName] = useState('')
@@ -173,5 +173,3 @@ const ModalCreate = (props) => {
     </Modal>
   )
 }
-
-export default ModalCreate

@@ -8,7 +8,7 @@ import style from './SideRight.module.css'
 import { useSelector } from 'react-redux'
 import { numFormatter } from '../../../../utils/numeral'
 
-const SideRight = ({ detail, addToCart }) => {
+export const SideRight = ({ detail, addToCart }) => {
   const { profile } = useSelector((state) => state.auth)
   const history = useHistory()
 
@@ -129,5 +129,3 @@ const SideRight = ({ detail, addToCart }) => {
     </div>
   )
 }
-
-export default SideRight

@@ -4,7 +4,7 @@ import ScrollToTop from 'react-scroll-to-top'
 import style from './ScrollTop.module.css'
 import { ReactComponent as Icon } from '../../assets/icons/icon_arrow.svg'
 
-const ScrollTop = () => {
+export const ScrollTop = () => {
   return (
     <>
       <ScrollToTop
@@ -15,5 +15,3 @@ const ScrollTop = () => {
     </>
   )
 };
-
-export default ScrollTop;

@@ -2,7 +2,7 @@ import React from 'react';
 // style
 import style from './SideLeft.module.css'
 
-const SideLeft = () => {
+export const SideLeft = () => {
   return (
     <div className={`col-md-3 ${style.sidebar}`}>
       <div className='mb-auto'>
@@ -32,5 +32,3 @@ const SideLeft = () => {
     </div>
   );
 };
-
-export default SideLeft;

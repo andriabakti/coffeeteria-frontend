@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 // components
-import SideLeft from './SideLeft/SideLeft'
-import SideRight from './SideRight/SideRight'
-import ModalExit from '../../../components/ModalExit/ModalExit'
-import Footer from '../../../components/Footer/Footer'
+import { SideLeft } from './SideLeft/SideLeft'
+import { SideRight } from './SideRight/SideRight'
+import { ModalExit } from '../../../components/ModalExit/ModalExit'
 // react-helmet
-import { Helmet } from 'react-helmet'
+import Helmet from 'react-helmet'
 // react-redux
 import { useSelector, useDispatch } from 'react-redux'
 import { getUserDetail, changeProfile, updateProfile } from '../../../redux/actions/user'
@@ -16,7 +15,7 @@ import { useHistory } from 'react-router-dom'
 import moment from 'moment'
 
 
-const Profile = () => {
+export const Profile = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const { profile } = useSelector((state) => state.auth)
@@ -66,7 +65,7 @@ const Profile = () => {
   newProfile.append('first_name', detailTemp.first_name)
   newProfile.append('last_name', detailTemp.last_name)
   newProfile.append('birth_date', date)
-  newProfile.append('gender', parseInt(detailTemp.gender))
+  newProfile.append('gender', detailTemp.gender)
   newProfile.append('address', detailTemp.address)
   newProfile.append('image', image)
   newProfile.append('username', detailTemp.username)
@@ -109,7 +108,6 @@ const Profile = () => {
             />
           </div>
         </div>
-        <Footer />
       </div>
       <ModalExit show={show}
         onHide={handleShow}
@@ -117,5 +115,3 @@ const Profile = () => {
     </div>
   )
 }
-
-export default Profile

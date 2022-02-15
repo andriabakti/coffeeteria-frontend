@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 // style
 import style from './ModalExit.module.css'
 
-const ModalExit = (props) => {
+export const ModalExit = (props) => {
   const history = useHistory()
 
   const logOut = () => {
@@ -34,5 +34,3 @@ const ModalExit = (props) => {
     </Modal>
   )
 }
-
-export default ModalExit

@@ -1,13 +1,13 @@
 import React from 'react'
 // style
-import style from './SideRightAdmin.module.css'
+import style from './SideEdit.module.css'
 // numeral
 // import numeral from 'numeral'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeDetail } from '../../../../redux/actions/product'
 import { numFormatter } from '../../../../utils/numeral'
 
-const SideEditRight = (props) => {
+export const SideEdit = (props) => {
   // numeral.locale('es')
   const { detailTemp } = useSelector((state) => state.product)
   const dispatch = useDispatch()
@@ -69,5 +69,3 @@ const SideEditRight = (props) => {
     </div>
   )
 }
-
-export default SideEditRight

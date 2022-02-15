@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 // components
-import CardHistory from '../../../components/CardHistory/CardHistory'
-import Footer from '../../../components/Footer/Footer'
+import { CardHistory } from '../../../components/CardHistory/CardHistory'
 // react-helmet
-import { Helmet } from 'react-helmet'
+import Helmet from 'react-helmet'
 // react-redux
 import { useSelector, useDispatch } from 'react-redux'
 //  redux
@@ -11,7 +10,7 @@ import { getHistory } from '../../../redux/actions/order'
 // style
 import style from './History.module.css'
 
-const History = () => {
+export const History = () => {
   const { history } = useSelector((state) => state.order)
   const dispatch = useDispatch()
 
@@ -50,10 +49,7 @@ const History = () => {
             </div>
           )}
         </div>
-        <Footer />
       </div>
     </div>
   )
 }
-
-export default History

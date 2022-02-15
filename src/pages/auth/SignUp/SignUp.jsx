@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 // components
-import InputAuth from '../../../components/InputAuth/InputAuth'
+import { InputAuth } from '../../../components/InputAuth/InputAuth'
 // react-helmet
-import { Helmet } from 'react-helmet'
+import Helmet from 'react-helmet'
 // react-router
 import { useHistory } from 'react-router-dom'
 // react-redux
@@ -12,7 +12,7 @@ import { register } from '../../../redux/actions/auth'
 // style
 import style from './SignUp.module.css'
 
-const SignUp = () => {
+export const SignUp = () => {
   const history = useHistory()
   const dispatch = useDispatch()
 
@@ -91,5 +91,3 @@ const SignUp = () => {
     </div>
   )
 }
-
-export default SignUp

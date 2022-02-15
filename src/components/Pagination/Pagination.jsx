@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import style from './Pagination.module.css'
 import { changePage } from '../../redux/actions/product'
 
-const Pagination = () => {
+export const Pagination = () => {
   const dispatch = useDispatch()
   const { pages } = useSelector((state) => state.product)
 
@@ -29,5 +29,3 @@ const Pagination = () => {
     </div>
   )
 };
-
-export default Pagination;

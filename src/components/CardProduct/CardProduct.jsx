@@ -8,10 +8,10 @@ import icon_edit from '../../assets/icons/icon_edit.svg'
 // import numeral from 'numeral'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteProduct, getProduct } from '../../redux/actions/product'
-import ModalDelete from '../ModalDelete/ModalDelete'
+import { ModalDelete } from '../ModalDelete/ModalDelete'
 import { numFormatter } from '../../utils/numeral'
 
-const CardProduct = ({ id, name, price, image, clickEvent }) => {
+export const CardProduct = ({ id, name, price, image, clickEvent }) => {
   // numeral.locale('es')
   // const formatted = numeral(price).format('0,0')
   const [open, setOpen] = useState(false)
@@ -63,5 +63,3 @@ const CardProduct = ({ id, name, price, image, clickEvent }) => {
     </>
   )
 }
-
-export default CardProduct

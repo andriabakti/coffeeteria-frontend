@@ -1,19 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import { App } from './App'
 import reportWebVitals from './reportWebVitals'
-// bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
-import "bootstrap/dist/js/bootstrap.min.js";
-// redux
-import { PersistGate } from 'redux-persist/integration/react'
+// react: redux
 import { Provider } from 'react-redux'
+// redux: persist
+import { PersistGate } from 'redux-persist/integration/react'
+// redux: store
 import configureStore from './redux/store'
-// numeral
-import 'numeral/locales'
-// style
+// styles: bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
+// styles: global
 import './index.css'
 
+// modules
 const { store, persistor } = configureStore()
 
 ReactDOM.render(

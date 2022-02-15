@@ -1,21 +1,25 @@
 import React from 'react'
+// modules: react-router
 import { Route, Redirect } from 'react-router-dom'
 
-const RoutePublic = ({ component: Component, restricted, ...rest }, props) => {
+export const RoutePublic = ({ component: Component, restricted, ...rest }) => {
   const isAuthenticated = localStorage.getItem('token')
+
   return (
-    <Route {...rest}
+    <Route
+      {...rest}
       render={(props) =>
         isAuthenticated && restricted ? (
-          <Redirect to={{
-            pathname: '/main/product',
-            state: { from: props.location }
-          }} />
+          <Redirect
+            to={{
+              pathname: '/main/product',
+              state: { from: props.location }
+            }}
+          />
         ) : (
           <Component {...props} />
-        )}
+        )
+      }
     />
   )
 }
-
-export default RoutePublic

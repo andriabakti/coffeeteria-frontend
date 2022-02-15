@@ -9,7 +9,7 @@ import icon_fb from '../../assets/icons/icon_fb.svg'
 import icon_tw from '../../assets/icons/icon_tw.svg'
 import icon_ig from '../../assets/icons/icon_ig.svg'
 
-const Footer = (props) => {
+export const Footer = (props) => {
   const { pathname } = useLocation()
   const link = {
     textDecoration: 'none',
@@ -111,5 +111,3 @@ const Footer = (props) => {
     </div>
   )
 }
-
-export default Footer

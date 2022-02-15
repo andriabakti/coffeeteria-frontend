@@ -1,10 +1,10 @@
 import React from 'react';
 // style
-import style from './SectionTwo.module.css'
+import style from './SectionLower.module.css'
 // assets
 import home_img_one from '../../../../assets/images/home_img.png'
 
-const SectionTwo = () => {
+export const SectionLower = () => {
   return (
     <div className={`container ${style.container}`}>
       <div className={`${style.content}`}>
@@ -25,5 +25,3 @@ const SectionTwo = () => {
     </div>
   )
 };
-
-export default SectionTwo;
