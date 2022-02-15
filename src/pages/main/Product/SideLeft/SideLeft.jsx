@@ -1,5 +1,5 @@
-import React from 'react';
-// style
+import React from 'react'
+// styles: module
 import style from './SideLeft.module.css'
 
 export const SideLeft = () => {
@@ -30,5 +30,5 @@ export const SideLeft = () => {
         <li>4. Should make member card to apply coupon</li>
       </div>
     </div>
-  );
-};
+  )
+}

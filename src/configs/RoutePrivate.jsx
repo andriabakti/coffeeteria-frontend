@@ -1,5 +1,5 @@
 import React from 'react'
-// modules: react-router
+// pkgs: react-router
 import { Route, Redirect } from 'react-router-dom'
 
 export const RoutePrivate = ({ component: Component, ...rest }) => {

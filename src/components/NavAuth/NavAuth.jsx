@@ -1,14 +1,14 @@
 import React from 'react'
-// react-router
+// pkgs: react-router
 import { useLocation, useHistory, Link } from 'react-router-dom'
-// style
-import style from './NavAuth.module.css'
-// assets
+// assets: image
 import logo from '../../assets/icons/icon.svg'
+// styles: module
+import style from './NavAuth.module.css'
 
 export const NavAuth = () => {
-  let { pathname } = useLocation()
-  let { location } = useHistory()
+  const { pathname } = useLocation()
+  const { location } = useHistory()
 
   return (
     <nav className={`navbar navbar-expand-lg bg-white ${style.nav}`}>
@@ -23,16 +23,12 @@ export const NavAuth = () => {
               ? '/auth/sign-in'
               : '/auth/sign-up'
           }
-          className={`navbar-item`}
-        >
-          <button
-            className={`btn ${style.btn_gold}`}
-            type='button'
-          >
+          className={`navbar-item`}>
+          <button className={`btn ${style.btn_gold}`} type='button'>
             {pathname === '/auth/sign-up' ? 'Login' : 'Sign Up'}
           </button>
         </Link>
       </div>
-    </nav >
+    </nav>
   )
 }

@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react'
-// react-custom-scrollbars
-// import { Scrollbars } from 'react-custom-scrollbars-2'
-// react-router
-import { useHistory } from 'react-router-dom'
-// react-redux
-import { useSelector, useDispatch } from 'react-redux'
-// redux
-import { getProduct } from '../../../../redux/actions/product'
-// components
-import { CardProduct } from '../../../../components/CardProduct/CardProduct'
-// style
-import style from './SideRight.module.css'
-import { ModalCreate } from '../../../../components/ModalCreate/ModalCreate'
-import { useLocation } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+// pkgs: query-string
 import qs from 'query-string'
+// pkgs: react-router
+import { useHistory, useLocation } from 'react-router-dom'
+// pkgs: react-redux
+import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
+import { getProduct } from '../../../../redux/actions/product'
+// components: module
+import { CardProduct } from '../../../../components/CardProduct/CardProduct'
 import { Pagination } from '../../../../components/Pagination/Pagination'
 import { TabsBar } from '../../../../components/TabsBar/TabsBar'
-// import CardBox from '../CardBox/CardBox'
+import { ModalCreate } from '../../../../components/ModalCreate/ModalCreate'
+// styles: module
+import style from './SideRight.module.css'
 
 export const SideRight = () => {
   const { items, pages, isLoading } = useSelector((state) => state.product)

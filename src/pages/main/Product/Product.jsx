@@ -1,10 +1,10 @@
 import React from 'react'
-// component
+// pkgs: react-helmet
+import Helmet from 'react-helmet'
+// components: side
 import { SideLeft } from './SideLeft/SideLeft'
 import { SideRight } from './SideRight/SideRight'
-// react-helmet
-import Helmet from 'react-helmet'
-// style
+// styles: module
 import style from './Product.module.css'
 
 export const Product = () => {

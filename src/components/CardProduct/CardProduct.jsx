@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
-// style
-import style from './CardProduct.module.css'
-// assets
-import blank from '../../assets/images/blank_img.jpg'
-import icon_edit from '../../assets/icons/icon_edit.svg'
-// numeral
-// import numeral from 'numeral'
+// pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
 import { deleteProduct, getProduct } from '../../redux/actions/product'
-import { ModalDelete } from '../ModalDelete/ModalDelete'
+// modules: numeral-formatter
 import { numFormatter } from '../../utils/numeral'
+// components: module
+import { ModalDelete } from '../ModalDelete/ModalDelete'
+// assets: image
+import blank from '../../assets/images/blank_img.jpg'
+// assets: icon
+import icon_edit from '../../assets/icons/icon_edit.svg'
+// styles: module
+import style from './CardProduct.module.css'
 
 export const CardProduct = ({ id, name, price, image, clickEvent }) => {
   // numeral.locale('es')

@@ -73,7 +73,7 @@ const product = (state = initialState, action) => {
         ...state,
         msg: action.payload.data.message,
         isLoading: false,
-        isError: false,
+        isError: false
       }
     case 'ADD_PRODUCT_REJECTED':
       return {
@@ -113,7 +113,7 @@ const product = (state = initialState, action) => {
         ...state,
         msg: action.payload.data.message,
         isLoading: false,
-        isError: false,
+        isError: false
       }
     case 'UPDATE_PRODUCT_REJECTED':
       return {
@@ -135,7 +135,7 @@ const product = (state = initialState, action) => {
         ...state,
         msg: action.payload.data.message,
         isLoading: false,
-        isError: false,
+        isError: false
       }
     case 'DELETE_PRODUCT_REJECTED':
       return {

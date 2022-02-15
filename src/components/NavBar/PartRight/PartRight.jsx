@@ -1,10 +1,14 @@
 import React from 'react'
-// react-router
-import { Link, useLocation, useHistory } from 'react-router-dom'
-import style from './PartRight.module.css'
-import blank from '../../../assets/images/blank_profile.jpg'
+// pkgs: query-string
 import qs from 'query-string'
+// pkgs: react-router
+import { Link, useLocation, useHistory } from 'react-router-dom'
+// pkgs: react-redux
 import { useSelector } from 'react-redux'
+// assets: image
+import blank from '../../../assets/images/blank_profile.jpg'
+// styles: module
+import style from './PartRight.module.css'
 
 export const PartRight = () => {
   const { pathname, search } = useLocation()

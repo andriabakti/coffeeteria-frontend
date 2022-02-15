@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
-// react-redux
+// pkgs: react-router
+import { useHistory } from 'react-router-dom'
+// pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
-// redux
+// modules: redux-action
 import { resetCart } from '../../../../redux/actions/cart'
 import { purchaseOrders } from '../../../../redux/actions/order'
-// style
-import style from './SideRight.module.css'
-// assets
+// assets: icon
 import icon_card from '../../../../assets/icons/icon_card.svg'
 import icon_bank from '../../../../assets/icons/icon_bank.svg'
 import icon_cash from '../../../../assets/icons/icon_cash.svg'
-import { useHistory } from 'react-router-dom'
+// styles: module
+import style from './SideRight.module.css'
 
 export const SideRight = () => {
   const history = useHistory()
@@ -40,7 +41,8 @@ export const SideRight = () => {
               <b>Delivery</b> to
             </li>
             <li className={`list-group-item ${style.address}`}>
-              Iskandar Street km 5 refinery road oppsite republic road, effurun, Jakarta
+              Iskandar Street km 5 refinery road oppsite republic road, effurun,
+              Jakarta
             </li>
             <li className='list-group-item'>+62 81348287878</li>
           </ul>

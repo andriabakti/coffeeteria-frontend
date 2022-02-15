@@ -1,5 +1,5 @@
 import React from 'react'
-// react: router
+// pkgs: react-router
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 // components: base-page
 import { Auth } from './pages/Auth/Auth'

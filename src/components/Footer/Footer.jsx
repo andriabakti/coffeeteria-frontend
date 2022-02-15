@@ -1,13 +1,14 @@
 import React from 'react'
-// react-router
+// pkgs: react-router
 import { Link, useLocation } from 'react-router-dom'
-// style
-import style from './Footer.module.css'
-// assets
+// assets: image
 import logo from '../../assets/icons/icon.svg'
+// assets: icon
 import icon_fb from '../../assets/icons/icon_fb.svg'
-import icon_tw from '../../assets/icons/icon_tw.svg'
+import icon_twt from '../../assets/icons/icon_twt.svg'
 import icon_ig from '../../assets/icons/icon_ig.svg'
+// styles: module
+import style from './Footer.module.css'
 
 export const Footer = (props) => {
   const { pathname } = useLocation()
@@ -76,7 +77,7 @@ export const Footer = (props) => {
                 />
                 <img
                   className={`${style.btn_share}`}
-                  src={icon_tw}
+                  src={icon_twt}
                   alt='btn_tw'
                 />
                 <img

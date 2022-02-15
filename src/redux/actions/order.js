@@ -1,4 +1,5 @@
-import axiosApiInstances from '../../utils/axios';
+// modules: axios-instance
+import axiosApiInstances from '../../utils/axios'
 
 export const purchaseOrders = (data) => {
   return {

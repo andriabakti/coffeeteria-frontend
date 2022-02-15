@@ -1,24 +1,21 @@
-import React from 'react';
-// modules: react-helmet
+import React from 'react'
+// pkgs: react-helmet
 import Helmet from 'react-helmet'
-// components: module
-import { SectionUpper } from './SectionUpper/SectionUpper';
-import { SectionLower } from './SectionLower/SectionLower';
-// styles: module
-import style from './Home.module.css'
+// components: section
+import { SectionUpper } from './SectionUpper/SectionUpper'
+import { SectionLower } from './SectionLower/SectionLower'
 
 export const Home = () => {
-
   return (
-    <div className={`${style.container}`}>
+    <>
       <Helmet>
         <title>Home - CoffeeTeria</title>
         <meta name='description' content='Home Page' />
       </Helmet>
-      <div className={`${style.main}`}>
+      <div>
         <SectionUpper />
         <SectionLower />
       </div>
-    </div>
-  );
+    </>
+  )
 }

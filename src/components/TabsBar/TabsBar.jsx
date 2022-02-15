@@ -1,45 +1,36 @@
 import React from 'react'
+// pkgs: react-router
 import { useHistory } from 'react-router-dom'
+// styles: module
 import style from './TabsBar.module.css'
 
 export const TabsBar = () => {
   const history = useHistory()
   return (
     <ul className={`nav justify-content-center ${style.wrapper}`}>
-      <li className='nav-item'
-        onClick={() =>
-          history.push(`/main/product`)
-        }>
+      <li className='nav-item' onClick={() => history.push(`/main/product`)}>
         <span className='nav-link' aria-current='page'>
           All Product
         </span>
       </li>
       <li
         className='nav-item'
-        onClick={() =>
-          history.push(`/main/product?filter=${1}`)
-        }>
+        onClick={() => history.push(`/main/product?filter=${1}`)}>
         <span className='nav-link'>Coffee</span>
       </li>
       <li
         className='nav-item'
-        onClick={() =>
-          history.push(`/main/product?filter=${2}`)
-        }>
+        onClick={() => history.push(`/main/product?filter=${2}`)}>
         <span className='nav-link'>Non Coffee</span>
       </li>
       <li
         className='nav-item'
-        onClick={() =>
-          history.push(`/main/product?filter=${3}`)
-        }>
+        onClick={() => history.push(`/main/product?filter=${3}`)}>
         <span className='nav-link'>Foods</span>
       </li>
       <li
         className='nav-item'
-        onClick={() =>
-          history.push(`/main/product?filter=${4}`)
-        }>
+        onClick={() => history.push(`/main/product?filter=${4}`)}>
         <span className='nav-link'>Add-on</span>
       </li>
     </ul>

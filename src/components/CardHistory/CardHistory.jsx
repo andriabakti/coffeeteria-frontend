@@ -1,10 +1,10 @@
 import React from 'react'
-// style
-import style from './CardHistory.module.css'
-// assets
-// import img from '../../../../assets/images/blank_img.jpg'
-// numeral
+// modules: numeral-formatter
 import { numFormatter } from '../../utils/numeral'
+// assets: image
+// import img from '../../../../assets/images/blank_img.jpg'
+// styles: module
+import style from './CardHistory.module.css'
 
 export const CardHistory = (props) => {
   const totalPrice = numFormatter(props.price * props.quantity)
@@ -13,7 +13,11 @@ export const CardHistory = (props) => {
       <div className={`row g-0`}>
         <div className={`col-lg-4`}>
           <div className={`${style.img_body}`}>
-            <img src={props.image} alt="product_img" className={`${style.img}`} />
+            <img
+              src={props.image}
+              alt='product_img'
+              className={`${style.img}`}
+            />
           </div>
         </div>
         <div className={`col-lg-8`}>

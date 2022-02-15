@@ -1,8 +1,8 @@
 import React from 'react'
-// style
+// assets: image
+import blank from '../../../../assets/images/blank_img.jpg'
+// styles: module
 import style from './SideLeft.module.css'
-// assets
-import img from '../../../../assets/images/blank_img.jpg'
 // import { useSelector } from 'react-redux'
 
 export const SideLeft = (props) => {
@@ -10,12 +10,12 @@ export const SideLeft = (props) => {
 
   return (
     <div className={`col-md-6 ${style.section}`}>
-      <input type="file" name="image" id="image" onChange={props.changeImage} />
+      <input type='file' name='image' id='image' onChange={props.changeImage} />
       <div className={`${style.img}`}>
         {props.image ? (
           <img src={props.image} alt='item_img' />
         ) : (
-          <img src={img} alt='item_img' />
+          <img src={blank} alt='item_img' />
         )}
       </div>
       <span className={`${style.text}`}>
@@ -26,4 +26,3 @@ export const SideLeft = (props) => {
     </div>
   )
 }
-

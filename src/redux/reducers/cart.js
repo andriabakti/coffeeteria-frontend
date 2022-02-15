@@ -15,8 +15,9 @@ const cart = (state = initialState, action) => {
         0
       )
       const tax = (subTotal * 10) / 100
-      const ship = items.find(item =>
-        item.delivery === 'Door Delivery' && true)
+      const ship = items.find(
+        (item) => item.delivery === 'Door Delivery' && true
+      )
       const shipCost = !ship ? 0 : 10000
       return {
         ...state,
@@ -36,8 +37,9 @@ const cart = (state = initialState, action) => {
         0
       )
       const tax = (subTotal * 10) / 100
-      const ship = items.find(item =>
-        item.delivery === 'Door Delivery' && true)
+      const ship = items.find(
+        (item) => item.delivery === 'Door Delivery' && true
+      )
       const shipCost = !ship ? 0 : 10000
       return {
         ...state,

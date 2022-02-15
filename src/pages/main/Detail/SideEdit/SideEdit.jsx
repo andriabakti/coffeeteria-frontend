@@ -1,48 +1,73 @@
 import React from 'react'
-// style
-import style from './SideEdit.module.css'
-// numeral
-// import numeral from 'numeral'
+// pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
 import { changeDetail } from '../../../../redux/actions/product'
+// modules: numeral-formatter
 import { numFormatter } from '../../../../utils/numeral'
+// styles: module
+import style from './SideEdit.module.css'
 
 export const SideEdit = (props) => {
-  // numeral.locale('es')
   const { detailTemp } = useSelector((state) => state.product)
   const dispatch = useDispatch()
   const handleChange = (e) => {
-    dispatch(changeDetail({
-      [e.target.name]: e.target.value
-    }))
+    dispatch(
+      changeDetail({
+        [e.target.name]: e.target.value
+      })
+    )
   }
 
   return (
     <div className={`col-md-5 ${style.section}`}>
       <div className={style.detail}>
         {/* <h6 className={`${style.title}`}></h6> */}
-        <div className="mb-3">
-          <label forhtml="name" className="form-label">Name</label>
-          <input type="text" className="form-control form-control-lg" name='name' id="name" placeholder="name"
+        <div className='mb-3'>
+          <label forhtml='name' className='form-label'>
+            Name
+          </label>
+          <input
+            type='text'
+            className='form-control form-control-lg'
+            name='name'
+            id='name'
+            placeholder='name'
             onChange={handleChange}
-            value={detailTemp.name} />
+            value={detailTemp.name}
+          />
         </div>
-        <div className="mb-3">
-          <label forhtml="price" className="form-label">Price</label>
-          <input type="text" className="form-control form-control-lg" name='price' id="price" placeholder="price"
+        <div className='mb-3'>
+          <label forhtml='price' className='form-label'>
+            Price
+          </label>
+          <input
+            type='text'
+            className='form-control form-control-lg'
+            name='price'
+            id='price'
+            placeholder='price'
             onChange={handleChange}
-            value={`IDR ${numFormatter(detailTemp.price)}`} />
+            value={`IDR ${numFormatter(detailTemp.price)}`}
+          />
         </div>
-        <div className="mb-3">
-          <label forhtml="description" className="form-label">Description</label>
-          <textarea className="form-control" name='description' id="description" rows="3"
+        <div className='mb-3'>
+          <label forhtml='description' className='form-label'>
+            Description
+          </label>
+          <textarea
+            className='form-control'
+            name='description'
+            id='description'
+            rows='3'
             onChange={handleChange}
-            value={detailTemp.description}>
-          </textarea>
+            value={detailTemp.description}></textarea>
         </div>
       </div>
       {/* <div className={style.option}> */}
-      <label forhtml="category" className="form-label">Category</label>
+      <label forhtml='category' className='form-label'>
+        Category
+      </label>
       <select
         id='category'
         className={`mb-4 form-select ${style.dropdown}`}
@@ -60,9 +85,10 @@ export const SideEdit = (props) => {
         <option value={3}>Food</option>
         <option value={4}>Add-on</option>
       </select>
-      <button className={`btn ${style.btn_brown}`} type='button'
-        onClick={props.handleUpdate}
-      >
+      <button
+        className={`btn ${style.btn_brown}`}
+        type='button'
+        onClick={props.handleUpdate}>
         Save change
       </button>
       {/* </div> */}

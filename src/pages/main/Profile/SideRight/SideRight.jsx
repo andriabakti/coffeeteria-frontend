@@ -1,12 +1,16 @@
 import React from 'react'
-// style
-import style from './SideRight.module.css'
-// asset
-import icon_edit from '../../../../assets/icons/icon_edit.svg'
-import { useSelector, useDispatch } from 'react-redux'
-import { changeProfile } from '../../../../redux/actions/user'
-import DatePicker from 'react-date-picker'
+// pkgs: moment
 import moment from 'moment'
+// pkgs: react-date-picker
+import DatePicker from 'react-date-picker'
+// pkgs: react-redux
+import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
+import { changeProfile } from '../../../../redux/actions/user'
+// assets: image
+import icon_edit from '../../../../assets/icons/icon_edit.svg'
+// styles: module
+import style from './SideRight.module.css'
 
 export const SideRight = (props) => {
   const dispatch = useDispatch()
@@ -135,9 +139,7 @@ export const SideRight = (props) => {
           <DatePicker
             // className={`form-control ${style.input_area} ${style.input_sm}`}
             onChange={props.changeDate}
-            value={
-              detailTemp.birth_date !== null ? formatted : new Date()
-            }
+            value={detailTemp.birth_date !== null ? formatted : new Date()}
             yearPlaceholder='yyyy'
             monthPlaceholder='mm'
             dayPlaceholder='dd'
@@ -154,7 +156,10 @@ export const SideRight = (props) => {
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'female' || detailTemp.gender === null || detailTemp.gender === '') && 'male'
+              (detailTemp.gender === 'female' ||
+                detailTemp.gender === null ||
+                detailTemp.gender === '') &&
+              'male'
             }
             defaultChecked={detailTemp.gender === 'male' && true}
             required={detailTemp.gender === null ? true : false}
@@ -173,7 +178,10 @@ export const SideRight = (props) => {
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'male' || detailTemp.gender === null || detailTemp.gender === '') && 'female'
+              (detailTemp.gender === 'male' ||
+                detailTemp.gender === null ||
+                detailTemp.gender === '') &&
+              'female'
             }
             defaultChecked={detailTemp.gender === 'female' && true}
             required={detailTemp.gender === null ? true : false}

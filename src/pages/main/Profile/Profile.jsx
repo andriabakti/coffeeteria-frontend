@@ -1,19 +1,25 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-// components
+import React, { useState, useEffect } from 'react'
+// pkgs: moment
+import moment from 'moment'
+// pkgs: react-helmet
+import Helmet from 'react-helmet'
+// pkgs: react-router
+import { useHistory } from 'react-router-dom'
+// pkgs: react-redux
+import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
+import {
+  getUserDetail,
+  changeProfile,
+  updateProfile
+} from '../../../redux/actions/user'
+// components: side
 import { SideLeft } from './SideLeft/SideLeft'
 import { SideRight } from './SideRight/SideRight'
+// components: module
 import { ModalExit } from '../../../components/ModalExit/ModalExit'
-// react-helmet
-import Helmet from 'react-helmet'
-// react-redux
-import { useSelector, useDispatch } from 'react-redux'
-import { getUserDetail, changeProfile, updateProfile } from '../../../redux/actions/user'
-// style
+// styles: module
 import style from './Profile.module.css'
-import { useHistory } from 'react-router-dom'
-import moment from 'moment'
-
 
 export const Profile = () => {
   const history = useHistory()
@@ -22,7 +28,9 @@ export const Profile = () => {
   const { detail, detailTemp, msg } = useSelector((state) => state.user)
   const defaultDate = moment().format('YYYY-MM-DD')
   const getDate = moment(detailTemp.birth_date).format('YYYY-MM-DD')
-  const [date, setDate] = useState(detailTemp.birth_date !== null ? getDate : defaultDate)
+  const [date, setDate] = useState(
+    detailTemp.birth_date !== null ? getDate : defaultDate
+  )
   const [image, setImage] = useState(detailTemp.image)
   const [show, setShow] = useState(false)
   const handleShow = () => setShow(!show)
@@ -31,7 +39,7 @@ export const Profile = () => {
     let formatted
     let birthDate
     if (date !== null) {
-      formatted = moment(date).format('YYYY-MM-DD') + 'T00:00:00.000Z';
+      formatted = moment(date).format('YYYY-MM-DD') + 'T00:00:00.000Z'
       birthDate = moment(date).format('YYYY-MM-DD')
       setDate(birthDate)
     } else {
@@ -49,16 +57,20 @@ export const Profile = () => {
   const handleImage = (e) => {
     const imageFile = e.target.files[0]
     setImage(imageFile)
-    dispatch(changeProfile({
-      image: URL.createObjectURL(imageFile)
-    }))
+    dispatch(
+      changeProfile({
+        image: URL.createObjectURL(imageFile)
+      })
+    )
   }
 
   const removeImage = () => {
     setImage(null)
-    dispatch(changeProfile({
-      image: null
-    }))
+    dispatch(
+      changeProfile({
+        image: null
+      })
+    )
   }
 
   const newProfile = new FormData()
@@ -103,15 +115,11 @@ export const Profile = () => {
               resetImage={removeImage}
               handleUpdate={editProfile}
             />
-            <SideRight
-              changeDate={handleDate}
-            />
+            <SideRight changeDate={handleDate} />
           </div>
         </div>
       </div>
-      <ModalExit show={show}
-        onHide={handleShow}
-      />
+      <ModalExit show={show} onHide={handleShow} />
     </div>
   )
 }

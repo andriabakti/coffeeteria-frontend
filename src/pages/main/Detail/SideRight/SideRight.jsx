@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-// react-router
+// pkgs: react-router
 import { useHistory } from 'react-router-dom'
-// style
-import style from './SideRight.module.css'
-// numeral
-// import numeral from 'numeral'
+// pkgs: react-redux
 import { useSelector } from 'react-redux'
+// modules: numeral-formatter
 import { numFormatter } from '../../../../utils/numeral'
+// styles: module
+import style from './SideRight.module.css'
 
 export const SideRight = ({ detail, addToCart }) => {
   const { profile } = useSelector((state) => state.auth)

@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-// components
-import { InputAuth } from '../../../components/InputAuth/InputAuth'
-// react-helmet
+// pkgs: react-helmet
 import Helmet from 'react-helmet'
-// react-router
+// pkgs: react-router
 import { useHistory } from 'react-router-dom'
-// react-redux
+// pkgs: react-redux
 import { useDispatch } from 'react-redux'
-// redux
+// modules: redux-action
 import { login } from '../../../redux/actions/auth'
-// style
+// components: module
+import { InputAuth } from '../../../components/InputAuth/InputAuth'
+// styles: module
 import style from './SignIn.module.css'
 
 export const SignIn = () => {
@@ -34,7 +34,6 @@ export const SignIn = () => {
     dispatch(login(form))
       .then((result) => {
         localStorage.setItem('token', result.value.data.data.token)
-        // localStorage.setItem('token', loginState.data.token)
         alert('Login berhasil')
         history.push('/main/product')
       })

@@ -1,3 +1,4 @@
+// pkgs: numeral
 import numeral from 'numeral';
 import 'numeral/locales'
 

@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
 import reportWebVitals from './reportWebVitals'
-// react: redux
+// pkgs: react-redux
 import { Provider } from 'react-redux'
-// redux: persist
+// pkgs: redux-persist
 import { PersistGate } from 'redux-persist/integration/react'
-// redux: store
+// modules: redux-store
 import configureStore from './redux/store'
 // styles: bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'

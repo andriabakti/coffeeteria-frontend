@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
+// pkgs: react-bootstrap
 import { Modal } from 'react-bootstrap'
-import style from './ModalCreate.module.css'
-import blank from '../../assets/images/blank_img.jpg'
-import { useState, useRef } from 'react'
+// pkgs: react-redux
 import { useDispatch } from 'react-redux'
+// modules: redux-action
 import { addProduct, getProduct } from '../../redux/actions/product'
+// assets: image
+import blank from '../../assets/images/blank_img.jpg'
+// styles: module
+import style from './ModalCreate.module.css'
 
 export const ModalCreate = (props) => {
   const ref = useRef()
@@ -39,8 +43,8 @@ export const ModalCreate = (props) => {
     setPreview(image)
   }
   const reset = () => {
-    setImage(ref.current.value = null)
-    setPreview(ref.current.value = null)
+    setImage((ref.current.value = null))
+    setPreview((ref.current.value = null))
   }
   const handleDesc = (e) => {
     setDesc(e.target.value)
@@ -49,15 +53,13 @@ export const ModalCreate = (props) => {
     setCategory(e.target.value)
   }
   const handleCreate = async () => {
-    await dispatch(
-      addProduct(formData)
-    )
+    await dispatch(addProduct(formData))
     alert('New product added successfully')
     handleClose()
     await dispatch(getProduct(1, '', ''))
   }
   const handleClose = () => {
-    setPreview(ref.current.value = null)
+    setPreview((ref.current.value = null))
     props.onHide()
   }
   return (
@@ -164,7 +166,9 @@ export const ModalCreate = (props) => {
             onClick={handleClose}>
             Cancel
           </button>
-          <button className={`btn ${style.btn_brown}`} type='button'
+          <button
+            className={`btn ${style.btn_brown}`}
+            type='button'
             onClick={handleCreate}>
             Add
           </button>

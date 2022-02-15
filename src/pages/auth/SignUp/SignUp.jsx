@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-// components
-import { InputAuth } from '../../../components/InputAuth/InputAuth'
-// react-helmet
+// pkgs: react-helmet
 import Helmet from 'react-helmet'
-// react-router
+// pkgs: react-router
 import { useHistory } from 'react-router-dom'
-// react-redux
+// pkgs: react-redux
 import { useDispatch } from 'react-redux'
-// redux
+// modules: redux-action
 import { register } from '../../../redux/actions/auth'
-// style
+// components: module
+import { InputAuth } from '../../../components/InputAuth/InputAuth'
+// styles: module
 import style from './SignUp.module.css'
 
 export const SignUp = () => {

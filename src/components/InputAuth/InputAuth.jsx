@@ -1,14 +1,11 @@
 import React from 'react'
-// style
+// styles: module
 import style from './InputAuth.module.css'
 
 export const InputAuth = (props) => {
   return (
     <div className={`mb-3 ${style.box}`}>
-      <label
-        className='form-label'
-        htmlFor={props.id}
-      >
+      <label className='form-label' htmlFor={props.id}>
         {props.label}
       </label>
       <input

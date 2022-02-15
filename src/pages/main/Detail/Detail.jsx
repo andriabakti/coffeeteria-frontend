@@ -1,21 +1,24 @@
-import React, { useEffect, useState } from 'react'
-// components
+import React, { useState, useEffect } from 'react'
+// pkgs: react-helmet
+import Helmet from 'react-helmet'
+// pkgs: react-router
+import { useParams, useHistory, Link } from 'react-router-dom'
+// pkgs: react-redux
+import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
+import {
+  getProduct,
+  getDetail,
+  changeDetail,
+  updateProduct
+} from '../../../redux/actions/product'
+import { addCart } from '../../../redux/actions/cart'
+// components: side
 import { SideLeft } from './SideLeft/SideLeft'
 import { SideRight } from './SideRight/SideRight'
-// react-helmet
-import Helmet from 'react-helmet'
-// react-router
-import { useParams, Link } from 'react-router-dom'
-// react-redux
-import { useDispatch, useSelector } from 'react-redux'
-// redux
-import { getProduct, getDetail, changeDetail, updateProduct } from '../../../redux/actions/product'
-import { addCart } from '../../../redux/actions/cart'
-// style
-import style from './Detail.module.css'
 import { SideEdit } from './SideEdit/SideEdit'
-import { useHistory } from 'react-router-dom'
-
+// styles: module
+import style from './Detail.module.css'
 
 export const Detail = () => {
   const link = {
@@ -32,9 +35,11 @@ export const Detail = () => {
   const handleImage = (e) => {
     const fileImage = e.target.files[0]
     setImage(fileImage)
-    dispatch(changeDetail({
-      image: URL.createObjectURL(fileImage)
-    }))
+    dispatch(
+      changeDetail({
+        image: URL.createObjectURL(fileImage)
+      })
+    )
   }
 
   const formData = new FormData()
@@ -56,7 +61,6 @@ export const Detail = () => {
     alert(`${detail.name} berhasil ditambahkan ke keranjang`)
   }
 
-
   useEffect(() => {
     dispatch(getDetail(id))
   }, [dispatch, id])
@@ -72,7 +76,10 @@ export const Detail = () => {
           <nav className={`${style.crumb}`} aria-label='breadcrumb'>
             <ol className='breadcrumb'>
               <li className={`breadcrumb-item`}>
-                <Link style={link} to="/main/product" className={`${style.crumb_page}`}>
+                <Link
+                  style={link}
+                  to='/main/product'
+                  className={`${style.crumb_page}`}>
                   Product
                 </Link>
               </li>
@@ -96,8 +103,7 @@ export const Detail = () => {
               <SideRight detail={detail} addToCart={handleAddCart} />
             ) : (
               <SideEdit handleUpdate={editProduct} />
-            )
-            }
+            )}
           </div>
         </div>
       </div>

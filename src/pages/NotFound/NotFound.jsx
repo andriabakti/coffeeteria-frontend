@@ -1,5 +1,5 @@
 import React from 'react'
-// react: helmet
+// pkgs: react-helmet
 import Helmet from 'react-helmet'
 // styles: module
 import style from './NotFound.module.css'

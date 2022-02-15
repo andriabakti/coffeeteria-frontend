@@ -12,7 +12,7 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        isError: false,
+        isError: false
       }
     case 'REGISTER_FULFILLED':
       return {
@@ -33,7 +33,7 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        isError: false,
+        isError: false
       }
     case 'LOGIN_FULFILLED':
       return {

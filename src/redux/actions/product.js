@@ -1,7 +1,7 @@
+// modules: axios-instance
 import axiosApiInstances from '../../utils/axios'
 
 export const getProduct = (page, search, filter) => {
-  // console.log(page);
   return {
     type: 'GET_ITEMS',
     payload: axiosApiInstances.get(

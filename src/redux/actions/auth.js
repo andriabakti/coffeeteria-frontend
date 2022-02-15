@@ -1,3 +1,4 @@
+// modules: axios-instance
 import axiosApiInstances from '../../utils/axios'
 
 export const register = (data) => {

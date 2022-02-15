@@ -1,5 +1,5 @@
 import React from 'react'
-// react: router
+// pkgs: react-router
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
 // components: module
 import { NavBar } from '../../components/NavBar/NavBar'

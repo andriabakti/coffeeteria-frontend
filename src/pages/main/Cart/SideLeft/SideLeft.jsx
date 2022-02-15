@@ -1,18 +1,16 @@
 import React from 'react'
-// react-redux
+// pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
-// redux
+// pkgs: redux-action
 import { removeItem } from '../../../../redux/actions/cart'
-// style
-import style from './SideLeft.module.css'
-// assets
-import img from '../../../../assets/images/blank_img.jpg'
-// numeral
-// import numeral from 'numeral'
+// modules: numeral-formatter
 import { numFormatter } from '../../../../utils/numeral'
+// assets: image
+import blank from '../../../../assets/images/blank_img.jpg'
+// styles: modules
+import style from './SideLeft.module.css'
 
 export const SideLeft = () => {
-  // numeral.locale('es')
   const { cart, subTotal, taxAndFee, shipping, total } = useSelector(
     (state) => state.cart
   )
@@ -38,16 +36,14 @@ export const SideLeft = () => {
                 className={`position-relative ${style.items_list}`}
                 key={index}>
                 <div className={`${style.img}`}>
-                  <img src={!item.image ? img : item.image} alt='product' />
+                  <img src={!item.image ? blank : item.image} alt='product' />
                 </div>
                 <div className={`${style.amount}`}>
                   <span>{item.name}</span>
                   <span>x {item.quantity}</span>
                   <span>{item.size}</span>
                 </div>
-                <span>
-                  IDR {numFormatter(item.price * item.quantity)}
-                </span>
+                <span>IDR {numFormatter(item.price * item.quantity)}</span>
                 <button
                   className={`btn btn-warning position-absolute top-0 start-100 translate-middle border ${style.btn_delete}`}
                   onClick={() => handleDelete(index)}>
@@ -57,8 +53,7 @@ export const SideLeft = () => {
                 </button>
               </div>
             ))
-          )
-          }
+          )}
         </div>
         <hr />
         <div className={`${style.list}`}>

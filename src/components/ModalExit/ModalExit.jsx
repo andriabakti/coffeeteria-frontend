@@ -1,9 +1,9 @@
 import React from 'react'
-// react-bootstrap
+// pkgs: react-bootstrap
 import { Modal } from 'react-bootstrap'
-// react-router
+// pkgs: react-router
 import { useHistory } from 'react-router-dom'
-// style
+// styles: module
 import style from './ModalExit.module.css'
 
 export const ModalExit = (props) => {

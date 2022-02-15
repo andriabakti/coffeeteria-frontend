@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
-// components
-import { CardHistory } from '../../../components/CardHistory/CardHistory'
-// react-helmet
+// pkgs: react-helmet
 import Helmet from 'react-helmet'
-// react-redux
+// pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
-//  redux
+// modules: redux-action
 import { getHistory } from '../../../redux/actions/order'
-// style
+// components: module
+import { CardHistory } from '../../../components/CardHistory/CardHistory'
+// styles: module
 import style from './History.module.css'
 
 export const History = () => {

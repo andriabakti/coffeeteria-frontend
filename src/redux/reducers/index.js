@@ -1,8 +1,7 @@
-// import { combineReducers } from 'redux';
-import auth from './auth';
+import auth from './auth'
 import user from './user'
-import product from './product';
-import cart from './cart';
+import product from './product'
+import cart from './cart'
 import order from './order'
 
 const reducer = {
@@ -10,7 +9,7 @@ const reducer = {
   user,
   product,
   cart,
-  order,
+  order
 }
 
 export default reducer

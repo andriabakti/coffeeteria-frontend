@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
+// pkgs: react-router
 import { Link, useLocation } from 'react-router-dom'
+// styles: module
 import style from './PartCenter.module.css'
-
 
 export const PartCenter = () => {
   const { pathname } = useLocation()
@@ -52,13 +53,11 @@ export const PartCenter = () => {
           to='/main/history'
           style={link}
           className={
-            pathname === '/main/history'
-              ? `${style.page_on}`
-              : `${style.page}`
+            pathname === '/main/history' ? `${style.page_on}` : `${style.page}`
           }>
           History
         </Link>
       </div>
     </div>
   )
-};
+}
