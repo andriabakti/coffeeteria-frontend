@@ -4,9 +4,9 @@ import Helmet from 'react-helmet'
 // pkgs: react-router
 import { useHistory } from 'react-router-dom'
 // pkgs: react-redux
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { login } from '../../../redux/actions/auth'
+import { login } from '../../../redux/actions/user'
 // components: module
 import { InputAuth } from '../../../components/InputAuth/InputAuth'
 // styles: module
@@ -15,7 +15,7 @@ import style from './SignIn.module.css'
 export const SignIn = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  // const loginState = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.user)
 
   const [form, setForm] = useState({
     email: '',
@@ -29,18 +29,14 @@ export const SignIn = () => {
     })
   }
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
-    dispatch(login(form))
-      .then((result) => {
-        localStorage.setItem('token', result.value.data.data.token)
-        alert('Login berhasil')
-        history.push('/main/product')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    await dispatch(loginUser(form))
+    await localStorage.setItem('token', user.token)
+    alert('Login berhasil')
+    history.push('/main/product')
   }
+
   return (
     <div className={`container ${style.container}`}>
       <Helmet>

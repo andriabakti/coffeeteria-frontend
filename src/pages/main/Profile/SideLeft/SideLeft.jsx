@@ -11,7 +11,7 @@ import style from './SideLeft.module.css'
 export const SideLeft = (props) => {
   const ref = useRef()
   const dispatch = useDispatch()
-  const { detail, detailTemp } = useSelector((state) => state.user)
+  const { profile, profileTemp } = useSelector((state) => state.user)
 
   const cancelChange = () => {
     dispatch(resetChange())
@@ -23,14 +23,14 @@ export const SideLeft = (props) => {
         <div className={`${style.img_box}`}>
           <div className={`${style.img}`}>
             <img
-              src={detailTemp.image ? detailTemp.image : blank}
+              src={profileTemp.image ? profileTemp.image : blank}
               alt='profile'
             />
           </div>
           <span>
-            <b>{detail.username}</b>
+            <b>{profile.username}</b>
           </span>
-          <span>{detail.email}</span>
+          <span>{profile.email}</span>
         </div>
         <div>
           <input

@@ -4,9 +4,9 @@ import Helmet from 'react-helmet'
 // pkgs: react-router
 import { useHistory } from 'react-router-dom'
 // pkgs: react-redux
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { register } from '../../../redux/actions/auth'
+import { register } from '../../../redux/actions/user'
 // components: module
 import { InputAuth } from '../../../components/InputAuth/InputAuth'
 // styles: module
@@ -15,6 +15,7 @@ import style from './SignUp.module.css'
 export const SignUp = () => {
   const history = useHistory()
   const dispatch = useDispatch()
+  const { user } = useSelector((state) => state.user)
 
   const [form, setForm] = useState({
     email: '',
@@ -30,16 +31,10 @@ export const SignUp = () => {
     })
   }
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-    dispatch(register(form))
-      .then((result) => {
-        alert(result.value.data.message)
-        history.push('/auth/sign-in')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  const handleLogin = async (e) => {
+    await dispatch(registerUser(form))
+    alert(user.msg)
+    history.push('/auth/sign-in')
   }
   return (
     <div className={`container ${style.container}`}>

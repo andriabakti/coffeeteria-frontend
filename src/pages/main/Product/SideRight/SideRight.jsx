@@ -16,8 +16,8 @@ import { ModalCreate } from '../../../../components/ModalCreate/ModalCreate'
 import style from './SideRight.module.css'
 
 export const SideRight = () => {
-  const { items, pages, isLoading } = useSelector((state) => state.product)
-  const { profile } = useSelector((state) => state.auth)
+  const { product, pages, isLoading } = useSelector((state) => state.product)
+  const { user } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const history = useHistory()
   const [show, setShow] = useState(false)
@@ -39,13 +39,13 @@ export const SideRight = () => {
     <div className={`col-md-9 p-0 ${style.container}`}>
       <TabsBar />
       <div className={`${isLoading ? style.loading : style.menu}`}>
-        {isLoading || items.length <= 0 ? (
+        {isLoading || product.length <= 0 ? (
           <div className='spinner-border text-warning' role='status'>
             <span className='visually-hidden'>Loading</span>
           </div>
         ) : (
           <div className={`${style.card}`}>
-            {items.map((item) => (
+            {product.map((item) => (
               <div className={`col-md-3`} key={item.id}>
                 <CardProduct
                   id={item.id}
@@ -60,7 +60,7 @@ export const SideRight = () => {
         )}
       </div>
       <Pagination />
-      {profile.role === 'admin' && (
+      {user.role === 'admin' && (
         <button
           className={`btn text-white ${style.btn_create}`}
           onClick={handleShow}>

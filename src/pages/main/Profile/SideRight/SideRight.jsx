@@ -14,8 +14,8 @@ import style from './SideRight.module.css'
 
 export const SideRight = (props) => {
   const dispatch = useDispatch()
-  const { detailTemp } = useSelector((state) => state.user)
-  const formatted = moment(detailTemp.birth_date).startOf('day')._d
+  const { profileTemp } = useSelector((state) => state.user)
+  const formatted = moment(profileTemp.birth_date).startOf('day')._d
   const handleChange = (e) => {
     dispatch(
       changeProfile({
@@ -42,7 +42,7 @@ export const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.email}
+              value={profileTemp.email}
               name='email'
               type='email'
               id='email'
@@ -57,7 +57,7 @@ export const SideRight = (props) => {
             <textarea
               className={`form-control ${style.input_area} ${style.input_md}`}
               onChange={handleChange}
-              value={detailTemp.address}
+              value={profileTemp.address}
               type='textarea'
               name='address'
               id='address'
@@ -74,7 +74,7 @@ export const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.phone}
+              value={profileTemp.phone}
               name='phone'
               id='phone'
               type='tel'
@@ -94,7 +94,7 @@ export const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.username}
+              value={profileTemp.username}
               name='username'
               id='name'
               type='text'
@@ -109,7 +109,7 @@ export const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.first_name}
+              value={profileTemp.first_name}
               name='first_name'
               id='firstname'
               type='text'
@@ -124,7 +124,7 @@ export const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.last_name}
+              value={profileTemp.last_name}
               name='last_name'
               id='lastname'
               type='text'
@@ -139,7 +139,7 @@ export const SideRight = (props) => {
           <DatePicker
             // className={`form-control ${style.input_area} ${style.input_sm}`}
             onChange={props.changeDate}
-            value={detailTemp.birth_date !== null ? formatted : new Date()}
+            value={profileTemp.birth_date !== null ? formatted : new Date()}
             yearPlaceholder='yyyy'
             monthPlaceholder='mm'
             dayPlaceholder='dd'
@@ -156,13 +156,13 @@ export const SideRight = (props) => {
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'female' ||
-                detailTemp.gender === null ||
-                detailTemp.gender === '') &&
+              (profileTemp.gender === 'female' ||
+                profileTemp.gender === null ||
+                profileTemp.gender === '') &&
               'male'
             }
-            defaultChecked={detailTemp.gender === 'male' && true}
-            required={detailTemp.gender === null ? true : false}
+            defaultChecked={profileTemp.gender === 'male' && true}
+            required={profileTemp.gender === null ? true : false}
             name='gender'
             type='radio'
             id='male'
@@ -178,13 +178,13 @@ export const SideRight = (props) => {
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'male' ||
-                detailTemp.gender === null ||
-                detailTemp.gender === '') &&
+              (profileTemp.gender === 'male' ||
+                profileTemp.gender === null ||
+                profileTemp.gender === '') &&
               'female'
             }
-            defaultChecked={detailTemp.gender === 'female' && true}
-            required={detailTemp.gender === null ? true : false}
+            defaultChecked={profileTemp.gender === 'female' && true}
+            required={profileTemp.gender === null ? true : false}
             name='gender'
             type='radio'
             id='female'

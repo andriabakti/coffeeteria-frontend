@@ -1,16 +1,16 @@
 // modules: axios-instance
 import axiosApiInstances from '../../utils/axios'
 
-export const purchaseOrders = (data) => {
+export const purchaseOrder = (data) => {
   return {
-    type: 'PURCHASE_ORDERS',
+    type: 'PURCHASE_ORDER',
     payload: axiosApiInstances.post('/history', data)
   }
 }
 
 export const getHistory = () => {
   return {
-    type: 'GET_ORDERS',
+    type: 'GET_ORDER',
     payload: axiosApiInstances.get('/history')
   }
 }

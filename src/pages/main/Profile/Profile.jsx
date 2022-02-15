@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import {
-  getUserDetail,
+  getProfile,
   changeProfile,
   updateProfile
 } from '../../../redux/actions/user'
@@ -24,14 +24,13 @@ import style from './Profile.module.css'
 export const Profile = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const { profile } = useSelector((state) => state.auth)
-  const { detail, detailTemp, msg } = useSelector((state) => state.user)
+  const { user, profile, profileTemp, msg } = useSelector((state) => state.user)
   const defaultDate = moment().format('YYYY-MM-DD')
-  const getDate = moment(detailTemp.birth_date).format('YYYY-MM-DD')
+  const getDate = moment(profileTemp.birth_date).format('YYYY-MM-DD')
   const [date, setDate] = useState(
-    detailTemp.birth_date !== null ? getDate : defaultDate
+    profileTemp.birth_date !== null ? getDate : defaultDate
   )
-  const [image, setImage] = useState(detailTemp.image)
+  const [image, setImage] = useState(profileTemp.image)
   const [show, setShow] = useState(false)
   const handleShow = () => setShow(!show)
 
@@ -74,26 +73,26 @@ export const Profile = () => {
   }
 
   const newProfile = new FormData()
-  newProfile.append('first_name', detailTemp.first_name)
-  newProfile.append('last_name', detailTemp.last_name)
+  newProfile.append('first_name', profileTemp.first_name)
+  newProfile.append('last_name', profileTemp.last_name)
   newProfile.append('birth_date', date)
-  newProfile.append('gender', detailTemp.gender)
-  newProfile.append('address', detailTemp.address)
+  newProfile.append('gender', profileTemp.gender)
+  newProfile.append('address', profileTemp.address)
   newProfile.append('image', image)
-  newProfile.append('username', detailTemp.username)
-  newProfile.append('email', detailTemp.email)
-  newProfile.append('phone', detailTemp.phone)
+  newProfile.append('username', profileTemp.username)
+  newProfile.append('email', profileTemp.email)
+  newProfile.append('phone', profileTemp.phone)
 
   const editProfile = async () => {
-    await dispatch(updateProfile(newProfile, detail.id))
+    await dispatch(updateProfile(profile.id, newProfile))
     alert(msg)
-    await dispatch(getUserDetail(detail.id))
+    await dispatch(getProfile(profile.id))
     history.push('/main/profile')
   }
 
   useEffect(() => {
-    dispatch(getUserDetail(profile.id))
-  }, [dispatch, profile])
+    dispatch(getProfile(user.id))
+  }, [dispatch, user])
 
   return (
     <div className={`${style.container}`}>
@@ -105,7 +104,7 @@ export const Profile = () => {
         <div className={`container ${style.content}`}>
           <div className={`row ${style.title}`}>
             <h2 className={`text-white`}>
-              {profile.role === 'admin' ? 'Admin' : 'User'} Profile
+              {user.role === 'admin' ? 'Admin' : 'User'} Profile
             </h2>
           </div>
           <div className={`row card ${style.section}`}>

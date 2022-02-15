@@ -6,7 +6,7 @@ const initialState = {
   total: 0
 }
 
-const cart = (state = initialState, action) => {
+export const cart = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_CART': {
       const items = [...state.cart, action.payload]
@@ -61,5 +61,3 @@ const cart = (state = initialState, action) => {
     }
   }
 }
-
-export default cart

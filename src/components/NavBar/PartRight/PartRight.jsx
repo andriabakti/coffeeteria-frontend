@@ -12,7 +12,7 @@ import style from './PartRight.module.css'
 
 export const PartRight = () => {
   const { pathname, search } = useLocation()
-  const { detail } = useSelector((state) => state.user)
+  const { profile } = useSelector((state) => state.user)
   const parsed = qs.parse(search)
   const history = useHistory()
   const token = localStorage.getItem('token')
@@ -49,7 +49,7 @@ export const PartRight = () => {
                 ? `${style.profile_on}`
                 : `${style.profile}`
             }>
-            <img src={detail.image ? detail.image : blank} alt='profile' />
+            <img src={profile.image ? profile.image : blank} alt='profile' />
           </Link>
         </div>
       ) : (

@@ -19,7 +19,7 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
   // const formatted = numeral(price).format('0,0')
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(!open)
-  const { profile } = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
   const handleDelete = async (itemId) => {
@@ -31,9 +31,9 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
   return (
     <>
       <div
-        className={`card border-0 position-relative ${profile.role === 'admin' ? style.content : style.container
+        className={`card border-0 position-relative ${user.role === 'admin' ? style.content : style.container
           }`}
-        onClick={profile.role !== 'admin' ? clickEvent : undefined}>
+        onClick={user.role !== 'admin' ? clickEvent : undefined}>
         <img
           className={`${style.image}`}
           src={image ? image : blank}
@@ -43,14 +43,14 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
           <h5 className='card-title'>{name}</h5>
           <span className='card-text'>IDR {numFormatter(price)}</span>
         </div>
-        {profile.role === 'admin' && (
+        {user.role === 'admin' && (
           <button
             className={`btn position-absolute top-50 start-100 translate-middle ${style.btn_delete}`}
             onClick={handleOpen}>
             <i className='fas fa-trash-alt' style={{ color: '#ffffff' }}></i>
           </button>
         )}
-        {profile.role === 'admin' && (
+        {user.role === 'admin' && (
           <button
             className={`btn position-absolute top-100 start-100 translate-middle ${style.btn_edit}`}
             onClick={clickEvent}>

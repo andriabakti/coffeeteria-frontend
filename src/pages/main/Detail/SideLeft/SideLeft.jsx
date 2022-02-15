@@ -3,11 +3,8 @@ import React from 'react'
 import blank from '../../../../assets/images/blank_img.jpg'
 // styles: module
 import style from './SideLeft.module.css'
-// import { useSelector } from 'react-redux'
 
 export const SideLeft = (props) => {
-  // const { detail } = useSelector((state) => state.product)
-
   return (
     <div className={`col-md-6 ${style.section}`}>
       <input type='file' name='image' id='image' onChange={props.changeImage} />

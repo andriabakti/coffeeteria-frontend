@@ -9,7 +9,7 @@ import { numFormatter } from '../../../../utils/numeral'
 import style from './SideRight.module.css'
 
 export const SideRight = ({ detail, addToCart }) => {
-  const { profile } = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.user)
   const history = useHistory()
 
   const [size, setSize] = useState('')
@@ -54,7 +54,7 @@ export const SideRight = ({ detail, addToCart }) => {
           disabled={
             (detail.category_id !== 1 ||
               detail.category_id !== 2 ||
-              profile.role === 'admin') &&
+              user.role === 'admin') &&
             'disabled'
           }
           defaultValue='Select Size'
@@ -71,7 +71,7 @@ export const SideRight = ({ detail, addToCart }) => {
           aria-label='Default select'
           onChange={(e) => deliveryPick(e)}
           defaultValue='Select Delivery Methods'
-          disabled={profile.role === 'admin' && 'disabled'}
+          disabled={user.role === 'admin' && 'disabled'}
           required>
           <option disabled hidden>
             Select Delivery Methods
@@ -85,7 +85,7 @@ export const SideRight = ({ detail, addToCart }) => {
             <button
               className='btn btn-white'
               type='button'
-              disabled={profile.role === 'admin' && 'disabled'}
+              disabled={user.role === 'admin' && 'disabled'}
               onClick={increase}>
               +
             </button>
@@ -95,7 +95,7 @@ export const SideRight = ({ detail, addToCart }) => {
             <button
               className={`btn btn-white ${quantity === 0 && 'disabled'}`}
               type='button'
-              disabled={profile.role === 'admin' && 'disabled'}
+              disabled={user.role === 'admin' && 'disabled'}
               onClick={decrease}>
               -
             </button>

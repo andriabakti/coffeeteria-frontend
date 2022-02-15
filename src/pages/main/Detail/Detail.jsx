@@ -28,7 +28,7 @@ export const Detail = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const { detail, detailTemp } = useSelector((state) => state.product)
-  const { profile } = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.user)
   const [image, setImage] = useState()
   const history = useHistory()
 
@@ -50,7 +50,7 @@ export const Detail = () => {
   formData.append('category_id', detailTemp.category_id)
 
   const editProduct = async () => {
-    await dispatch(updateProduct(formData, detail.id))
+    await dispatch(updateProduct(detail.id, formData))
     alert('Product berhasil diupdate')
     await dispatch(getProduct(1, '', ''))
     history.push('/main/product')
@@ -88,7 +88,7 @@ export const Detail = () => {
                 aria-current='page'>
                 {detail.name}
               </li>
-              {profile.role === 'admin' && (
+              {user.role === 'admin' && (
                 <li
                   className={`breadcrumb-item ${style.crumb_active}`}
                   aria-current='page'>
@@ -99,7 +99,7 @@ export const Detail = () => {
           </nav>
           <div className={`row ${style.section}`}>
             <SideLeft image={detail.image} changeImage={handleImage} />
-            {profile.role !== 'admin' ? (
+            {user.role !== 'admin' ? (
               <SideRight detail={detail} addToCart={handleAddCart} />
             ) : (
               <SideEdit handleUpdate={editProduct} />

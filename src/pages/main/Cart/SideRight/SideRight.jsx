@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import { resetCart } from '../../../../redux/actions/cart'
-import { purchaseOrders } from '../../../../redux/actions/order'
+import { purchaseOrder } from '../../../../redux/actions/order'
 // assets: icon
 import icon_card from '../../../../assets/icons/icon_card.svg'
 import icon_bank from '../../../../assets/icons/icon_bank.svg'
@@ -16,14 +16,14 @@ import style from './SideRight.module.css'
 export const SideRight = () => {
   const history = useHistory()
   const { cart, total } = useSelector((state) => state.cart)
-  const { id } = useSelector((state) => state.auth.profile)
+  const { id } = useSelector((state) => state.user.user)
   const [payment, setPayment] = useState('')
   const dispatch = useDispatch()
   const paymentPick = (e) => {
     setPayment(e.target.value)
   }
   const handlePurchase = async (payment) => {
-    await dispatch(purchaseOrders({ id, total, payment, items: cart }))
+    await dispatch(purchaseOrder({ id, total, payment, items: cart }))
     alert('Items have purchased successfully')
     dispatch(resetCart())
     history.push('/main/product')

@@ -1,66 +1,74 @@
 const initialState = {
-  items: [],
+  msg: '',
+  product: [],
   pages: {},
   detail: {},
   detailTemp: {},
   isLoading: false,
-  isError: false,
-  msg: ''
+  isError: false
 }
 
-const product = (state = initialState, action) => {
+export const product = (state = initialState, action) => {
   switch (action.type) {
-    // all products
-    case 'GET_ITEMS_PENDING': {
+    // Product: Fetch
+    case 'GET_PRODUCT_PENDING': {
       return {
         ...state,
         isLoading: true,
         isError: false
       }
     }
-    case 'GET_ITEMS_FULFILLED':
+    case 'GET_PRODUCT_FULFILLED':
       return {
         ...state,
-        isLoading: false,
-        isError: false,
-        items: action.payload.data.data,
+        msg: action.payload.data.message,
+        product: action.payload.data.data,
         pages: action.payload.data.page_info,
-        msg: action.payload.data.message
+        isLoading: false,
+        isError: false
       }
-    case 'GET_ITEMS_REJECTED':
+    case 'GET_PRODUCT_REJECTED':
       return {
         ...state,
+        msg: action.payload.response.data.message,
+        product: [],
         isLoading: false,
-        isError: true,
-        items: [],
-        msg: action.payload.response.data.message
+        isError: true
       }
-    // product details
-    case 'GET_DETAILS_PENDING': {
+    // Page: Change
+    case 'CHANGE_PAGE':
+      return {
+        ...state,
+        pages: {
+          current_page: action.payload
+        }
+      }
+    // Detail: Fetch
+    case 'GET_DETAIL_PENDING': {
       return {
         ...state,
         isLoading: true,
         isError: false
       }
     }
-    case 'GET_DETAILS_FULFILLED':
+    case 'GET_DETAIL_FULFILLED':
       return {
         ...state,
+        msg: action.payload.data.message,
         detail: action.payload.data.data[0],
         detailTemp: action.payload.data.data[0],
-        msg: action.payload.data.message,
         isLoading: false,
         isError: false
       }
-    case 'GET_DETAILS_REJECTED':
+    case 'GET_DETAIL_REJECTED':
       return {
         ...state,
-        isLoading: false,
-        isError: true,
+        msg: action.payload.response.data.message,
         detail: [],
-        msg: action.payload.response.data.message
+        isLoading: false,
+        isError: true
       }
-    // add new product
+    // Product: Create
     case 'ADD_PRODUCT_PENDING': {
       return {
         ...state,
@@ -82,15 +90,7 @@ const product = (state = initialState, action) => {
         isLoading: false,
         isError: true
       }
-    // edit page
-    case 'CHANGE_PAGE':
-      return {
-        ...state,
-        pages: {
-          current_page: action.payload
-        }
-      }
-    // edit detail
+    // Temp Detail: Change
     case 'CHANGE_DETAIL': {
       return {
         ...state,
@@ -100,7 +100,7 @@ const product = (state = initialState, action) => {
         }
       }
     }
-    // edit product
+    // Product: Update
     case 'UPDATE_PRODUCT_PENDING': {
       return {
         ...state,
@@ -122,7 +122,7 @@ const product = (state = initialState, action) => {
         isLoading: false,
         isError: true
       }
-    // delete product
+    // Product: Delete
     case 'DELETE_PRODUCT_PENDING': {
       return {
         ...state,
@@ -149,5 +149,3 @@ const product = (state = initialState, action) => {
     }
   }
 }
-
-export default product

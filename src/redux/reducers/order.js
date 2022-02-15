@@ -1,58 +1,60 @@
 const initialState = {
-  isLoading: false,
-  isError: false,
+  msg: '',
   history: [],
-  msg: ''
+  isLoading: false,
+  isError: false
 }
 
-const order = (state = initialState, action) => {
+export const order = (state = initialState, action) => {
   switch (action.type) {
-    // add orders
-    case 'PURCHASE_ORDERS_PENDING': {
+    // Order: Purchase
+    case 'PURCHASE_ORDER_PENDING': {
       return {
         ...state,
         isLoading: true,
         isError: false
       }
     }
-    case 'PURCHASE_ORDERS_FULFILLED': {
+    case 'PURCHASE_ORDER_FULFILLED': {
       return {
         ...state,
+        msg: action.payload.data.message,
         isLoading: false,
-        msg: action.payload.data.message
+        isError: false
       }
     }
-    case 'PURCHASE_ORDERS_REJECTED': {
+    case 'PURCHASE_ORDER_REJECTED': {
       return {
         ...state,
+        msg: action.payload.response.data.message,
         isLoading: false,
-        isError: true,
-        msg: action.payload.response.data.message
+        isError: true
       }
     }
-    // all history
-    case 'GET_ORDERS_PENDING': {
+    // History: Fetch
+    case 'GET_ORDER_PENDING': {
       return {
         ...state,
         isLoading: true,
         isError: false
       }
     }
-    case 'GET_ORDERS_FULFILLED': {
+    case 'GET_ORDER_FULFILLED': {
       return {
         ...state,
-        isLoading: false,
+        msg: action.payload.data.message,
         history: action.payload.data.data,
-        msg: action.payload.data.message
+        isLoading: false,
+        isError: false
       }
     }
-    case 'GET_ORDERS_REJECTED': {
+    case 'GET_ORDER_REJECTED': {
       return {
         ...state,
-        isLoading: false,
-        isError: true,
+        msg: action.payload.response.data.message,
         history: [],
-        msg: action.payload.response.data.message
+        isLoading: false,
+        isError: true
       }
     }
     default: {
@@ -60,5 +62,3 @@ const order = (state = initialState, action) => {
     }
   }
 }
-
-export default order
