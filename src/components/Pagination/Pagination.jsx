@@ -17,20 +17,20 @@ export const Pagination = () => {
     dispatch(changePage(selectedPage))
   }
   return (
-    <div>
+    <>
       <ReactPaginate
-        previousLabel={'prev'}
-        nextLabel={'next'}
+        previousLabel={'Prev'}
+        nextLabel={'Next'}
         breakLabel={'...'}
         breakClassName={'break-me'}
         pageCount={parseInt(pages.total_page)}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handlePageClick}
-        containerClassName={style.pagination}
-        subContainerClassName={`pages ${style.pagination}`}
+        containerClassName={`${style.pagination}`}
+        subContainerClassName={`${style.pagination}`}
         activeClassName={style.active}
       />
-    </div>
+    </>
   )
 }

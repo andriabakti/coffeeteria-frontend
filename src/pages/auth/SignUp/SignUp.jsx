@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { register } from '../../../redux/actions/user'
+import { registerUser } from '../../../redux/actions/user'
 // components: module
 import { InputAuth } from '../../../components/InputAuth/InputAuth'
 // styles: module
@@ -37,52 +37,54 @@ export const SignUp = () => {
     history.push('/auth/sign-in')
   }
   return (
-    <div className={`container ${style.container}`}>
+    <>
       <Helmet>
         <title>Sign Up - CoffeeTeria</title>
         <meta name='description' content='This is sign up page' />
       </Helmet>
-      <form className={`${style.form}`} onSubmit={handleLogin}>
-        <span>Sign Up</span>
-        <div>
-          <InputAuth
-            changeEvent={(e) => handleChange(e)}
-            placeholder='Enter your email adress'
-            label='Email Address :'
-            name='email'
-            type='email'
-            id='email'
-            required='required'
-          />
-          <InputAuth
-            changeEvent={(e) => handleChange(e)}
-            placeholder='Enter your password'
-            label='Password :'
-            name='password'
-            type='password'
-            id='password'
-            required='required'
-          />
-          <InputAuth
-            changeEvent={(e) => handleChange(e)}
-            placeholder='Enter your phone number'
-            label='Phone Number :'
-            name='phone'
-            type='tel'
-            id='phone'
-            required='required'
-          />
-          <button
-            className={`btn ${style.btn_gold} ${(form.email === '' ||
-              form.password === '' ||
-              form.phone === '') &&
-              'disabled'
-              }`}
-            type='submit'>
-            Sign Up
-          </button>
-        </div>
-      </form>
-    </div>
+      <div className={`container ${style.container}`}>
+        <form className={`${style.form}`} onSubmit={handleLogin}>
+          <span>Sign Up</span>
+          <div>
+            <InputAuth
+              changeEvent={(e) => handleChange(e)}
+              placeholder='Enter your email adress'
+              label='Email Address :'
+              name='email'
+              type='email'
+              id='email'
+              required='required'
+            />
+            <InputAuth
+              changeEvent={(e) => handleChange(e)}
+              placeholder='Enter your password'
+              label='Password :'
+              name='password'
+              type='password'
+              id='password'
+              required='required'
+            />
+            <InputAuth
+              changeEvent={(e) => handleChange(e)}
+              placeholder='Enter your phone number'
+              label='Phone Number :'
+              name='phone'
+              type='tel'
+              id='phone'
+              required='required'
+            />
+            <button
+              className={`btn ${style.btn_gold} ${(form.email === '' ||
+                form.password === '' ||
+                form.phone === '') &&
+                'disabled'
+                }`}
+              type='submit'>
+              Sign Up
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   )
 }

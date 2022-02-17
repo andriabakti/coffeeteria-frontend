@@ -7,8 +7,6 @@ import DatePicker from 'react-date-picker'
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import { changeProfile } from '../../../../redux/actions/user'
-// assets: image
-import icon_edit from '../../../../assets/icons/icon_edit.svg'
 // styles: module
 import style from './SideRight.module.css'
 
@@ -27,9 +25,6 @@ export const SideRight = (props) => {
     <div className={`col-md-8 ${style.container}`}>
       <div className={`${style.title}`}>
         <h3>Contacts</h3>
-        <button type='button' className={`btn ${style.btn_edit}`}>
-          <img src={icon_edit} alt='edit_btn' />
-        </button>
       </div>
       <div className={`${style.section}`}>
         <div className={`col-md-6 ${style.col}`}>
@@ -135,11 +130,10 @@ export const SideRight = (props) => {
           <label className={`form-label ${style.input_label}`} htmlFor='date'>
             DD/MM/YYYY :
           </label>
-          {/* <div className={`${style.input_box}`}> */}
           <DatePicker
-            // className={`form-control ${style.input_area} ${style.input_sm}`}
-            onChange={props.changeDate}
+            className={`${style.input_area} ${style.input_sm}`}
             value={profileTemp.birth_date !== null ? formatted : new Date()}
+            onChange={props.changeDate}
             yearPlaceholder='yyyy'
             monthPlaceholder='mm'
             dayPlaceholder='dd'
@@ -147,11 +141,10 @@ export const SideRight = (props) => {
             locale='en-au'
             id='date'
           />
-          {/* </div> */}
         </div>
       </div>
       <div className={`${style.section}`}>
-        <div className='form-check'>
+        <div className={`form-check ${style.check_box}`}>
           <input
             className={`form-check-input ${style.check}`}
             onChange={handleChange}
@@ -173,7 +166,7 @@ export const SideRight = (props) => {
             Male
           </label>
         </div>
-        <div className='form-check'>
+        <div className={`form-check ${style.check_box}`}>
           <input
             className={`form-check-input ${style.check}`}
             onChange={handleChange}

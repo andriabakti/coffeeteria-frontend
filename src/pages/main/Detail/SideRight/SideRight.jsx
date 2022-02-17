@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 // pkgs: react-router
 import { useHistory } from 'react-router-dom'
-// pkgs: react-redux
-import { useSelector } from 'react-redux'
 // modules: numeral-formatter
 import { numFormatter } from '../../../../utils/numeral'
 // styles: module
 import style from './SideRight.module.css'
 
 export const SideRight = ({ detail, addToCart }) => {
-  const { user } = useSelector((state) => state.user)
   const history = useHistory()
 
   const [size, setSize] = useState('')
@@ -52,9 +49,8 @@ export const SideRight = ({ detail, addToCart }) => {
           aria-label='Default select'
           onChange={(e) => sizePick(e)}
           disabled={
-            (detail.category_id !== 1 ||
-              detail.category_id !== 2 ||
-              user.role === 'admin') &&
+            (detail.category_id !== 1 &&
+              detail.category_id !== 2) &&
             'disabled'
           }
           defaultValue='Select Size'
@@ -71,7 +67,6 @@ export const SideRight = ({ detail, addToCart }) => {
           aria-label='Default select'
           onChange={(e) => deliveryPick(e)}
           defaultValue='Select Delivery Methods'
-          disabled={user.role === 'admin' && 'disabled'}
           required>
           <option disabled hidden>
             Select Delivery Methods
@@ -85,7 +80,6 @@ export const SideRight = ({ detail, addToCart }) => {
             <button
               className='btn btn-white'
               type='button'
-              disabled={user.role === 'admin' && 'disabled'}
               onClick={increase}>
               +
             </button>
@@ -95,7 +89,6 @@ export const SideRight = ({ detail, addToCart }) => {
             <button
               className={`btn btn-white ${quantity === 0 && 'disabled'}`}
               type='button'
-              disabled={user.role === 'admin' && 'disabled'}
               onClick={decrease}>
               -
             </button>

@@ -15,8 +15,6 @@ import icon_edit from '../../assets/icons/icon_edit.svg'
 import style from './CardProduct.module.css'
 
 export const CardProduct = ({ id, name, price, image, clickEvent }) => {
-  // numeral.locale('es')
-  // const formatted = numeral(price).format('0,0')
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(!open)
   const { user } = useSelector((state) => state.user)

@@ -18,7 +18,7 @@ export const Footer = (props) => {
   }
   return (
     <div className={style.bg}>
-      <div className='container'>
+      <div className={`container ${style.wrapper}`}>
         {(pathname === '/auth/sign-in' ||
           pathname === '/auth/sign-up' ||
           pathname === '/main') && (
@@ -52,9 +52,11 @@ export const Footer = (props) => {
             </div>
           )}
         <div
-          className={`row ${pathname === '/auth/sign-in' || pathname === '/auth/sign-up'
-            ? style.main_other
-            : style.main
+          className={`row ${pathname === '/auth/sign-in' ||
+              pathname === '/auth/sign-up' ||
+              pathname === '/main'
+              ? style.main_other
+              : style.main
             }`}>
           <div className={`col-lg-4 ${style.left}`}>
             <Link to='/main' style={link} className={`${style.brand}`}>

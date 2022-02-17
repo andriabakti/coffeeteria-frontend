@@ -16,8 +16,9 @@ import style from './SideRight.module.css'
 export const SideRight = () => {
   const history = useHistory()
   const { cart, total } = useSelector((state) => state.cart)
-  const { id } = useSelector((state) => state.user.user)
+  const { id, address, phone } = useSelector((state) => state.user.profile)
   const [payment, setPayment] = useState('')
+  const phoneNumber = phone.slice(3)
   const dispatch = useDispatch()
   const paymentPick = (e) => {
     setPayment(e.target.value)
@@ -33,7 +34,7 @@ export const SideRight = () => {
       <div className={`${style.section}`}>
         <div className={`${style.title}`}>
           <h4 className='text-white'>Address details</h4>
-          <span className='text-white'>edit</span>
+          <span onClick={() => history.push('/main/profile')}>edit</span>
         </div>
         <div className={`card ${style.card}`}>
           <ul className='list-group list-group-flush'>
@@ -41,10 +42,9 @@ export const SideRight = () => {
               <b>Delivery</b> to
             </li>
             <li className={`list-group-item ${style.address}`}>
-              Iskandar Street km 5 refinery road oppsite republic road, effurun,
-              Jakarta
+              {address ? address : 'You have not set your address yet'}
             </li>
-            <li className='list-group-item'>+62 81348287878</li>
+            <li className='list-group-item'>+62 {phoneNumber}</li>
           </ul>
         </div>
       </div>
@@ -113,7 +113,7 @@ export const SideRight = () => {
         className={`btn ${style.btn_brown}`}
         onClick={() => handlePurchase(payment)}
         type='button'
-        disabled={payment === '' ? 'disabled' : ''}>
+        disabled={(cart.length <= 0 || payment === '') ? 'disabled' : ''}>
         Confirm and Pay
       </button>
     </div>

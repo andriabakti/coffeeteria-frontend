@@ -20,6 +20,10 @@
   box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
 }
 
+.container:hover>.body>span {
+  color: #0B132A !important;
+}
+
 .content {
   width: 170px;
   height: 210px;
@@ -67,6 +71,19 @@
   color: #6A4029;
 }
 
+.btn_delete {
+  width: 35px;
+  height: 35px;
+  border-radius: 50% !important;
+  background-color: #6A4029 !important;
+  padding: 0 !important;
+}
+
+.btn_delete:hover {
+  outline: 3px solid #6A4029;
+  background-color: #FFBA33 !important;
+}
+
 .btn_edit {
   width: 35px;
   height: 35px;
@@ -76,21 +93,11 @@
 }
 
 .btn_edit:hover {
-  outline: 2px solid #ffffff;
+  outline: 3px solid #6A4029;
   background-color: #FFBA33 !important;
 }
 
 .btn_edit>img {
   width: 50% !important;
   height: 50% !important;
-  /* -o-object-fit: cover; */
-  /* object-fit: cover; */
-}
-
-.btn_delete {
-  width: 35px;
-  height: 35px;
-  border-radius: 50% !important;
-  background-color: #6A4029 !important;
-  padding: 0 !important;
 }

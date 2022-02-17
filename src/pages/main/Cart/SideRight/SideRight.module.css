@@ -24,6 +24,11 @@
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+  color: #FFFFFF;
+}
+
+.title>span:hover {
+  color: #FFBA33;
 }
 
 .section>h4 {

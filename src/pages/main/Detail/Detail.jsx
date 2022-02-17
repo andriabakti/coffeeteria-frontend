@@ -66,12 +66,12 @@ export const Detail = () => {
   }, [dispatch, id])
 
   return (
-    <div className={`${style.container}`}>
+    <>
       <Helmet>
         <title>{`${detail.name} - CoffeeTeria`}</title>
         <meta name='description' content='This is Product Detail Page' />
       </Helmet>
-      <div className={`${style.main}`}>
+      <div className={`${style.container}`}>
         <div className={`container ${style.content}`}>
           <nav className={`${style.crumb}`} aria-label='breadcrumb'>
             <ol className='breadcrumb'>
@@ -107,6 +107,6 @@ export const Detail = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

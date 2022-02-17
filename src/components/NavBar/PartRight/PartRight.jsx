@@ -1,25 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // pkgs: query-string
 import qs from 'query-string'
 // pkgs: react-router
 import { Link, useLocation, useHistory } from 'react-router-dom'
 // pkgs: react-redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
+import { getProfile } from '../../../redux/actions/user'
 // assets: image
 import blank from '../../../assets/images/blank_profile.jpg'
+// assets: icon
+import icon_search from '../../../assets/icons/icon_search.svg'
 // styles: module
 import style from './PartRight.module.css'
 
 export const PartRight = () => {
-  const { pathname, search } = useLocation()
-  const { profile } = useSelector((state) => state.user)
-  const parsed = qs.parse(search)
   const history = useHistory()
+  const { pathname, search } = useLocation()
+  const { user, profile } = useSelector((state) => state.user)
+  const dispatch = useDispatch()
+  const parsed = qs.parse(search)
   const token = localStorage.getItem('token')
   const link = {
     textDecoration: 'none',
     color: 'inherit'
   }
+
   const handleSearch = (e) => {
     e.key === 'Enter' &&
       history.push(
@@ -27,18 +33,26 @@ export const PartRight = () => {
         }search=${e.target.value}`
       )
   }
+  useEffect(() => {
+    user.token && dispatch(getProfile(user.id))
+  }, [dispatch, user.id, user.token])
+
   return (
     <>
       {token ? (
         <div className={`col-lg-4 navbar-nav ${style.right}`}>
-          <div className='d-flex'>
-            <i className='far fa-search icon'></i>
+          <div className={`input-group ${style.search_bar}`}>
+            <span className='input-group-prepend'>
+              <button className={`btn shadow-none ${style.icon}`} type='button'>
+                <img src={icon_search} alt='search' />
+              </button>
+            </span>
             <input
-              className='form-control me-2'
-              type='search'
+              className={`form-control border-0 shadow-none ${style.search}`}
               placeholder='Search'
               aria-label='Search'
               onKeyPress={handleSearch}
+              type='search'
               name='search'
             />
           </div>

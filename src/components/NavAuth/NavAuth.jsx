@@ -11,7 +11,7 @@ export const NavAuth = () => {
   const { location } = useHistory()
 
   return (
-    <nav className={`navbar navbar-expand-lg bg-white ${style.nav}`}>
+    <nav className={`navbar ${style.wrapper}`}>
       <div className={`container ${style.container}`}>
         <Link to='/' className={`navbar-brand ${style.brand}`}>
           <img alt='CoffeeTeria' height='30px' width='30px' src={logo} />
@@ -23,7 +23,7 @@ export const NavAuth = () => {
               ? '/auth/sign-in'
               : '/auth/sign-up'
           }
-          className={`navbar-item`}>
+        >
           <button className={`btn ${style.btn_gold}`} type='button'>
             {pathname === '/auth/sign-up' ? 'Login' : 'Sign Up'}
           </button>

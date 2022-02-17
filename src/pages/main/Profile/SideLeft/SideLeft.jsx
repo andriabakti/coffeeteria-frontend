@@ -68,15 +68,41 @@ export const SideLeft = (props) => {
           the change?
         </span>
         <button
+          disabled={
+            profileTemp.email !== profile.email ||
+              profileTemp.address !== profile.address ||
+              profileTemp.phone !== profile.phone ||
+              profileTemp.username !== profile.username ||
+              profileTemp.first_name !== profile.first_name ||
+              profileTemp.last_name !== profile.last_name ||
+              profileTemp.birth_date !== profile.birth_date ||
+              profileTemp.gender !== profile.gender ||
+              profileTemp.image !== profile.image
+              ? false
+              : true
+          }
           className={`btn ${style.btn_md} ${style.btn_brown}`}
-          type='button'
-          onClick={props.handleUpdate}>
+          onClick={props.handleUpdate}
+          type='button'>
           Save Change
         </button>
         <button
+          disabled={
+            profileTemp.email !== profile.email ||
+              profileTemp.address !== profile.address ||
+              profileTemp.phone !== profile.phone ||
+              profileTemp.username !== profile.username ||
+              profileTemp.first_name !== profile.first_name ||
+              profileTemp.last_name !== profile.last_name ||
+              profileTemp.birth_date !== profile.birth_date ||
+              profileTemp.gender !== profile.gender ||
+              profileTemp.image !== profile.image
+              ? false
+              : true
+          }
           className={`btn ${style.btn_md} ${style.btn_gold}`}
-          type='button'
-          onClick={cancelChange}>
+          onClick={cancelChange}
+          type='button'>
           Cancel
         </button>
         <button
