@@ -10,8 +10,8 @@ export const SectionLower = () => {
   return (
     <div className={`container px-0 ${style.container}`}>
       <div className={`col ${style.main}`}>
-        <div className={`col-lg-6 ${style.side_left}`}>
-          <img src={illust_home} alt='illustration_one' />
+        <div className={`${style.side_left}`}>
+          <img src={illust_home} alt='illustration' />
         </div>
         <div className={`${style.side_right}`}>
           <div>
@@ -22,7 +22,7 @@ export const SectionLower = () => {
             <span>
               You can explore the menu that we provide with fun and
               <br />
-              have their own taste and make your day better.
+              have their own taste and make your day better
             </span>
           </div>
           <div className={`${style.list}`}>
@@ -43,7 +43,7 @@ export const SectionLower = () => {
             <div>
               <img src={icon_check} alt="icon-check" />
               <span>
-                Free member card with a minimum purchase of IDR 200.000.
+                Free member card with a minimum purchase of IDR 200.000
               </span>
             </div>
           </div>

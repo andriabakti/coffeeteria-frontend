@@ -1,15 +1,18 @@
 import React from 'react'
 // pkgs: react-router
 import { Link, useLocation } from 'react-router-dom'
+// pkgs: react-redux
+import { useSelector } from 'react-redux'
 // styles: module
 import style from './PartCenter.module.css'
 
 export const PartCenter = () => {
-  const { pathname } = useLocation()
   const link = {
     textDecoration: 'none',
     color: 'inherit'
   }
+  const { pathname } = useLocation()
+  const { user } = useSelector((state) => state.user)
   return (
     <div className={`navbar-nav col-lg-4 ${style.center}`}>
       <div className='nav-link'>
@@ -45,7 +48,7 @@ export const PartCenter = () => {
           className={
             pathname === '/main/cart' ? `${style.page_on}` : `${style.page}`
           }>
-          Your Cart
+          {user.role !== 'admin' ? 'Your Cart' : 'Orders'}
         </Link>
       </div>
       <div className='nav-link'>

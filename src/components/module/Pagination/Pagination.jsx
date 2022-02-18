@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { changePage } from '../../redux/actions/product'
+import { changePage } from '../../../redux/actions/product'
 // styles: module
 import style from './Pagination.module.css'
 

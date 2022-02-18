@@ -2,7 +2,7 @@ import React from 'react'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { changeDetail } from '../../../../redux/actions/product'
+import { changeDetail, resetChange } from '../../../../redux/actions/product'
 // modules: numeral-formatter
 import { numFormatter } from '../../../../utils/numeral'
 // styles: module
@@ -18,12 +18,15 @@ export const SideEdit = (props) => {
       })
     )
   }
+  const handleReset = () => {
+    dispatch(resetChange())
+  }
 
   return (
     <div className={`col-md-5 ${style.section}`}>
       <div>
-        <div className='mb-3'>
-          <label forhtml='name' className='form-label'>
+        <div className={`mb-3 ${style.field_edit}`}>
+          <label htmlFor='name' className='form-label'>
             Name
           </label>
           <input
@@ -36,8 +39,8 @@ export const SideEdit = (props) => {
             value={detailTemp.name}
           />
         </div>
-        <div className='mb-3'>
-          <label forhtml='price' className='form-label'>
+        <div className={`mb-3 ${style.field_edit}`}>
+          <label htmlFor='price' className='form-label'>
             Price
           </label>
           <input
@@ -50,8 +53,8 @@ export const SideEdit = (props) => {
             value={`IDR ${numFormatter(detailTemp.price)}`}
           />
         </div>
-        <div className='mb-3'>
-          <label forhtml='description' className='form-label'>
+        <div className={`mb-3 ${style.field_edit}`}>
+          <label htmlFor='description' className='form-label'>
             Description
           </label>
           <textarea
@@ -61,9 +64,9 @@ export const SideEdit = (props) => {
             rows='3'
             onChange={handleChange}
             value={detailTemp.description}></textarea>
-        </div>
-        <div className='mb-3'>
-          <label forhtml='category' className='form-label'>
+        </div >
+        <div className={`mb-3  ${style.field_edit}`}>
+          <label htmlFor='category' className='form-label'>
             Category
           </label>
           <select
@@ -82,8 +85,8 @@ export const SideEdit = (props) => {
             <option value={3}>Food</option>
             <option value={4}>Add-on</option>
           </select>
-        </div>
-      </div>
+        </div >
+      </div >
       <button
         disabled={
           detailTemp.name !== detail.name ||
@@ -94,11 +97,26 @@ export const SideEdit = (props) => {
             ? false
             : true
         }
-        className={`btn ${style.btn_brown}`}
+        className={`btn mb-4 ${style.btn} ${style.btn_yellow}`}
+        onClick={handleReset}
+        type='button'>
+        Cancel
+      </button>
+      <button
+        disabled={
+          detailTemp.name !== detail.name ||
+            detailTemp.price !== detail.price ||
+            detailTemp.description !== detail.description ||
+            detailTemp.category_id !== detail.category_id ||
+            detailTemp.image !== detail.image
+            ? false
+            : true
+        }
+        className={`btn ${style.btn} ${style.btn_brown}`}
         onClick={props.handleUpdate}
         type='button'>
         Save change
       </button>
-    </div>
+    </div >
   )
 }

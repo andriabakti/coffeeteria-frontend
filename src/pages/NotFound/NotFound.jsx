@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // pkgs: react-helmet
 import Helmet from 'react-helmet'
+// pkgs: react-redux
+
+import { useDispatch } from 'react-redux'
+// modules: redux-action
+import {
+  resetParams
+} from '../../redux/actions/product'
 // styles: module
 import style from './NotFound.module.css'
 
 export const NotFound = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(resetParams())
+  }, [dispatch])
   return (
     <>
       <Helmet>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 // pkgs: query-string
 import qs from 'query-string'
 // pkgs: react-router
@@ -8,10 +8,9 @@ import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import { getProduct } from '../../../../redux/actions/product'
 // components: module
-import { CardProduct } from '../../../../components/CardProduct/CardProduct'
-import { Pagination } from '../../../../components/Pagination/Pagination'
-import { TabsBar } from '../../../../components/TabsBar/TabsBar'
-import { ModalCreate } from '../../../../components/ModalCreate/ModalCreate'
+import { CardProduct } from '../../../../components/module/CardProduct/CardProduct'
+import { Pagination } from '../../../../components/module/Pagination/Pagination'
+import { TabsBar } from '../../../../components/module/TabsBar/TabsBar'
 // styles: module
 import style from './SideRight.module.css'
 
@@ -20,8 +19,6 @@ export const SideRight = () => {
   const { user } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const history = useHistory()
-  const [show, setShow] = useState(false)
-  const handleShow = () => setShow(!show)
   const location = useLocation()
   const page = pages.current_page
 
@@ -62,7 +59,7 @@ export const SideRight = () => {
           ) :
             (
               <div className={`${style.card}`}>
-                {product.map((item) => (
+                {product.reverse().map((item) => (
                   <div className={`col-md-3`} key={item.id}>
                     <CardProduct
                       id={item.id}
@@ -80,12 +77,11 @@ export const SideRight = () => {
         {user.role === 'admin' && (
           <button
             className={`btn text-white ${style.btn_create}`}
-            onClick={handleShow}>
+            onClick={() => history.push('/main/new-product')}>
             Add new product
           </button>
         )}
       </div>
-      <ModalCreate show={show} onHide={handleShow} />
     </div>
   )
 }

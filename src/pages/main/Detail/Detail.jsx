@@ -10,7 +10,8 @@ import {
   getProduct,
   getDetail,
   changeDetail,
-  updateProduct
+  updateProduct,
+  setParams
 } from '../../../redux/actions/product'
 import { addCart } from '../../../redux/actions/cart'
 // components: side
@@ -26,6 +27,7 @@ export const Detail = () => {
     color: 'inherit'
   }
   const { id } = useParams()
+  // console.log(id);
   const dispatch = useDispatch()
   const { detail, detailTemp } = useSelector((state) => state.product)
   const { user } = useSelector((state) => state.user)
@@ -62,6 +64,7 @@ export const Detail = () => {
   }
 
   useEffect(() => {
+    dispatch(setParams(id))
     dispatch(getDetail(id))
   }, [dispatch, id])
 

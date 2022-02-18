@@ -2,7 +2,7 @@ import React from 'react'
 // pkgs: react-router
 import { useLocation, useHistory, Link } from 'react-router-dom'
 // assets: image
-import logo from '../../assets/icons/icon.svg'
+import logo from '../../../assets/icons/icon.svg'
 // styles: module
 import style from './NavAuth.module.css'
 

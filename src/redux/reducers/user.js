@@ -97,19 +97,19 @@ export const user = (state = initialState, action) => {
         }
       }
     }
+    // Temp Profile: Reset
+    case 'RESET_CHANGE': {
+      return {
+        ...state,
+        profileTemp: state.profile
+      }
+    }
     // Profile: Update
     case 'UPDATE_PROFILE_PENDING': {
       return {
         ...state,
         isLoading: true,
         isError: false
-      }
-    }
-    // Temp Profile: Reset
-    case 'RESET_CHANGE': {
-      return {
-        ...state,
-        profileTemp: state.profile
       }
     }
     case 'UPDATE_PROFILE_FULFILLED': {

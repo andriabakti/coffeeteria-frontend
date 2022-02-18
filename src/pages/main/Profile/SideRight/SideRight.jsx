@@ -154,8 +154,7 @@ export const SideRight = (props) => {
                 profileTemp.gender === '') &&
               'male'
             }
-            defaultChecked={profileTemp.gender === 'male' && true}
-            required={profileTemp.gender === null ? true : false}
+            checked={profileTemp.gender === 'male' ? true : false}
             name='gender'
             type='radio'
             id='male'
@@ -176,8 +175,7 @@ export const SideRight = (props) => {
                 profileTemp.gender === '') &&
               'female'
             }
-            defaultChecked={profileTemp.gender === 'female' && true}
-            required={profileTemp.gender === null ? true : false}
+            checked={profileTemp.gender === 'female' ? true : false}
             name='gender'
             type='radio'
             id='female'

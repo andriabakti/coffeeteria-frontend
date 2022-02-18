@@ -1,8 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useState, useRef } from 'react'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { resetChange } from '../../../../redux/actions/user'
+import { changeProfile, resetChange } from '../../../../redux/actions/user'
+// components: base
+import { ModalConfirm } from '../../../../components/base/ModalConfirm/ModalConfirm'
 // assets: image
 import blank from '../../../../assets/images/blank_profile.jpg'
 // styles: module
@@ -10,8 +12,23 @@ import style from './SideLeft.module.css'
 
 export const SideLeft = (props) => {
   const ref = useRef()
+  const [show, setShow] = useState(false)
+  const [open, setOpen] = useState(false)
   const dispatch = useDispatch()
   const { profile, profileTemp } = useSelector((state) => state.user)
+
+  const handleShow = () => setShow(!show)
+  const handleOpen = () => setOpen(!open)
+
+  const removeImage = () => {
+    props.resetImage(null)
+    dispatch(
+      changeProfile({
+        image: null
+      })
+    )
+    handleShow()
+  }
 
   const cancelChange = () => {
     dispatch(resetChange())
@@ -50,8 +67,8 @@ export const SideLeft = (props) => {
         </div>
         <button
           className={`btn ${style.btn_sm} ${style.btn_brown}`}
-          type='button'
-          onClick={props.resetImage}>
+          onClick={handleShow}
+          type='button'>
           Remove photo
         </button>
         <button
@@ -82,7 +99,7 @@ export const SideLeft = (props) => {
               : true
           }
           className={`btn ${style.btn_md} ${style.btn_brown}`}
-          onClick={props.handleUpdate}
+          onClick={props.toSave}
           type='button'>
           Save Change
         </button>
@@ -101,17 +118,33 @@ export const SideLeft = (props) => {
               : true
           }
           className={`btn ${style.btn_md} ${style.btn_gold}`}
-          onClick={cancelChange}
+          onClick={handleOpen}
           type='button'>
           Cancel
         </button>
         <button
           className={`btn ${style.btn_md} ${style.btn_white}`}
-          onClick={props.onShow}
+          onClick={props.toLogout}
           type='button'>
           Log out
         </button>
       </div>
+      <ModalConfirm
+        show={open}
+        onHide={handleOpen}
+        text='cancel the changes'
+        eventClick={cancelChange}
+        btnBack='Back'
+        btnConfirm='Sure'
+      />
+      <ModalConfirm
+        show={show}
+        onHide={handleShow}
+        text='remove the photo'
+        eventClick={removeImage}
+        btnBack='Cancel'
+        btnConfirm='Remove'
+      />
     </div>
   )
 }

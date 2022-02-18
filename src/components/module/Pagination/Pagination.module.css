@@ -16,16 +16,17 @@
 .pagination>li>a,
 .pagination>li>span {
   color: #6A4029 !important;
-  border: 1px solid #6A4029 !important;
+  border: 3px solid #6A4029 !important;
   padding: 15px 20px !important;
   outline: none !important;
   cursor: pointer !important;
+  background-color: #ffffff !important;
 }
 
 .pagination>li>a:hover,
 .pagination>li>span:hover {
   background-color: #FFBA33 !important;
-  border: 1px solid #FFBA33 !important;
+  border: 3px solid #FFBA33 !important;
 }
 
 .pagination>li:first-child>a,
@@ -48,11 +49,16 @@
 
 .pagination>.active>a,
 .pagination>.active>span,
-.pagination>.active>a:hover,
-.pagination>.active>span:hover,
 .pagination>.active>a:focus,
 .pagination>.active>span:focus {
   background-color: #6A4029 !important;
   border-color: #6A4029 !important;
   color: #FFBA33 !important;
+}
+
+.pagination>.active>a:hover,
+.pagination>.active>span:hover {
+  background-color: #FFBA33 !important;
+  border: 3px solid #FFBA33 !important;
+  color: #6A4029 !important;
 }

@@ -5,7 +5,7 @@ export const getProduct = (page, search, filter) => {
   return {
     type: 'GET_PRODUCT',
     payload: axiosApiInstances.get(
-      `/product/?limit=9&page=${page}&filter=${filter}&search=${search}
+      `/product/?limit=12&page=${page}&filter=${filter}&search=${search}
       `
     )
   }
@@ -39,6 +39,12 @@ export const changeDetail = (data) => {
   }
 }
 
+export const resetChange = () => {
+  return {
+    type: 'RESET_CHANGE'
+  }
+}
+
 export const updateProduct = (id, data) => {
   return {
     type: 'UPDATE_PRODUCT',
@@ -50,5 +56,18 @@ export const deleteProduct = (id) => {
   return {
     type: 'DELETE_PRODUCT',
     payload: axiosApiInstances.delete(`/product/${id}`)
+  }
+}
+
+export const setParams = (params) => {
+  return {
+    type: 'SET_PARAMS',
+    payload: params
+  }
+}
+
+export const resetParams = () => {
+  return {
+    type: 'RESET_PARAMS'
   }
 }

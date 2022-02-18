@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { PartCenter } from './PartCenter/PartCenter'
 import { PartRight } from './PartRight/PartRight'
 // assets: image
-import logo from '../../assets/icons/icon.svg'
+import logo from '../../../assets/icons/icon.svg'
 // styles: module
 import style from './NavBar.module.css'
 

@@ -2,9 +2,9 @@ import React from 'react'
 // pkgs: react-router
 import { Switch, Redirect, useRouteMatch } from 'react-router-dom'
 // components: module
-import { NavAuth } from '../../components/NavAuth/NavAuth'
-import { Footer } from '../../components/Footer/Footer'
-import { ScrollTop } from '../../components/ScrollTop/ScrollTop'
+import { NavAuth } from '../../components/module/NavAuth/NavAuth'
+import { Footer } from '../../components/module/Footer/Footer'
+import { ScrollTop } from '../../components/module/ScrollTop/ScrollTop'
 // components: route
 import { RoutePublic } from '../../configs/RoutePublic'
 // components: page

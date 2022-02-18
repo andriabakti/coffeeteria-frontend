@@ -7,8 +7,8 @@ import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import { registerUser } from '../../../redux/actions/user'
-// components: module
-import { InputAuth } from '../../../components/InputAuth/InputAuth'
+// components: base
+import { InputAuth } from '../../../components/base/InputAuth/InputAuth'
 // styles: module
 import style from './SignUp.module.css'
 

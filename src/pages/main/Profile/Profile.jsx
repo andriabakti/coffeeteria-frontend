@@ -16,8 +16,8 @@ import {
 // components: side
 import { SideLeft } from './SideLeft/SideLeft'
 import { SideRight } from './SideRight/SideRight'
-// components: module
-import { ModalExit } from '../../../components/ModalExit/ModalExit'
+// components: base
+import { ModalConfirm } from '../../../components/base/ModalConfirm/ModalConfirm'
 // styles: module
 import style from './Profile.module.css'
 
@@ -32,7 +32,9 @@ export const Profile = () => {
   )
   const [image, setImage] = useState(profileTemp.image)
   const [show, setShow] = useState(false)
+  const [open, setOpen] = useState(false)
   const handleShow = () => setShow(!show)
+  const handleOpen = () => setOpen(!open)
 
   const handleDate = (date) => {
     let formatted
@@ -63,15 +65,6 @@ export const Profile = () => {
     )
   }
 
-  const removeImage = () => {
-    setImage(null)
-    dispatch(
-      changeProfile({
-        image: null
-      })
-    )
-  }
-
   const newProfile = new FormData()
   newProfile.append('first_name', profileTemp.first_name)
   newProfile.append('last_name', profileTemp.last_name)
@@ -88,6 +81,12 @@ export const Profile = () => {
     alert(msg)
     await dispatch(getProfile(profile.id))
     history.push('/main/profile')
+  }
+
+  const logOut = () => {
+    localStorage.removeItem('token')
+    alert('Anda berhasil log out')
+    history.push('/main')
   }
 
   useEffect(() => {
@@ -109,16 +108,31 @@ export const Profile = () => {
           </div>
           <div className={`row card ${style.section}`}>
             <SideLeft
-              onShow={handleShow}
               changeImage={handleImage}
-              resetImage={removeImage}
-              handleUpdate={editProfile}
+              resetImage={setImage}
+              toSave={handleOpen}
+              toLogout={handleShow}
             />
             <SideRight changeDate={handleDate} />
           </div>
         </div>
       </div>
-      <ModalExit show={show} onHide={handleShow} />
+      <ModalConfirm
+        show={open}
+        onHide={handleOpen}
+        text='save the changes'
+        eventClick={editProfile}
+        btnBack='Cancel'
+        btnConfirm='Save'
+      />
+      <ModalConfirm
+        show={show}
+        onHide={handleShow}
+        text='log out'
+        eventClick={logOut}
+        btnBack='Cancel'
+        btnConfirm='Log out'
+      />
     </div>
   )
 }

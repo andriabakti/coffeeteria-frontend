@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import { getHistory } from '../../../redux/actions/order'
 // components: module
-import { CardHistory } from '../../../components/CardHistory/CardHistory'
+import { CardHistory } from '../../../components/module/CardHistory/CardHistory'
 // styles: module
 import style from './History.module.css'
 

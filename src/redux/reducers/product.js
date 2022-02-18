@@ -5,7 +5,8 @@ const initialState = {
   detail: {},
   detailTemp: {},
   isLoading: false,
-  isError: false
+  isError: false,
+  params: ''
 }
 
 export const product = (state = initialState, action) => {
@@ -100,6 +101,13 @@ export const product = (state = initialState, action) => {
         }
       }
     }
+    // Temp Detail: Reset
+    case 'RESET_CHANGE': {
+      return {
+        ...state,
+        detailTemp: state.detail
+      }
+    }
     // Product: Update
     case 'UPDATE_PRODUCT_PENDING': {
       return {
@@ -144,6 +152,18 @@ export const product = (state = initialState, action) => {
         isLoading: false,
         isError: true
       }
+    case 'SET_PARAMS': {
+      return {
+        ...state,
+        params: action.payload
+      }
+    }
+    case 'RESET_PARAMS': {
+      return {
+        ...state,
+        params: ''
+      }
+    }
     default: {
       return state
     }

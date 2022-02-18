@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { deleteProduct, getProduct } from '../../redux/actions/product'
+import { deleteProduct, getProduct } from '../../../redux/actions/product'
 // modules: numeral-formatter
-import { numFormatter } from '../../utils/numeral'
-// components: module
-import { ModalDelete } from '../ModalDelete/ModalDelete'
+import { numFormatter } from '../../../utils/numeral'
+// components: base
+import { ModalConfirm } from '../../base/ModalConfirm/ModalConfirm'
 // assets: image
-import blank from '../../assets/images/blank_img.jpg'
+import blank from '../../../assets/images/blank_img.jpg'
 // assets: icon
-import icon_edit from '../../assets/icons/icon_edit.svg'
+import icon_edit from '../../../assets/icons/icon_edit.svg'
 // styles: module
 import style from './CardProduct.module.css'
 
@@ -56,10 +56,13 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
           </button>
         )}
       </div>
-      <ModalDelete
+      <ModalConfirm
         show={open}
         onHide={handleOpen}
-        deleteItem={() => handleDelete(id)}
+        text='delete this product'
+        eventClick={() => handleDelete(id)}
+        btnBack='Cancel'
+        btnConfirm='Delete'
       />
     </>
   )

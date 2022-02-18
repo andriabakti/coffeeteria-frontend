@@ -7,8 +7,9 @@ import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import { loginUser } from '../../../redux/actions/user'
-// components: module
-import { InputAuth } from '../../../components/InputAuth/InputAuth'
+// components: base
+import { InputAuth } from '../../../components/base/InputAuth/InputAuth'
+// import { Toast } from '../../../components/base/Toast/Toast'
 // styles: module
 import style from './SignIn.module.css'
 
@@ -16,12 +17,11 @@ export const SignIn = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.user)
-
+  // const [toast, setToast] = useState(true)
   const [form, setForm] = useState({
     email: '',
     password: ''
   })
-
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -43,6 +43,7 @@ export const SignIn = () => {
         <title>Login - CoffeeTeria</title>
         <meta name='description' content='This is Login Page' />
       </Helmet>
+      {/* < Toast msg='Login success!' show={toast} /> */}
       <div className={`container ${style.container}`}>
         <form className={`${style.form}`} onSubmit={handleLogin}>
           <span>Login</span>

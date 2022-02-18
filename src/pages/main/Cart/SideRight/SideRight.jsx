@@ -58,10 +58,10 @@ export const SideRight = () => {
                 className='form-check-input'
                 type='radio'
                 value='Card'
-                id='payment-1'
+                id='card'
                 name='payment'
               />
-              <label className='form-check-label' htmlFor='payment-1'>
+              <label className='form-check-label' htmlfor='card'>
                 <img
                   className={`${style.icon_pay} ${style.icon_card}`}
                   src={icon_card}
@@ -76,10 +76,10 @@ export const SideRight = () => {
                 className='form-check-input'
                 type='radio'
                 value='Bank'
-                id='payment-2'
+                id='bank'
                 name='payment'
               />
-              <label className='form-check-label' htmlFor='payment-2'>
+              <label className='form-check-label' htmlfor='bank'>
                 <img
                   className={`btn ${style.icon_pay} ${style.icon_bank}`}
                   src={icon_bank}
@@ -94,10 +94,10 @@ export const SideRight = () => {
                 className='form-check-input'
                 type='radio'
                 value='COD'
-                id='payment-3'
+                id='COD'
                 name='payment'
               />
-              <label className='form-check-label' htmlFor='payment-3'>
+              <label className='form-check-label' htmlfor='COD'>
                 <img
                   className={`btn ${style.icon_pay} ${style.icon_cash}`}
                   src={icon_cash}

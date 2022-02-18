@@ -2,9 +2,9 @@ import React from 'react'
 // pkgs: react-bootstrap
 import { Modal } from 'react-bootstrap'
 // styles: module
-import style from './ModalDelete.module.css'
+import style from './ModalConfirm.module.css'
 
-export const ModalDelete = (props) => {
+export const ModalConfirm = (props) => {
   return (
     <Modal
       show={props.show}
@@ -13,20 +13,20 @@ export const ModalDelete = (props) => {
       centered>
       <div className={`${style.modal_box}`}>
         <Modal.Body className={`${style.modal_body}`}>
-          Are you sure want to delete this product ?
+          Are you sure want to {props.text} ?
         </Modal.Body>
         <div className={`${style.modal_footer}`}>
           <button
             className={`btn ${style.btn_white}`}
             type='button'
             onClick={props.onHide}>
-            Cancel
+            {props.btnBack}
           </button>
           <button
             className={`btn ${style.btn_brown}`}
             type='button'
-            onClick={props.deleteItem}>
-            Delete
+            onClick={props.eventClick}>
+            {props.btnConfirm}
           </button>
         </div>
       </div>

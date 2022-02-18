@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 // pkgs: query-string
 import qs from 'query-string'
 // pkgs: react-router
@@ -6,15 +6,16 @@ import { Link, useLocation, useHistory } from 'react-router-dom'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { getProfile } from '../../../redux/actions/user'
+import { getProfile } from '../../../../redux/actions/user'
 // assets: image
-import blank from '../../../assets/images/blank_profile.jpg'
+import blank from '../../../../assets/images/blank_profile.jpg'
 // assets: icon
-import icon_search from '../../../assets/icons/icon_search.svg'
+import icon_search from '../../../../assets/icons/icon_search.svg'
 // styles: module
 import style from './PartRight.module.css'
 
 export const PartRight = () => {
+  const ref = useRef()
   const history = useHistory()
   const { pathname, search } = useLocation()
   const { user, profile } = useSelector((state) => state.user)
@@ -43,7 +44,10 @@ export const PartRight = () => {
         <div className={`col-lg-4 navbar-nav ${style.right}`}>
           <div className={`input-group ${style.search_bar}`}>
             <span className='input-group-prepend'>
-              <button className={`btn shadow-none ${style.icon}`} type='button'>
+              <button
+                onClick={() => ref.current.focus()}
+                className={`btn shadow-none ${style.icon}`}
+                type='button'>
                 <img src={icon_search} alt='search' />
               </button>
             </span>
@@ -54,6 +58,7 @@ export const PartRight = () => {
               onKeyPress={handleSearch}
               type='search'
               name='search'
+              ref={ref}
             />
           </div>
           <Link

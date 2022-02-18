@@ -1,6 +1,6 @@
 import React from 'react'
 // modules: numeral-formatter
-import { numFormatter } from '../../utils/numeral'
+import { numFormatter } from '../../../utils/numeral'
 // assets: image
 // import img from '../../../../assets/images/blank_img.jpg'
 // styles: module

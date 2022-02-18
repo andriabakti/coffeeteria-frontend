@@ -4,9 +4,9 @@ import { Modal } from 'react-bootstrap'
 // pkgs: react-redux
 import { useDispatch } from 'react-redux'
 // modules: redux-action
-import { addProduct, getProduct } from '../../redux/actions/product'
+import { addProduct, getProduct } from '../../../redux/actions/product'
 // assets: image
-import blank from '../../assets/images/blank_img.jpg'
+import blank from '../../../assets/images/blank_img.jpg'
 // styles: module
 import style from './ModalCreate.module.css'
 
@@ -76,7 +76,7 @@ export const ModalCreate = (props) => {
             <div className={`col-md-6 ${style.form}`}>
               <div>
                 <div className='mb-3'>
-                  <label forHtml='name' className='form-label'>
+                  <label htmlFor='name' className='form-label'>
                     Product name
                   </label>
                   <input
@@ -88,7 +88,7 @@ export const ModalCreate = (props) => {
                   />
                 </div>
                 <div className='mb-3'>
-                  <label forHtml='price' className='form-label'>
+                  <label htmlFor='price' className='form-label'>
                     Product price
                   </label>
                   <input
@@ -101,7 +101,7 @@ export const ModalCreate = (props) => {
                 </div>
               </div>
               <div className='mb-3'>
-                <label forHtml='description' className='form-label'>
+                <label htmlFor='description' className='form-label'>
                   Product description
                 </label>
                 <textarea
@@ -111,7 +111,7 @@ export const ModalCreate = (props) => {
                   onChange={(e) => handleDesc(e)}></textarea>
               </div>
               <div className='mb-3'>
-                <label className='form-label' forHtml='category'>
+                <label className='form-label' htmlFor='category'>
                   Product category
                 </label>
                 <select
@@ -131,7 +131,7 @@ export const ModalCreate = (props) => {
             </div>
             <div className={`col-md-6 ${style.preview}`}>
               <div>
-                <label forHtml='image' className='form-label'>
+                <label htmlFor='image' className='form-label'>
                   Product Image
                 </label>
                 <div className='mb-3 input-group'>

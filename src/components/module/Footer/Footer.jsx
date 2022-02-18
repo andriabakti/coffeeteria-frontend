@@ -2,11 +2,11 @@ import React from 'react'
 // pkgs: react-router
 import { Link, useLocation } from 'react-router-dom'
 // assets: image
-import logo from '../../assets/icons/icon.svg'
+import logo from '../../../assets/icons/icon.svg'
 // assets: icon
-import icon_fb from '../../assets/icons/icon_fb.svg'
-import icon_twt from '../../assets/icons/icon_twt.svg'
-import icon_ig from '../../assets/icons/icon_ig.svg'
+import icon_fb from '../../../assets/icons/icon_fb.svg'
+import icon_twt from '../../../assets/icons/icon_twt.svg'
+import icon_ig from '../../../assets/icons/icon_ig.svg'
 // styles: module
 import style from './Footer.module.css'
 
@@ -31,7 +31,7 @@ export const Footer = (props) => {
                       <br />
                       today!
                     </h5>
-                    <span>Let's see the deals.</span>
+                    <span>Let's see the deals</span>
                   </div>
                 ) : (
                   <div className={`${style.card_side}`}>
@@ -40,7 +40,7 @@ export const Footer = (props) => {
                       <br />
                       card now!
                     </h5>
-                    <span>Let's join with our member and enjoy the deals.</span>
+                    <span>Let's join with our member and enjoy the deals</span>
                   </div>
                 )}
                 <div className={`${style.card_side}`}>
@@ -53,12 +53,12 @@ export const Footer = (props) => {
           )}
         <div
           className={`row ${pathname === '/auth/sign-in' ||
-              pathname === '/auth/sign-up' ||
-              pathname === '/main'
-              ? style.main_other
-              : style.main
+            pathname === '/auth/sign-up' ||
+            pathname === '/main'
+            ? style.main_other
+            : style.main
             }`}>
-          <div className={`col-lg-4 ${style.left}`}>
+          <div className={`col-lg-5 ${style.left}`}>
             <Link to='/main' style={link} className={`${style.brand}`}>
               <img alt='CoffeeTeria' height='30px' width='30px' src={logo} />
               <span>CoffeeTeria</span>
