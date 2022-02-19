@@ -27,23 +27,34 @@ export const Create = () => {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.user)
   const [show, setShow] = useState(false)
+  const [price, setPrice] = useState(0)
   const [image, setImage] = useState(null)
   const [preview, setPreview] = useState(null)
   const [product, setProduct] = useState({
     name: '',
-    price: '',
     desc: '',
     category: ''
   })
 
   const formData = new FormData()
   formData.append('name', product.name)
-  formData.append('price', parseInt(product.price))
+  formData.append('price', price)
   formData.append('image', image)
   formData.append('description', product.desc)
-  formData.append('category_id', product.category)
+  formData.append('category_id', parseInt(product.category))
 
   const handleShow = () => setShow(!show)
+  const handlePrice = (e) => {
+    let result
+    let input = e.target.value.replace(/\D+/g, '')
+    if (isNaN(input) || input === '') {
+      result = 0
+      setPrice(result)
+    } else {
+      result = parseInt(input)
+      setPrice(result)
+    }
+  }
   const handleImage = (e) => {
     setImage(e.target.files[0])
     handlePreview(e.target.files[0])
@@ -62,7 +73,7 @@ export const Create = () => {
     await dispatch(addProduct(formData))
     alert('New product added successfully')
     await dispatch(getProduct(1, '', ''))
-    history.push('main/product')
+    history.push('/main/product')
   }
 
   if (user.role !== 'admin') {
@@ -101,7 +112,11 @@ export const Create = () => {
                 getImage={handleImage}
               />
               <SideRight
+                product={product}
+                price={price}
+                image={image}
                 getChange={handleChange}
+                getPrice={handlePrice}
                 confirmAdd={handleShow}
               />
             </div>

@@ -50,26 +50,18 @@
   border-radius: 10px !important;
 }
 
+.btn:hover {
+  color: #FFFFFF !important;
+  background-color: #0B132A !important;
+  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
+}
+
 .btn_yellow {
   color: #6A4029 !important;
   background-color: #FFBA33 !important;
 }
 
-.btn_yellow:hover {
-  color: #FFBA33 !important;
-  background-color: #29A79C !important;
-  outline: 3px solid #6A4029 !important;
-  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
-}
-
 .btn_brown {
   color: #ffffff !important;
   background-color: #6A4029 !important;
-}
-
-.btn_brown:hover {
-  color: #FFBA33 !important;
-  background-color: #29A79C !important;
-  outline: 3px solid #6A4029 !important;
-  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
 }

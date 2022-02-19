@@ -1,12 +1,12 @@
 const initialState = {
   msg: '',
+  statusCode: null,
   product: [],
   pages: {},
   detail: {},
   detailTemp: {},
   isLoading: false,
   isError: false,
-  params: ''
 }
 
 export const product = (state = initialState, action) => {
@@ -56,15 +56,17 @@ export const product = (state = initialState, action) => {
       return {
         ...state,
         msg: action.payload.data.message,
+        statusCode: action.payload.data.status_code,
         detail: action.payload.data.data[0],
         detailTemp: action.payload.data.data[0],
         isLoading: false,
-        isError: false
+        isError: false,
       }
     case 'GET_DETAIL_REJECTED':
       return {
         ...state,
         msg: action.payload.response.data.message,
+        statusCode: action.payload.response.status,
         detail: [],
         isLoading: false,
         isError: true
@@ -152,18 +154,6 @@ export const product = (state = initialState, action) => {
         isLoading: false,
         isError: true
       }
-    case 'SET_PARAMS': {
-      return {
-        ...state,
-        params: action.payload
-      }
-    }
-    case 'RESET_PARAMS': {
-      return {
-        ...state,
-        params: ''
-      }
-    }
     default: {
       return state
     }

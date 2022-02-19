@@ -1,8 +1,6 @@
 import React from 'react'
 // pkgs: react-router
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
-// pkgs: react-redux
-// import { useSelector } from 'react-redux'
 // components: module
 import { NavBar } from '../../components/module/NavBar/NavBar'
 import { Footer } from '../../components/module/Footer/Footer'
@@ -23,14 +21,6 @@ import { NotFound } from '../NotFound/NotFound'
 export const Main = () => {
   // modules
   const { path } = useRouteMatch()
-  // const { user } = useSelector((state) => state.user)
-  // const { params } = useSelector((state) => state.product)
-  // const paramsId = parseInt(params)
-  // let id
-  // if (isNaN(paramsId)) {
-  //   id = null
-  // }
-  // console.log(paramsId)
   // functions
   window.scrollTo(0, 0, 'smooth')
 
@@ -40,12 +30,8 @@ export const Main = () => {
       <Switch>
         <RoutePublic component={Home} path={`${path}`} exact />
         <RoutePrivate component={Product} path={`${path}/product`} exact />
-        {/* {(id !== null || params === '') && ( */}
         <RoutePrivate component={Detail} path={`${path}/product/:id`} exact />
-        {/* )} */}
-        {/* {user.role === 'admin' && ( */}
         <RoutePrivate component={Create} path={`${path}/new-product`} exact />
-        {/* )} */}
         <RoutePrivate component={Cart} path={`${path}/cart`} exact />
         <RoutePrivate component={History} path={`${path}/history`} exact />
         <RoutePrivate component={Profile} path={`${path}/profile`} exact />

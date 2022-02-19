@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+// pkgs: react-router
+import { useHistory } from 'react-router-dom'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { deleteProduct, getProduct } from '../../../redux/actions/product'
+import { deleteProduct } from '../../../redux/actions/product'
 // modules: numeral-formatter
 import { numFormatter } from '../../../utils/numeral'
 // components: base
@@ -15,6 +17,7 @@ import icon_edit from '../../../assets/icons/icon_edit.svg'
 import style from './CardProduct.module.css'
 
 export const CardProduct = ({ id, name, price, image, clickEvent }) => {
+  const history = useHistory()
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(!open)
   const { user } = useSelector((state) => state.user)
@@ -23,8 +26,8 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
   const handleDelete = async (itemId) => {
     await dispatch(deleteProduct(itemId))
     alert('Product deleted successfully!')
-    await dispatch(getProduct(1, '', ''))
-    handleOpen()
+    history.push('/main/product')
+    // handleOpen()
   }
   return (
     <>

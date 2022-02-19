@@ -24,7 +24,7 @@ import style from './Profile.module.css'
 export const Profile = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const { user, profile, profileTemp, msg } = useSelector((state) => state.user)
+  const { user, profile, profileTemp } = useSelector((state) => state.user)
   const defaultDate = moment().format('YYYY-MM-DD')
   const getDate = moment(profileTemp.birth_date).format('YYYY-MM-DD')
   const [date, setDate] = useState(
@@ -78,9 +78,9 @@ export const Profile = () => {
 
   const editProfile = async () => {
     await dispatch(updateProfile(profile.id, newProfile))
-    alert(msg)
+    alert('Profile berhasil diupdate')
+    handleOpen()
     await dispatch(getProfile(profile.id))
-    history.push('/main/profile')
   }
 
   const logOut = () => {

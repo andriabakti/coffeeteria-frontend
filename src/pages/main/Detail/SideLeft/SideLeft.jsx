@@ -1,14 +1,28 @@
 import React, { useRef } from 'react'
 // pkgs: react-redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  changeDetail
+} from '../../../../redux/actions/product'
 // assets: image
 import blank from '../../../../assets/images/blank_img.jpg'
+// assets: assets
+import icon_edit from '../../../../assets/icons/icon_edit.svg'
 // styles: module
 import style from './SideLeft.module.css'
 
 export const SideLeft = (props) => {
-  const ref = useRef()
+  const change = useRef()
+  const dispatch = useDispatch()
   const { user } = useSelector((state) => state.user)
+  const { detailTemp } = useSelector((state) => state.product)
+
+  const deleteImage = () => {
+    props.getImage(null)
+    dispatch(changeDetail({
+      image: null
+    }))
+  }
   return (
     <div className={`col-md-6 ${style.section}`}>
       <input
@@ -16,22 +30,26 @@ export const SideLeft = (props) => {
         type='file'
         name='image'
         id='image'
-        ref={ref}
+        ref={change}
         hidden
       />
       <div className={`position-relative ${style.img}`}>
-        {props.image ? (
-          <img src={props.image} alt='item_img' />
-        ) : (
-          <img src={blank} alt='item_img' />
-        )}
+        <img src={detailTemp.image ? detailTemp.image : blank} alt='item_img' />
         {user.role === 'admin' && (
-          <button
-            className={`btn position-absolute top-0 end-0 ${style.btn_select}`}
-            onClick={() => ref.current.click()}
-            type='buttton'>
-            <i className='fas fa-trash-alt'></i>
-          </button>
+          <>
+            <button
+              className={`btn position-absolute top-0 end-0 ${style.btn} ${style.btn_select}`}
+              onClick={() => change.current.click()}
+              type='buttton'>
+              <img src={icon_edit} alt='change' />
+            </button>
+            <button
+              className={`btn position-absolute top-0 end-0 ${style.btn} ${style.btn_reset}`}
+              onClick={deleteImage}
+              type='buttton'>
+              <i className='fas fa-trash-alt'></i>
+            </button>
+          </>
         )}
       </div>
       {user.role !== 'admin' && (

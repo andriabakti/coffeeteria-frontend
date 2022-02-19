@@ -1,10 +1,15 @@
 import React from 'react'
+// pkgs: react-router
+import { useHistory } from 'react-router-dom'
 // modules: numeral
-// import { numFormatter } from '../../../../utils/numeral'
+import { numFormatter } from '../../../../utils/numeral'
 // styles: module
 import style from './SideRight.module.css'
 
 export const SideRight = (props) => {
+  const history = useHistory()
+  const { name, desc, category } = props.product
+  const price = props.price
   return (
     <div className={`col-md-6 ${style.wrapper}`}>
       <div>
@@ -15,12 +20,12 @@ export const SideRight = (props) => {
           <input
             className='form-control form-control-lg'
             placeholder='Type product name max. 50 characters'
+            onChange={props.getChange}
             maxLength={50}
             name='name'
             type='text'
             id='name'
             required
-            onChange={props.getChange}
           />
         </div>
         <div className={`mb-3 ${style.field_edit}`}>
@@ -28,14 +33,18 @@ export const SideRight = (props) => {
             Price :
           </label>
           <input
-            type='text'
             className='form-control form-control-lg'
-            name='price'
-            id='price'
+            onChange={props.getPrice}
+            value={
+              props.price !== 0
+                ? `IDR ${numFormatter(price)}`
+                : ''
+            }
             placeholder='Type the price'
+            name='price'
+            type='text'
+            id='price'
             required
-            onChange={props.getChange}
-          // value={numFormatter()}
           />
         </div>
         <div className={`mb-3 ${style.field_edit}`}>
@@ -44,7 +53,7 @@ export const SideRight = (props) => {
           </label>
           <textarea
             className='form-control'
-            name='description'
+            name='desc'
             id='description'
             rows='3'
             placeholder='Describe your product max. 150 characters'
@@ -52,8 +61,7 @@ export const SideRight = (props) => {
             required
             onChange={props.getChange}
           // value={detailTemp.description}
-          >
-          </textarea>
+          ></textarea>
         </div>
         <div className={`mb-3  ${style.field_edit}`}>
           <label htmlFor='category' className='form-label'>
@@ -79,32 +87,23 @@ export const SideRight = (props) => {
         </div>
       </div>
       <button
-        // disabled={
-        //   detailTemp.name !== detail.name ||
-        //     detailTemp.price !== detail.price ||
-        //     detailTemp.description !== detail.description ||
-        //     detailTemp.category_id !== detail.category_id ||
-        //     detailTemp.image !== detail.image
-        //     ? false
-        //     : true
-        // }
+        disabled={
+          name !== '' &&
+            price !== 0 &&
+            desc !== '' &&
+            category !== '' &&
+            props.image !== null
+            ? false
+            : true
+        }
         className={`btn mb-4 ${style.btn} ${style.btn_brown}`}
         onClick={props.confirmAdd}
         type='button'>
         Save product
       </button>
       <button
-        // disabled={
-        //   detailTemp.name !== detail.name ||
-        //     detailTemp.price !== detail.price ||
-        //     detailTemp.description !== detail.description ||
-        //     detailTemp.category_id !== detail.category_id ||
-        //     detailTemp.image !== detail.image
-        //     ? false
-        //     : true
-        // }
         className={`btn ${style.btn} ${style.btn_grey}`}
-        // onClick={handleReset}
+        onClick={() => history.push('/main/product')}
         type='button'>
         Cancel
       </button>

@@ -36,8 +36,8 @@ export const SideRight = () => {
     <div className={`col-md-9 p-0 ${style.wrapper}`}>
       <div className={`${style.container}`}>
         <TabsBar />
-        <div>
-          {(isLoading) && (
+        <div className={`${style.card_box}`}>
+          {isLoading ? (
             <div className={`${style.loading}`}>
               <div className='spinner-border text-warning' role='status'>
                 <span className='visually-hidden'>Loading</span>
@@ -49,29 +49,25 @@ export const SideRight = () => {
                 <span className='visually-hidden'>Loading</span>
               </div>
             </div>
-          )}
-          {product.length <= 0 ? (
-            <div className={`${style.card_box}`}>
-              <h1>
-                There's no item yet
-              </h1>
+          ) : product.length <= 0 ? (
+            <div className={`${style.empty}`}>
+              <h1>There's no item yet</h1>
             </div>
-          ) :
-            (
-              <div className={`${style.card}`}>
-                {product.reverse().map((item) => (
-                  <div className={`col-md-3`} key={item.id}>
-                    <CardProduct
-                      id={item.id}
-                      name={item.name}
-                      price={item.price}
-                      image={item.image}
-                      clickEvent={() => history.push(`/main/product/${item.id}`)}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
+          ) : (
+            <div className={`${style.card}`}>
+              {product.map((item) => (
+                <div className={`col-md-3`} key={item.id}>
+                  <CardProduct
+                    id={item.id}
+                    name={item.name}
+                    price={item.price}
+                    image={item.image}
+                    clickEvent={() => history.push(`/main/product/${item.id}`)}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <Pagination />
         {user.role === 'admin' && (
