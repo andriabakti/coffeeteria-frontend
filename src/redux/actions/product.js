@@ -18,6 +18,7 @@ export const changePage = (page) => {
   }
 }
 
+
 export const getDetail = (id) => {
   return {
     type: 'GET_DETAIL',

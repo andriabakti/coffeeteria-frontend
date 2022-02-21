@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 // pkgs: react-router
 import { useHistory } from 'react-router-dom'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
@@ -24,10 +26,11 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
   const dispatch = useDispatch()
 
   const handleDelete = async (itemId) => {
-    await dispatch(deleteProduct(itemId))
-    alert('Product deleted successfully!')
+    await toast.promise(dispatch(deleteProduct(itemId)), {
+      success: 'Product deleted successfully',
+      error: 'Delete failed'
+    })
     history.push('/main/product')
-    // handleOpen()
   }
   return (
     <>
@@ -35,11 +38,12 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
         className={`card border-0 position-relative ${user.role === 'admin' ? style.content : style.container
           }`}
         onClick={user.role !== 'admin' ? clickEvent : undefined}>
-        <img
-          className={`${style.image}`}
-          src={image ? image : blank}
-          alt='product'
-        />
+        <div className={style.image}>
+          <img
+            src={image ? image : blank}
+            alt='product'
+          />
+        </div>
         <div className={`card-body text-center ${style.body}`}>
           <h5 className='card-title'>{name}</h5>
           <span className='card-text'>IDR {numFormatter(price)}</span>
@@ -61,7 +65,7 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
       </div>
       <ModalConfirm
         show={open}
-        onHide={handleOpen}
+        closeModal={handleOpen}
         text='delete this product'
         eventClick={() => handleDelete(id)}
         btnBack='Cancel'

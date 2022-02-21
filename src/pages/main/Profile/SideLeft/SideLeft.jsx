@@ -32,6 +32,7 @@ export const SideLeft = (props) => {
 
   const cancelChange = () => {
     dispatch(resetChange())
+    handleOpen()
   }
 
   return (
@@ -45,7 +46,7 @@ export const SideLeft = (props) => {
             />
           </div>
           <span>
-            <b>{profile.username}</b>
+            <b>{profile.username ? profile.username : 'Your Username'}</b>
           </span>
           <span>{profile.email}</span>
         </div>
@@ -59,20 +60,20 @@ export const SideLeft = (props) => {
             id='image'
           />
           <button
-            className={`btn ${style.btn_sm} ${style.btn_gold}`}
+            className={`btn ${style.btn_sm} ${style.btn} ${style.btn_gold}`}
             type='button'
             onClick={() => ref.current.click()}>
             Choose photo
           </button>
         </div>
         <button
-          className={`btn ${style.btn_sm} ${style.btn_brown}`}
+          className={`btn ${style.btn_sm} ${style.btn} ${style.btn_brown}`}
           onClick={handleShow}
           type='button'>
           Remove photo
         </button>
         <button
-          className={`btn ${style.btn_md} ${style.btn_white}`}
+          className={`btn ${style.btn_md} ${style.btn} ${style.btn_white}`}
           type='button'
           disabled>
           Edit Password
@@ -98,7 +99,7 @@ export const SideLeft = (props) => {
               ? false
               : true
           }
-          className={`btn ${style.btn_md} ${style.btn_brown}`}
+          className={`btn ${style.btn_md} ${style.btn} ${style.btn_brown}`}
           onClick={props.toSave}
           type='button'>
           Save Change
@@ -117,13 +118,13 @@ export const SideLeft = (props) => {
               ? false
               : true
           }
-          className={`btn ${style.btn_md} ${style.btn_gold}`}
+          className={`btn ${style.btn_md} ${style.btn} ${style.btn_gold}`}
           onClick={handleOpen}
           type='button'>
           Cancel
         </button>
         <button
-          className={`btn ${style.btn_md} ${style.btn_white}`}
+          className={`btn ${style.btn_md} ${style.btn} ${style.btn_white}`}
           onClick={props.toLogout}
           type='button'>
           Log out
@@ -131,7 +132,7 @@ export const SideLeft = (props) => {
       </div>
       <ModalConfirm
         show={open}
-        onHide={handleOpen}
+        closeModal={handleOpen}
         text='cancel the changes'
         eventClick={cancelChange}
         btnBack='Back'
@@ -139,7 +140,7 @@ export const SideLeft = (props) => {
       />
       <ModalConfirm
         show={show}
-        onHide={handleShow}
+        closeModal={handleShow}
         text='remove the photo'
         eventClick={removeImage}
         btnBack='Cancel'

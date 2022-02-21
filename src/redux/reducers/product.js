@@ -41,6 +41,7 @@ export const product = (state = initialState, action) => {
       return {
         ...state,
         pages: {
+          ...state.pages,
           current_page: action.payload
         }
       }

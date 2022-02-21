@@ -146,7 +146,7 @@ export const SideRight = (props) => {
       <div className={`${style.section}`}>
         <div className={`form-check ${style.check_box}`}>
           <input
-            className={`form-check-input ${style.check}`}
+            className={`form-check-input shadow-none ${style.check}`}
             onChange={handleChange}
             value={
               (profileTemp.gender === 'female' ||
@@ -167,7 +167,7 @@ export const SideRight = (props) => {
         </div>
         <div className={`form-check ${style.check_box}`}>
           <input
-            className={`form-check-input ${style.check}`}
+            className={`form-check-input shadow-none ${style.check}`}
             onChange={handleChange}
             value={
               (profileTemp.gender === 'male' ||

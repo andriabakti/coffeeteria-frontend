@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import Helmet from 'react-helmet'
 // pkgs: react-router
 import { Link, useHistory } from 'react-router-dom'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
@@ -70,16 +72,17 @@ export const Create = () => {
     })
   }
   const handleCreate = async () => {
-    await dispatch(addProduct(formData))
-    alert('New product added successfully')
-    await dispatch(getProduct(1, '', ''))
+    await toast.promise(dispatch(addProduct(formData)), {
+      pending: 'Adding',
+      success: 'New product added successfully',
+      error: 'New product failed to added'
+    })
+    dispatch(getProduct(1, '', ''))
     history.push('/main/product')
   }
 
   if (user.role !== 'admin') {
-    return (
-      <NotFound />
-    )
+    return <NotFound />
   } else {
     return (
       <>
@@ -107,10 +110,7 @@ export const Create = () => {
               </ol>
             </nav>
             <div className={`row ${style.content}`}>
-              <SideLeft
-                preview={preview}
-                getImage={handleImage}
-              />
+              <SideLeft preview={preview} getImage={handleImage} />
               <SideRight
                 product={product}
                 price={price}
@@ -124,11 +124,11 @@ export const Create = () => {
         </div>
         <ModalConfirm
           show={show}
-          onHide={handleShow}
+          closeModal={handleShow}
           text='add this new product'
           eventClick={handleCreate}
           btnBack='Cancel'
-          btnConfirm='Create'
+          btnConfirm='Add'
         />
       </>
     )

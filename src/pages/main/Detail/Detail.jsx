@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import Helmet from 'react-helmet'
 // pkgs: react-router
 import { useParams, useHistory, Link } from 'react-router-dom'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
@@ -32,7 +34,9 @@ export const Detail = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.user)
-  const { detail, detailTemp, statusCode } = useSelector((state) => state.product)
+  const { detail, detailTemp, statusCode } = useSelector(
+    (state) => state.product
+  )
   const [show, setShow] = useState(false)
   const [image, setImage] = useState(detailTemp.image)
   const paramsId = parseInt(id)
@@ -56,15 +60,16 @@ export const Detail = () => {
   formData.append('category_id', parseInt(detailTemp.category_id))
 
   const editProduct = async () => {
-    await dispatch(updateProduct(detail.id, formData))
-    alert('Product berhasil diupdate')
-    await dispatch(getDetail(detail.id))
+    await toast.promise(dispatch(updateProduct(detail.id, formData)), {
+      success: 'Product updated successfully',
+      error: 'Update failed'
+    })
     history.push('/main/product')
   }
 
   const handleAddCart = (items) => {
     dispatch(addCart({ ...detail, ...items }))
-    alert(`${detail.name} berhasil ditambahkan ke keranjang`)
+    toast.info(`${detail.name} added to cart`)
   }
 
   useEffect(() => {
@@ -72,9 +77,7 @@ export const Detail = () => {
   }, [dispatch, id])
 
   if (isNaN(paramsId) || statusCode === 404) {
-    return (
-      <NotFound />
-    )
+    return <NotFound />
   } else {
     return (
       <>
@@ -120,7 +123,7 @@ export const Detail = () => {
         </div>
         <ModalConfirm
           show={show}
-          onHide={handleShow}
+          closeModal={handleShow}
           text='update this product'
           eventClick={editProduct}
           btnBack='Cancel'

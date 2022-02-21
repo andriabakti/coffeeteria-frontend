@@ -8,9 +8,17 @@ export const purchaseOrder = (data) => {
   }
 }
 
-export const getHistory = () => {
+export const getHistory = (page, id) => {
   return {
     type: 'GET_ORDER',
-    payload: axiosApiInstances.get('/history')
+    payload: axiosApiInstances.get(`/history/${id}?limit=12&page=${page}`)
   }
 }
+
+export const updatePage = (page) => {
+  return {
+    type: 'CHANGE_PAGE',
+    payload: page
+  }
+}
+

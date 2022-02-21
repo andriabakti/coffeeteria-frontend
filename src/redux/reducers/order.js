@@ -1,6 +1,7 @@
 const initialState = {
   msg: '',
   history: [],
+  pages: {},
   isLoading: false,
   isError: false
 }
@@ -44,6 +45,7 @@ export const order = (state = initialState, action) => {
         ...state,
         msg: action.payload.data.message,
         history: action.payload.data.data,
+        pages: action.payload.data.page_info,
         isLoading: false,
         isError: false
       }
@@ -57,6 +59,15 @@ export const order = (state = initialState, action) => {
         isError: true
       }
     }
+    // Page: Change
+    case 'CHANGE_PAGE':
+      return {
+        ...state,
+        pages: {
+          ...state.pages,
+          current_page: action.payload
+        }
+      }
     default: {
       return state
     }

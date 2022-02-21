@@ -2,7 +2,10 @@ import React from 'react'
 // pkgs: react-router
 import { Link, useLocation } from 'react-router-dom'
 // pkgs: react-redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
+import { changePage } from '../../../../redux/actions/product'
+import { updatePage } from '../../../../redux/actions/order'
 // styles: module
 import style from './PartCenter.module.css'
 
@@ -11,6 +14,7 @@ export const PartCenter = () => {
     textDecoration: 'none',
     color: 'inherit'
   }
+  const dispatch = useDispatch()
   const { pathname } = useLocation()
   const { user } = useSelector((state) => state.user)
   return (
@@ -29,6 +33,7 @@ export const PartCenter = () => {
         <Link
           to={`/main/product`}
           style={link}
+          onClick={() => dispatch(changePage(1))}
           className={
             pathname !== '/main' &&
               pathname !== '/main/product/' &&
@@ -55,6 +60,7 @@ export const PartCenter = () => {
         <Link
           to='/main/history'
           style={link}
+          onClick={() => dispatch(updatePage(1))}
           className={
             pathname === '/main/history' ? `${style.page_on}` : `${style.page}`
           }>

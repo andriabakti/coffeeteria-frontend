@@ -148,7 +148,7 @@ export const SideEdit = (props) => {
       </div>
       <ModalConfirm
         show={open}
-        onHide={handleOpen}
+        closeModal={handleOpen}
         text='cancel the changes'
         eventClick={handleReset}
         btnBack='Back'

@@ -6,7 +6,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { getProduct } from '../../../../redux/actions/product'
+import { getProduct, changePage } from '../../../../redux/actions/product'
 // components: module
 import { CardProduct } from '../../../../components/module/CardProduct/CardProduct'
 import { Pagination } from '../../../../components/module/Pagination/Pagination'
@@ -21,6 +21,11 @@ export const SideRight = () => {
   const history = useHistory()
   const location = useLocation()
   const page = pages.current_page
+
+  const handlePage = (e) => {
+    const selectedPage = e.selected + 1
+    dispatch(changePage(selectedPage))
+  }
 
   useEffect(() => {
     const parsed = qs.parse(location.search)
@@ -69,7 +74,11 @@ export const SideRight = () => {
             </div>
           )}
         </div>
-        <Pagination />
+        {pages.total_page > 1 && (
+          <div className={style.page}>
+            <Pagination totalPage={pages.total_page} pageEvent={handlePage} />
+          </div>
+        )}
         {user.role === 'admin' && (
           <button
             className={`btn text-white ${style.btn_create}`}

@@ -95,25 +95,25 @@ export const SideRight = ({ detail, addToCart }) => {
           </div>
           {detail.category_id !== 1 || detail.category_id !== 2 ? (
             <button
-              className={`col-md-7 btn ${style.btn_gold}
+              className={`col-md-7 btn ${style.btn} ${style.btn_gold}
             ${(delivery === '' || quantity === 0) && 'disabled'}`}
-              type='submit'
+              type='button'
               onClick={() => addToCart({ size, delivery, quantity })}>
               Add to Cart
             </button>
           ) : (
             <button
-              className={`col-md-7 btn ${style.btn_gold}
+              className={`col-md-7 btn ${style.btn} ${style.btn_gold}
             ${(size === '' || delivery === '' || quantity === 0) && 'disabled'
                 }`}
-              type='submit'
+              type='button'
               onClick={() => addToCart({ size, delivery, quantity })}>
               Add to Cart
             </button>
           )}
         </div>
         <button
-          className={`btn ${style.btn_brown}`}
+          className={`btn ${style.btn} ${style.btn_brown}`}
           type='button'
           onClick={checkOut}>
           Checkout

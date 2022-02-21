@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 // pkgs: react-router
 import { useHistory } from 'react-router-dom'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import { resetCart } from '../../../../redux/actions/cart'
 import { purchaseOrder } from '../../../../redux/actions/order'
+// components: base
+import { ModalConfirm } from '../../../../components/base/ModalConfirm/ModalConfirm'
 // assets: icon
 import icon_card from '../../../../assets/icons/icon_card.svg'
 import icon_bank from '../../../../assets/icons/icon_bank.svg'
@@ -18,19 +22,43 @@ export const SideRight = () => {
   const { cart, total } = useSelector((state) => state.cart)
   const { id, address, phone } = useSelector((state) => state.user.profile)
   const [payment, setPayment] = useState('')
-  const phoneNumber = phone.slice(3)
+  const [show, setShow] = useState(false)
+
+  const handleShow = () => setShow(!show)
+  const checkNumber = (number) => {
+    let phoneNumber = ''
+    if (phone.includes('+62')) {
+      phoneNumber = number.slice(3)
+      console.log(phoneNumber);
+    } else if (phone.indexOf('0') === 0) {
+      phoneNumber = number.slice(1)
+    }
+    return phoneNumber
+  }
+
   const dispatch = useDispatch()
   const paymentPick = (e) => {
     setPayment(e.target.value)
   }
   const handlePurchase = async (payment) => {
-    await dispatch(purchaseOrder({ id, total, payment, items: cart }))
-    alert('Items have purchased successfully')
-    dispatch(resetCart())
+    await toast.promise(
+      dispatch(purchaseOrder({ id, total, payment, items: cart })), {
+      success: 'Item(s) purchased successfully',
+      error: 'Purchase failed'
+    })
     history.push('/main/product')
+    dispatch(resetCart())
   }
   return (
     <div className={`col-md-5 ${style.container}`}>
+      <ModalConfirm
+        show={show}
+        closeModal={handleShow}
+        text='purchase all the item(s)'
+        eventClick={() => handlePurchase(payment)}
+        btnBack='Cancel'
+        btnConfirm='Purchase'
+      />
       <div className={`${style.section}`}>
         <div className={`${style.title}`}>
           <h4 className='text-white'>Address details</h4>
@@ -42,9 +70,11 @@ export const SideRight = () => {
               <b>Delivery</b> to
             </li>
             <li className={`list-group-item ${style.address}`}>
-              {address ? address : 'You have not set your address yet'}
+              {address ? address : 'You have not set down your address yet'}
             </li>
-            <li className='list-group-item'>+62 {phoneNumber}</li>
+            <li className='list-group-item'>
+              {phone ? `+62 ${checkNumber(phone)}` : `Your mobile number is empty`}
+            </li>
           </ul>
         </div>
       </div>
@@ -55,13 +85,13 @@ export const SideRight = () => {
             <div className={`list-group-item form-check ${style.pay_method}`}>
               <input
                 onChange={(e) => paymentPick(e)}
-                className='form-check-input'
+                className='form-check-input shadow-none'
                 type='radio'
                 value='Card'
                 id='card'
                 name='payment'
               />
-              <label className='form-check-label' htmlfor='card'>
+              <label className='form-check-label' htmlFor='card'>
                 <img
                   className={`${style.icon_pay} ${style.icon_card}`}
                   src={icon_card}
@@ -73,13 +103,13 @@ export const SideRight = () => {
             <div className={`list-group-item form-check ${style.pay_method}`}>
               <input
                 onChange={(e) => paymentPick(e)}
-                className='form-check-input'
+                className='form-check-input shadow-none'
                 type='radio'
                 value='Bank'
                 id='bank'
                 name='payment'
               />
-              <label className='form-check-label' htmlfor='bank'>
+              <label className='form-check-label' htmlFor='bank'>
                 <img
                   className={`btn ${style.icon_pay} ${style.icon_bank}`}
                   src={icon_bank}
@@ -91,13 +121,13 @@ export const SideRight = () => {
             <div className={`list-group-item form-check ${style.pay_method}`}>
               <input
                 onChange={(e) => paymentPick(e)}
-                className='form-check-input'
+                className='form-check-input shadow-none'
                 type='radio'
                 value='COD'
                 id='COD'
                 name='payment'
               />
-              <label className='form-check-label' htmlfor='COD'>
+              <label className='form-check-label' htmlFor='COD'>
                 <img
                   className={`btn ${style.icon_pay} ${style.icon_cash}`}
                   src={icon_cash}
@@ -111,7 +141,7 @@ export const SideRight = () => {
       </div>
       <button
         className={`btn ${style.btn_brown}`}
-        onClick={() => handlePurchase(payment)}
+        onClick={handleShow}
         type='button'
         disabled={(cart.length <= 0 || payment === '') ? 'disabled' : ''}>
         Confirm and Pay

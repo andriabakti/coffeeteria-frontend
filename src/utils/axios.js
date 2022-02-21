@@ -1,5 +1,7 @@
 // pkgs: axios
 import axios from 'axios'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
 
 const axiosApiInstances = axios.create({
   baseURL: `${process.env.REACT_APP_BASE_URL}`
@@ -25,7 +27,7 @@ axiosApiInstances.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 403) {
-      alert('Please Login !')
+      toast.info('Your token has expired. Please login again !')
       localStorage.clear()
       window.location.href = '/auth/sign-in'
     }

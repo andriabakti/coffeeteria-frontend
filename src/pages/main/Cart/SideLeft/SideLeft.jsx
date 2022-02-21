@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // pkgs: redux-action
 import { removeItem } from '../../../../redux/actions/cart'
 // modules: numeral-formatter
 import { numFormatter } from '../../../../utils/numeral'
+// components: base
+import { ModalConfirm } from '../../../../components/base/ModalConfirm/ModalConfirm'
 // assets: image
 import blank from '../../../../assets/images/blank_img.jpg'
 // styles: modules
 import style from './SideLeft.module.css'
 
 export const SideLeft = () => {
+  const dispatch = useDispatch()
+  const [show, setShow] = useState(false)
   const { cart, subTotal, taxAndFee, shipping, total } = useSelector(
     (state) => state.cart
   )
-  const dispatch = useDispatch()
-
+  const handleShow = () => setShow(!show)
   const handleDelete = (idx) => {
     dispatch(removeItem(idx))
+    handleShow()
   }
   return (
     <div className={`col-md-6`}>
@@ -25,10 +29,8 @@ export const SideLeft = () => {
         <h2 className={`text-center ${style.title}`}>Order Summary</h2>
         <div className={`${style.list}`}>
           {cart.length <= 0 ? (
-            <div className=''>
-              <h4 className={`text-center ${style.title}`}>
-                There's no item in your cart
-              </h4>
+            <div className={`${style.empty_box}`}>
+              <h4>Your cart is empty</h4>
             </div>
           ) : (
             cart.map((item, index) => (
@@ -38,19 +40,27 @@ export const SideLeft = () => {
                 <div className={`${style.img}`}>
                   <img src={!item.image ? blank : item.image} alt='product' />
                 </div>
-                <div className={`${style.amount}`}>
-                  <span>{item.name}</span>
-                  <span>x {item.quantity}</span>
-                  <span>{item.size}</span>
+                <div className={style.text}>
+                  <div className={`${style.amount}`}>
+                    <span>{item.name}</span>
+                    <span>x {item.quantity}</span>
+                    <span>{item.size}</span>
+                  </div>
+                  <span>IDR {numFormatter(item.price * item.quantity)}</span>
                 </div>
-                <span>IDR {numFormatter(item.price * item.quantity)}</span>
                 <button
-                  className={`btn btn-warning position-absolute top-0 start-100 translate-middle border ${style.btn_delete}`}
-                  onClick={() => handleDelete(index)}>
-                  <i
-                    className='fas fa-trash-alt'
-                    style={{ color: '#6A4029' }}></i>
+                  className={`btn position-absolute top-0 start-100 translate-middle ${style.btn_delete}`}
+                  onClick={handleShow}>
+                  <i className='fas fa-trash-alt'></i>
                 </button>
+                <ModalConfirm
+                  show={show}
+                  closeModal={handleShow}
+                  text='remove this item from cart'
+                  eventClick={() => handleDelete(index)}
+                  btnBack='Cancel'
+                  btnConfirm='Remove'
+                />
               </div>
             ))
           )}

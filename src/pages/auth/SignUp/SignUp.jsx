@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import Helmet from 'react-helmet'
 // pkgs: react-router
 import { useHistory } from 'react-router-dom'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
 // pkgs: react-redux
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 // modules: redux-action
 import { registerUser } from '../../../redux/actions/user'
 // components: base
@@ -15,7 +17,6 @@ import style from './SignUp.module.css'
 export const SignUp = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const { user } = useSelector((state) => state.user)
 
   const [form, setForm] = useState({
     email: '',
@@ -31,9 +32,12 @@ export const SignUp = () => {
     })
   }
 
-  const handleLogin = async (e) => {
-    await dispatch(registerUser(form))
-    alert(user.msg)
+  const handleRegister = async (e) => {
+    e.preventDefault()
+    await toast.promise(dispatch(registerUser(form)), {
+      success: 'Register success',
+      error: 'Register failed'
+    })
     history.push('/auth/sign-in')
   }
   return (
@@ -43,7 +47,7 @@ export const SignUp = () => {
         <meta name='description' content='This is sign up page' />
       </Helmet>
       <div className={`container ${style.container}`}>
-        <form className={`${style.form}`} onSubmit={handleLogin}>
+        <form className={`${style.form}`} onSubmit={handleRegister}>
           <span>Sign Up</span>
           <div>
             <InputAuth

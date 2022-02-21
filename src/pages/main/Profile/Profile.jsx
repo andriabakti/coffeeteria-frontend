@@ -5,6 +5,8 @@ import moment from 'moment'
 import Helmet from 'react-helmet'
 // pkgs: react-router
 import { useHistory } from 'react-router-dom'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
@@ -77,15 +79,17 @@ export const Profile = () => {
   newProfile.append('phone', profileTemp.phone)
 
   const editProfile = async () => {
-    await dispatch(updateProfile(profile.id, newProfile))
-    alert('Profile berhasil diupdate')
+    await toast.promise(dispatch(updateProfile(profile.id, newProfile)), {
+      success: 'Profile updated successfully',
+      error: 'Update failed'
+    })
+    dispatch(getProfile(profile.id))
     handleOpen()
-    await dispatch(getProfile(profile.id))
   }
 
   const logOut = () => {
     localStorage.removeItem('token')
-    alert('Anda berhasil log out')
+    toast.info('Log out success')
     history.push('/main')
   }
 
@@ -119,7 +123,7 @@ export const Profile = () => {
       </div>
       <ModalConfirm
         show={open}
-        onHide={handleOpen}
+        closeModal={handleOpen}
         text='save the changes'
         eventClick={editProfile}
         btnBack='Cancel'
@@ -127,7 +131,7 @@ export const Profile = () => {
       />
       <ModalConfirm
         show={show}
-        onHide={handleShow}
+        closeModal={handleShow}
         text='log out'
         eventClick={logOut}
         btnBack='Cancel'

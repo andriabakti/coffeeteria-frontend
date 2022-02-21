@@ -53,7 +53,11 @@ export const cart = (state = initialState, action) => {
     case 'RESET_CART': {
       return {
         ...state,
-        cart: []
+        cart: [],
+        subTotal: 0,
+        taxAndFee: 0,
+        shipping: 0,
+        total: 0
       }
     }
     default: {

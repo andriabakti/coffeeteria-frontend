@@ -10,6 +10,21 @@
   margin-bottom: 50px;
 }
 
+.empty_box {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #88B788;
+  border-radius: 15px !important;
+}
+
+.empty_box>h4 {
+  color: #FFFFFF !important;
+  font-weight: bold !important;
+  margin: 0;
+}
+
 /* cart: items */
 .list {
   display: flex;
@@ -21,13 +36,13 @@
   align-items: center;
   margin: 10px 0 5px;
   padding: 10px;
-  border-radius: 10px !important;
+  border-radius: 15px !important;
 }
 
 .items_list:hover {
-  background-color: #FFBA33;
-  outline: 3px solid #362115;
   box-shadow: 0px 10px 20px rgba(137, 85, 55, 0.4);
+  font-weight: bold !important;
+  outline: 3px solid #6A4029 !important;
 }
 
 .items_list>span {
@@ -35,39 +50,69 @@
 }
 
 .img {
-  height: 90px;
-  width: 80px;
+  width: 80px !important;
+  height: 80px !important;
   margin-right: 30px;
 }
 
 .img>img {
   height: 100%;
   width: 100%;
-  border-radius: 10px !important;
+  border-radius: 15px !important;
   -o-object-fit: cover;
   object-fit: cover;
 }
 
+.text {
+  width: calc(100% - 110px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .amount {
+  width: 65%;
   display: flex;
   flex-direction: column;
-  margin-right: auto;
   color: #000000 !important;
 }
 
-.amount>span {
+.text>span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   font-size: 18px !important;
 }
 
 .btn_delete {
-  display: none !important;
+  height: 40px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background-color: #6A4029 !important;
 }
 
 .items_list:hover>.btn_delete {
-  display: inline-block !important;
-  border-radius: 50% !important
+  background-color: #FFBA33 !important;
 }
 
+.items_list:hover>.btn_delete:hover {
+  background-color: #6A4029 !important;
+  outline: 3px solid #FFBA33 !important;
+}
+
+.btn_delete>i {
+  color: #FFFFFF !important;
+}
+
+.items_list:hover>.btn_delete:hover>i {
+  color: #FFFFFF !important;
+}
+
+.items_list:hover>.btn_delete>i {
+  color: #6A4029 !important;
+}
 
 /* cart: bill */
 .detail {

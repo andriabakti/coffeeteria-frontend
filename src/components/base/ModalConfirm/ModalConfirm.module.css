@@ -16,6 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-size: 20px;
 }
 
@@ -35,24 +36,19 @@
   font-size: 17px;
 }
 
+.btn:hover {
+  background-color: #FFBA33 !important;
+  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
+  border: none !important;
+  color: #0B132A !important;
+}
+
 .btn_white {
   border: 3px solid #6A4029 !important;
   color: #6A4029 !important;
 }
 
-.btn_white:hover {
-  background-color: #FFBA33 !important;
-  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
-}
-
 .btn_brown {
   background-color: #6A4029 !important;
   color: #FFFFFF !important;
-}
-
-.btn_brown:hover {
-  border: 3px solid #6A4029 !important;
-  background-color: #FFBA33 !important;
-  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.65) !important;
-  color: #6A4029 !important;
 }

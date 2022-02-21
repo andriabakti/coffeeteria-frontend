@@ -7,7 +7,7 @@ import style from './ModalConfirm.module.css'
 export const ModalConfirm = (props) => {
   return (
     <Modal
-      show={props.show}
+      show={props.show} onHide={props.closeModal}
       dialogClassName={style['border-radius']}
       className={`${style.modal}`}
       centered>
@@ -17,13 +17,13 @@ export const ModalConfirm = (props) => {
         </Modal.Body>
         <div className={`${style.modal_footer}`}>
           <button
-            className={`btn ${style.btn_white}`}
+            className={`btn ${style.btn} ${style.btn_white}`}
             type='button'
-            onClick={props.onHide}>
+            onClick={props.closeModal}>
             {props.btnBack}
           </button>
           <button
-            className={`btn ${style.btn_brown}`}
+            className={`btn ${style.btn} ${style.btn_brown}`}
             type='button'
             onClick={props.eventClick}>
             {props.btnConfirm}

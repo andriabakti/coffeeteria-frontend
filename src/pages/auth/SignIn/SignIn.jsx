@@ -3,13 +3,14 @@ import React, { useState } from 'react'
 import Helmet from 'react-helmet'
 // pkgs: react-router
 import { useHistory } from 'react-router-dom'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import { loginUser } from '../../../redux/actions/user'
 // components: base
 import { InputAuth } from '../../../components/base/InputAuth/InputAuth'
-// import { Toast } from '../../../components/base/Toast/Toast'
 // styles: module
 import style from './SignIn.module.css'
 
@@ -17,7 +18,6 @@ export const SignIn = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.user)
-  // const [toast, setToast] = useState(true)
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -31,9 +31,12 @@ export const SignIn = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault()
-    await dispatch(loginUser(form))
-    await localStorage.setItem('token', user.token)
-    alert('Login berhasil')
+    await toast.promise(dispatch(loginUser(form)), {
+      pending: 'Authenticating',
+      success: 'Login success',
+      error: 'Login failed'
+    })
+    localStorage.setItem('token', user.token)
     history.push('/main/product')
   }
 
@@ -43,7 +46,6 @@ export const SignIn = () => {
         <title>Login - CoffeeTeria</title>
         <meta name='description' content='This is Login Page' />
       </Helmet>
-      {/* < Toast msg='Login success!' show={toast} /> */}
       <div className={`container ${style.container}`}>
         <form className={`${style.form}`} onSubmit={handleLogin}>
           <span>Login</span>
