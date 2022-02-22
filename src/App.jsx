@@ -21,7 +21,7 @@ export const App = () => {
       <ToastContainer
         position="bottom-right"
         autoClose={2000}
-        theme="colored"
+        theme="dark"
       />
     </BrowserRouter>
   )

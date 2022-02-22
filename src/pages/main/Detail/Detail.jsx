@@ -61,6 +61,7 @@ export const Detail = () => {
 
   const editProduct = async () => {
     await toast.promise(dispatch(updateProduct(detail.id, formData)), {
+      pending: 'Updating',
       success: 'Product updated successfully',
       error: 'Update failed'
     })

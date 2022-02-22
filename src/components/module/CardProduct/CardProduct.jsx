@@ -27,6 +27,7 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
 
   const handleDelete = async (itemId) => {
     await toast.promise(dispatch(deleteProduct(itemId)), {
+      pending: 'Deleting',
       success: 'Product deleted successfully',
       error: 'Delete failed'
     })

@@ -15,6 +15,7 @@ import {
   changeProfile,
   updateProfile
 } from '../../../redux/actions/user'
+import { resetCart } from '../../../redux/actions/cart'
 // components: side
 import { SideLeft } from './SideLeft/SideLeft'
 import { SideRight } from './SideRight/SideRight'
@@ -80,6 +81,7 @@ export const Profile = () => {
 
   const editProfile = async () => {
     await toast.promise(dispatch(updateProfile(profile.id, newProfile)), {
+      pending: 'Updating',
       success: 'Profile updated successfully',
       error: 'Update failed'
     })
@@ -88,6 +90,7 @@ export const Profile = () => {
   }
 
   const logOut = () => {
+    resetCart()
     localStorage.removeItem('token')
     toast.info('Log out success')
     history.push('/main')

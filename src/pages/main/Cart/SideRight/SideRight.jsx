@@ -43,6 +43,7 @@ export const SideRight = () => {
   const handlePurchase = async (payment) => {
     await toast.promise(
       dispatch(purchaseOrder({ id, total, payment, items: cart })), {
+      pending: 'Purchasing',
       success: 'Item(s) purchased successfully',
       error: 'Purchase failed'
     })

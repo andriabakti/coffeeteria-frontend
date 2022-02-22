@@ -35,6 +35,7 @@ export const SignUp = () => {
   const handleRegister = async (e) => {
     e.preventDefault()
     await toast.promise(dispatch(registerUser(form)), {
+      pending: 'Registering',
       success: 'Register success',
       error: 'Register failed'
     })

@@ -27,7 +27,7 @@ axiosApiInstances.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 403) {
-      toast.info('Your token has expired. Please login again !')
+      toast.warning('Your token has expired. Please login again !')
       localStorage.clear()
       window.location.href = '/auth/sign-in'
     }
