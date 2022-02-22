@@ -5,8 +5,8 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify'
 // components: base-page
-import { Auth } from './pages/Auth/Auth'
-import { Main } from './pages/Main/Main'
+import { Auth } from './pages/auth/Auth'
+import { Main } from './pages/main/Main'
 // styles: global
 import './App.css'
 
