@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
-// react-router
+// pkgs: react-router
 import { useHistory } from 'react-router-dom'
-// style
-import style from './SideRight.module.css'
-// numeral
-// import numeral from 'numeral'
-import { useSelector } from 'react-redux'
+// modules: numeral-formatter
 import { numFormatter } from '../../../../utils/numeral'
+// styles: module
+import style from './SideRight.module.css'
 
-const SideRight = ({ detail, addToCart }) => {
-  const { profile } = useSelector((state) => state.auth)
+export const SideRight = ({ detail, addToCart }) => {
   const history = useHistory()
 
   const [size, setSize] = useState('')
@@ -52,9 +49,8 @@ const SideRight = ({ detail, addToCart }) => {
           aria-label='Default select'
           onChange={(e) => sizePick(e)}
           disabled={
-            (detail.category_id !== 1 ||
-              detail.category_id !== 2 ||
-              profile.role === 'admin') &&
+            (detail.category_id !== 1 &&
+              detail.category_id !== 2) &&
             'disabled'
           }
           defaultValue='Select Size'
@@ -71,7 +67,6 @@ const SideRight = ({ detail, addToCart }) => {
           aria-label='Default select'
           onChange={(e) => deliveryPick(e)}
           defaultValue='Select Delivery Methods'
-          disabled={profile.role === 'admin' && 'disabled'}
           required>
           <option disabled hidden>
             Select Delivery Methods
@@ -85,7 +80,6 @@ const SideRight = ({ detail, addToCart }) => {
             <button
               className='btn btn-white'
               type='button'
-              disabled={profile.role === 'admin' && 'disabled'}
               onClick={increase}>
               +
             </button>
@@ -95,32 +89,31 @@ const SideRight = ({ detail, addToCart }) => {
             <button
               className={`btn btn-white ${quantity === 0 && 'disabled'}`}
               type='button'
-              disabled={profile.role === 'admin' && 'disabled'}
               onClick={decrease}>
               -
             </button>
           </div>
           {detail.category_id !== 1 || detail.category_id !== 2 ? (
             <button
-              className={`col-md-7 btn ${style.btn_gold}
+              className={`col-md-7 btn ${style.btn} ${style.btn_gold}
             ${(delivery === '' || quantity === 0) && 'disabled'}`}
-              type='submit'
+              type='button'
               onClick={() => addToCart({ size, delivery, quantity })}>
               Add to Cart
             </button>
           ) : (
             <button
-              className={`col-md-7 btn ${style.btn_gold}
+              className={`col-md-7 btn ${style.btn} ${style.btn_gold}
             ${(size === '' || delivery === '' || quantity === 0) && 'disabled'
                 }`}
-              type='submit'
+              type='button'
               onClick={() => addToCart({ size, delivery, quantity })}>
               Add to Cart
             </button>
           )}
         </div>
         <button
-          className={`btn ${style.btn_brown}`}
+          className={`btn ${style.btn} ${style.btn_brown}`}
           type='button'
           onClick={checkOut}>
           Checkout
@@ -129,5 +122,3 @@ const SideRight = ({ detail, addToCart }) => {
     </div>
   )
 }
-
-export default SideRight

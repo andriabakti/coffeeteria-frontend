@@ -1,17 +1,19 @@
 import React from 'react'
-// style
-import style from './SideRight.module.css'
-// asset
-import icon_edit from '../../../../assets/icons/icon_edit.svg'
-import { useSelector, useDispatch } from 'react-redux'
-import { changeProfile } from '../../../../redux/actions/user'
-import DatePicker from 'react-date-picker'
+// pkgs: moment
 import moment from 'moment'
+// pkgs: react-date-picker
+import DatePicker from 'react-date-picker'
+// pkgs: react-redux
+import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
+import { changeProfile } from '../../../../redux/actions/user'
+// styles: module
+import style from './SideRight.module.css'
 
-const SideRight = (props) => {
+export const SideRight = (props) => {
   const dispatch = useDispatch()
-  const { detail, detailTemp } = useSelector((state) => state.user)
-  const formatted = moment(detailTemp.birth_date).startOf('day')._d
+  const { profileTemp } = useSelector((state) => state.user)
+  const formatted = moment(profileTemp.birth_date).startOf('day')._d
   const handleChange = (e) => {
     dispatch(
       changeProfile({
@@ -23,9 +25,6 @@ const SideRight = (props) => {
     <div className={`col-md-8 ${style.container}`}>
       <div className={`${style.title}`}>
         <h3>Contacts</h3>
-        <button type='button' className={`btn ${style.btn_edit}`}>
-          <img src={icon_edit} alt='edit_btn' />
-        </button>
       </div>
       <div className={`${style.section}`}>
         <div className={`col-md-6 ${style.col}`}>
@@ -38,7 +37,7 @@ const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.email}
+              value={profileTemp.email}
               name='email'
               type='email'
               id='email'
@@ -53,7 +52,7 @@ const SideRight = (props) => {
             <textarea
               className={`form-control ${style.input_area} ${style.input_md}`}
               onChange={handleChange}
-              value={detailTemp.address}
+              value={profileTemp.address}
               type='textarea'
               name='address'
               id='address'
@@ -70,7 +69,7 @@ const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.phone}
+              value={profileTemp.phone}
               name='phone'
               id='phone'
               type='tel'
@@ -90,7 +89,7 @@ const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.username}
+              value={profileTemp.username}
               name='username'
               id='name'
               type='text'
@@ -105,7 +104,7 @@ const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.first_name}
+              value={profileTemp.first_name}
               name='first_name'
               id='firstname'
               type='text'
@@ -120,7 +119,7 @@ const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={detailTemp.last_name}
+              value={profileTemp.last_name}
               name='last_name'
               id='lastname'
               type='text'
@@ -131,13 +130,10 @@ const SideRight = (props) => {
           <label className={`form-label ${style.input_label}`} htmlFor='date'>
             DD/MM/YYYY :
           </label>
-          {/* <div className={`${style.input_box}`}> */}
           <DatePicker
-            // className={`form-control ${style.input_area} ${style.input_sm}`}
+            className={`${style.input_area} ${style.input_sm}`}
+            value={profileTemp.birth_date !== null ? formatted : new Date()}
             onChange={props.changeDate}
-            value={
-              detailTemp.birth_date !== null ? formatted : new Date()
-            }
             yearPlaceholder='yyyy'
             monthPlaceholder='mm'
             dayPlaceholder='dd'
@@ -145,18 +141,20 @@ const SideRight = (props) => {
             locale='en-au'
             id='date'
           />
-          {/* </div> */}
         </div>
       </div>
       <div className={`${style.section}`}>
-        <div className='form-check'>
+        <div className={`form-check ${style.check_box}`}>
           <input
-            className={`form-check-input ${style.check}`}
+            className={`form-check-input shadow-none ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'female' || detailTemp.gender === '') && '1'
+              (profileTemp.gender === 'female' ||
+                profileTemp.gender === null ||
+                profileTemp.gender === '') &&
+              'male'
             }
-            defaultChecked={detail.gender === 'male' ? true : false}
+            checked={profileTemp.gender === 'male' ? true : false}
             name='gender'
             type='radio'
             id='male'
@@ -167,14 +165,17 @@ const SideRight = (props) => {
             Male
           </label>
         </div>
-        <div className='form-check'>
+        <div className={`form-check ${style.check_box}`}>
           <input
-            className={`form-check-input ${style.check}`}
+            className={`form-check-input shadow-none ${style.check}`}
             onChange={handleChange}
             value={
-              (detailTemp.gender === 'male' || detailTemp.gender === '') && '2'
+              (profileTemp.gender === 'male' ||
+                profileTemp.gender === null ||
+                profileTemp.gender === '') &&
+              'female'
             }
-            defaultChecked={detail.gender === 'female' ? true : false}
+            checked={profileTemp.gender === 'female' ? true : false}
             name='gender'
             type='radio'
             id='female'
@@ -189,5 +190,3 @@ const SideRight = (props) => {
     </div>
   )
 }
-
-export default SideRight

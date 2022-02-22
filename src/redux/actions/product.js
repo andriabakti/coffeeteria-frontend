@@ -1,19 +1,27 @@
+// modules: axios-instance
 import axiosApiInstances from '../../utils/axios'
 
 export const getProduct = (page, search, filter) => {
-  // console.log(page);
   return {
-    type: 'GET_ITEMS',
+    type: 'GET_PRODUCT',
     payload: axiosApiInstances.get(
-      `/product/?limit=9&page=${page}&filter=${filter}&search=${search}
+      `/product/?limit=12&page=${page}&filter=${filter}&search=${search}&order=DESC
       `
     )
   }
 }
 
+export const changePage = (page) => {
+  return {
+    type: 'CHANGE_PAGE',
+    payload: page
+  }
+}
+
+
 export const getDetail = (id) => {
   return {
-    type: 'GET_DETAILS',
+    type: 'GET_DETAIL',
     payload: axiosApiInstances.get(`/product/${id}`)
   }
 }
@@ -25,13 +33,6 @@ export const addProduct = (data) => {
   }
 }
 
-export const updateProduct = (data, id) => {
-  return {
-    type: 'UPDATE_PRODUCT',
-    payload: axiosApiInstances.patch(`/product/${id}`, data)
-  }
-}
-
 export const changeDetail = (data) => {
   return {
     type: 'CHANGE_DETAIL',
@@ -39,16 +40,22 @@ export const changeDetail = (data) => {
   }
 }
 
+export const resetChange = () => {
+  return {
+    type: 'RESET_CHANGE'
+  }
+}
+
+export const updateProduct = (id, data) => {
+  return {
+    type: 'UPDATE_PRODUCT',
+    payload: axiosApiInstances.patch(`/product/${id}`, data)
+  }
+}
+
 export const deleteProduct = (id) => {
   return {
     type: 'DELETE_PRODUCT',
     payload: axiosApiInstances.delete(`/product/${id}`)
-  }
-}
-
-export const changePage = (page) => {
-  return {
-    type: 'CHANGE_PAGE',
-    payload: page
   }
 }

@@ -1,28 +1,30 @@
 import React from 'react'
-// react-router
+// pkgs: react-router
 import { Switch, Redirect, useRouteMatch } from 'react-router-dom'
-// components
-import SignUp from './SignUp/SignUp'
-import SignIn from './SignIn/SignIn'
-import AuthNav from '../../components/NavAuth/NavAuth'
-import Footer from '../../components/Footer/Footer'
-import ScrollTop from '../../components/ScrollTop/ScrollTop'
-// routes
-import RoutePublic from '../../configs/RoutePublic'
-// style
+// components: module
+import { NavAuth } from '../../components/module/NavAuth/NavAuth'
+import { Footer } from '../../components/module/Footer/Footer'
+import { ScrollTop } from '../../components/module/ScrollTop/ScrollTop'
+// components: route
+import { RoutePublic } from '../../configs/RoutePublic'
+// components: page
+import { SignUp } from './SignUp/SignUp'
+import { SignIn } from './SignIn/SignIn'
+// styles: module
 import style from './Auth.module.css'
 
-const Auth = () => {
-  window.scrollTo(0, 0)
-
+export const Auth = () => {
+  // modules
   const { path } = useRouteMatch()
+  // functions
+  window.scrollTo(0, 0, 'smooth')
+
   return (
-    <div>
+    <>
       <div className={`row m-0 ${style.upper}`}>
-        <div className={`col-md-6 ${style.bg}`}>
-        </div>
+        <div className={`col-md-6 ${style.bg}`}></div>
         <div className={`col-md-6 px-0`}>
-          <AuthNav />
+          <NavAuth />
           <Switch>
             <RoutePublic
               component={SignUp}
@@ -42,8 +44,6 @@ const Auth = () => {
       </div>
       <Footer />
       <ScrollTop />
-    </div>
+    </>
   )
 }
-
-export default Auth

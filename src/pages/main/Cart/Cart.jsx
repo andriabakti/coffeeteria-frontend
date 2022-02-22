@@ -1,14 +1,13 @@
-import React from 'react';
-// react-helmet
-import { Helmet } from 'react-helmet'
-// components
-import SideLeft from './SideLeft/SideLeft';
-import SideRight from './SideRight/SideRight';
-import Footer from '../../../components/Footer/Footer';
-// style
+import React from 'react'
+// pkgs: react-helmet
+import Helmet from 'react-helmet'
+// components: side
+import { SideLeft } from './SideLeft/SideLeft'
+import { SideRight } from './SideRight/SideRight'
+// styles: module
 import style from './Cart.module.css'
 
-const Cart = () => {
+export const Cart = () => {
   return (
     <div className={`${style.container}`}>
       <Helmet>
@@ -19,7 +18,8 @@ const Cart = () => {
         <div className={`container ${style.content}`}>
           <div className={`row ${style.title}`}>
             <h2 className={`text-white`}>
-              Checkout your<br />
+              Checkout your
+              <br />
               item now!
             </h2>
           </div>
@@ -28,10 +28,7 @@ const Cart = () => {
             <SideRight />
           </div>
         </div>
-        <Footer />
       </div>
     </div>
-  );
+  )
 }
-
-export default Cart;

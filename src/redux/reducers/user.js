@@ -1,59 +1,110 @@
 const initialState = {
   msg: '',
-  detail: {},
-  detailTemp: {},
+  user: {},
+  profile: {},
+  profileTemp: {},
   isLoading: false,
   isError: false
 }
 
-const user = (state = initialState, action) => {
+export const user = (state = initialState, action) => {
   switch (action.type) {
-    // get user details
-    case 'GET_USER_DETAIL_PENDING': {
+    // User: Sign Up
+    case 'SIGN_UP_PENDING': {
       return {
         ...state,
         isLoading: true,
         isError: false
       }
     }
-    case 'GET_USER_DETAIL_FULFILLED': {
+    case 'SIGN_UP_FULFILLED': {
       return {
         ...state,
         msg: action.payload.data.message,
-        detail: action.payload.data.data[0],
-        detailTemp: action.payload.data.data[0],
         isLoading: false,
         isError: false
       }
     }
-    case 'GET_USER_DETAIL_REJECTED': {
+    case 'SIGN_UP_REJECTED': {
       return {
         ...state,
         msg: action.payload.response.data.message,
-        detail: {},
-        detailTemp: {},
         isLoading: false,
         isError: true
       }
     }
-    // change temp detail
+    // User: Sign In
+    case 'SIGN_IN_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        isError: false
+      }
+    }
+    case 'SIGN_IN_FULFILLED': {
+      return {
+        ...state,
+        msg: action.payload.data.message,
+        user: action.payload.data.data,
+        isLoading: false,
+        isError: false
+      }
+    }
+    case 'SIGN_IN_REJECTED': {
+      return {
+        ...state,
+        msg: action.payload.response.data.message,
+        user: {},
+        isLoading: false,
+        isError: true
+      }
+    }
+    // Profile: Fetch
+    case 'GET_PROFILE_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        isError: false
+      }
+    }
+    case 'GET_PROFILE_FULFILLED': {
+      return {
+        ...state,
+        msg: action.payload.data.message,
+        profile: action.payload.data.data[0],
+        profileTemp: action.payload.data.data[0],
+        isLoading: false,
+        isError: false
+      }
+    }
+    case 'GET_PROFILE_REJECTED': {
+      return {
+        ...state,
+        msg: action.payload.response.data.message,
+        profile: {},
+        profileTemp: {},
+        isLoading: false,
+        isError: true
+      }
+    }
+    // Temp Profile: Change
     case 'CHANGE_PROFILE': {
       return {
         ...state,
-        detailTemp: {
-          ...state.detailTemp,
+        profileTemp: {
+          ...state.profileTemp,
           ...action.payload
         }
       }
     }
-    // reset change
+    // Temp Profile: Reset
     case 'RESET_CHANGE': {
       return {
         ...state,
-        detailTemp: state.detail
+        profileTemp: state.profile
       }
     }
-    // update user profile
+    // Profile: Update
     case 'UPDATE_PROFILE_PENDING': {
       return {
         ...state,
@@ -82,5 +133,3 @@ const user = (state = initialState, action) => {
     }
   }
 }
-
-export default user

@@ -1,27 +1,27 @@
 import React, { useState } from 'react'
-// components
-import InputAuth from '../../../components/InputAuth/InputAuth'
-// react-helmet
-import { Helmet } from 'react-helmet'
-// react-router
+// pkgs: react-helmet
+import Helmet from 'react-helmet'
+// pkgs: react-router
 import { useHistory } from 'react-router-dom'
-// react-redux
-import { useDispatch } from 'react-redux'
-// redux
-import { login } from '../../../redux/actions/auth'
-// style
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
+// pkgs: react-redux
+import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
+import { loginUser } from '../../../redux/actions/user'
+// components: base
+import { InputAuth } from '../../../components/base/InputAuth/InputAuth'
+// styles: module
 import style from './SignIn.module.css'
 
-const SignIn = () => {
+export const SignIn = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  // const loginState = useSelector((state) => state.auth)
-
+  const { user } = useSelector((state) => state.user)
   const [form, setForm] = useState({
     email: '',
     password: ''
   })
-
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -29,56 +29,54 @@ const SignIn = () => {
     })
   }
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
-    dispatch(login(form))
-      .then((result) => {
-        localStorage.setItem('token', result.value.data.data.token)
-        // localStorage.setItem('token', loginState.data.token)
-        alert('Login berhasil')
-        history.push('/main/product')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    await toast.promise(dispatch(loginUser(form)), {
+      pending: 'Authenticating',
+      success: 'Login success',
+      error: 'Login failed'
+    })
+    localStorage.setItem('token', user.token)
+    history.push('/main/product')
   }
+
   return (
-    <div className={`container ${style.container}`}>
+    <>
       <Helmet>
         <title>Login - CoffeeTeria</title>
         <meta name='description' content='This is Login Page' />
       </Helmet>
-      <form className={`${style.form}`} onSubmit={handleLogin}>
-        <span>Login</span>
-        <div>
-          <InputAuth
-            changeEvent={(e) => handleChange(e)}
-            placeholder='Enter your email address'
-            label='Email Address :'
-            name='email'
-            type='email'
-            id='email'
-            required='required'
-          />
-          <InputAuth
-            changeEvent={(e) => handleChange(e)}
-            placeholder='Enter your password'
-            label='Password :'
-            name='password'
-            type='password'
-            id='password'
-            required='required'
-          />
-          <button
-            className={`btn ${style.btn_gold} ${(form.email === '' || form.password === '') && 'disabled'
-              }`}
-            type='submit'>
-            Login
-          </button>
-        </div>
-      </form>
-    </div>
+      <div className={`container ${style.container}`}>
+        <form className={`${style.form}`} onSubmit={handleLogin}>
+          <span>Login</span>
+          <div>
+            <InputAuth
+              changeEvent={(e) => handleChange(e)}
+              placeholder='Enter your email address'
+              label='Email Address :'
+              name='email'
+              type='email'
+              id='email'
+              required='required'
+            />
+            <InputAuth
+              changeEvent={(e) => handleChange(e)}
+              placeholder='Enter your password'
+              label='Password :'
+              name='password'
+              type='password'
+              id='password'
+              required='required'
+            />
+            <button
+              className={`btn ${style.btn_gold} ${(form.email === '' || form.password === '') && 'disabled'
+                }`}
+              type='submit'>
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   )
 }
-
-export default SignIn

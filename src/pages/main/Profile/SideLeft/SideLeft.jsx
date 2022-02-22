@@ -1,20 +1,38 @@
-import React, { useRef } from 'react'
-// react-redux
+import React, { useState, useRef } from 'react'
+// pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
-// style
-import style from './SideLeft.module.css'
-// asset
+// modules: redux-action
+import { changeProfile, resetChange } from '../../../../redux/actions/user'
+// components: base
+import { ModalConfirm } from '../../../../components/base/ModalConfirm/ModalConfirm'
+// assets: image
 import blank from '../../../../assets/images/blank_profile.jpg'
-import { resetChange } from '../../../../redux/actions/user'
+// styles: module
+import style from './SideLeft.module.css'
 
-
-const SideLeft = (props) => {
+export const SideLeft = (props) => {
   const ref = useRef()
+  const [show, setShow] = useState(false)
+  const [open, setOpen] = useState(false)
   const dispatch = useDispatch()
-  const { detail, detailTemp } = useSelector((state) => state.user)
+  const { profile, profileTemp } = useSelector((state) => state.user)
+
+  const handleShow = () => setShow(!show)
+  const handleOpen = () => setOpen(!open)
+
+  const removeImage = () => {
+    props.resetImage(null)
+    dispatch(
+      changeProfile({
+        image: null
+      })
+    )
+    handleShow()
+  }
 
   const cancelChange = () => {
     dispatch(resetChange())
+    handleOpen()
   }
 
   return (
@@ -22,29 +40,42 @@ const SideLeft = (props) => {
       <div className={`${style.section}`}>
         <div className={`${style.img_box}`}>
           <div className={`${style.img}`}>
-            <img src={detailTemp.image ? detailTemp.image : blank} alt='profile' />
+            <img
+              src={profileTemp.image ? profileTemp.image : blank}
+              alt='profile'
+            />
           </div>
           <span>
-            <b>{detail.username}</b>
+            <b>{profile.username ? profile.username : 'Your Username'}</b>
           </span>
-          <span>{detail.email}</span>
+          <span>{profile.email}</span>
         </div>
         <div>
-          <input hidden ref={ref} onChange={props.changeImage} type="file" name="image" id="image" />
+          <input
+            hidden
+            ref={ref}
+            onChange={props.changeImage}
+            type='file'
+            name='image'
+            id='image'
+          />
           <button
-            className={`btn ${style.btn_sm} ${style.btn_gold}`}
-            type='button' onClick={() => ref.current.click()}>
+            className={`btn ${style.btn_sm} ${style.btn} ${style.btn_gold}`}
+            type='button'
+            onClick={() => ref.current.click()}>
             Choose photo
           </button>
         </div>
         <button
-          className={`btn ${style.btn_sm} ${style.btn_brown}`}
-          type='button' onClick={props.resetImage}>
+          className={`btn ${style.btn_sm} ${style.btn} ${style.btn_brown}`}
+          onClick={handleShow}
+          type='button'>
           Remove photo
         </button>
         <button
-          className={`btn ${style.btn_md} ${style.btn_white}`}
-          type='button' disabled>
+          className={`btn ${style.btn_md} ${style.btn} ${style.btn_white}`}
+          type='button'
+          disabled>
           Edit Password
         </button>
       </div>
@@ -55,24 +86,66 @@ const SideLeft = (props) => {
           the change?
         </span>
         <button
-          className={`btn ${style.btn_md} ${style.btn_brown}`}
-          type='button' onClick={props.handleUpdate}>
+          disabled={
+            profileTemp.email !== profile.email ||
+              profileTemp.address !== profile.address ||
+              profileTemp.phone !== profile.phone ||
+              profileTemp.username !== profile.username ||
+              profileTemp.first_name !== profile.first_name ||
+              profileTemp.last_name !== profile.last_name ||
+              profileTemp.birth_date !== profile.birth_date ||
+              profileTemp.gender !== profile.gender ||
+              profileTemp.image !== profile.image
+              ? false
+              : true
+          }
+          className={`btn ${style.btn_md} ${style.btn} ${style.btn_brown}`}
+          onClick={props.toSave}
+          type='button'>
           Save Change
         </button>
         <button
-          className={`btn ${style.btn_md} ${style.btn_gold}`}
-          type='button' onClick={cancelChange}>
+          disabled={
+            profileTemp.email !== profile.email ||
+              profileTemp.address !== profile.address ||
+              profileTemp.phone !== profile.phone ||
+              profileTemp.username !== profile.username ||
+              profileTemp.first_name !== profile.first_name ||
+              profileTemp.last_name !== profile.last_name ||
+              profileTemp.birth_date !== profile.birth_date ||
+              profileTemp.gender !== profile.gender ||
+              profileTemp.image !== profile.image
+              ? false
+              : true
+          }
+          className={`btn ${style.btn_md} ${style.btn} ${style.btn_gold}`}
+          onClick={handleOpen}
+          type='button'>
           Cancel
         </button>
         <button
-          className={`btn ${style.btn_md} ${style.btn_white}`}
-          onClick={props.onShow}
+          className={`btn ${style.btn_md} ${style.btn} ${style.btn_white}`}
+          onClick={props.toLogout}
           type='button'>
           Log out
         </button>
       </div>
+      <ModalConfirm
+        show={open}
+        closeModal={handleOpen}
+        text='cancel the changes'
+        eventClick={cancelChange}
+        btnBack='Back'
+        btnConfirm='Sure'
+      />
+      <ModalConfirm
+        show={show}
+        closeModal={handleShow}
+        text='remove the photo'
+        eventClick={removeImage}
+        btnBack='Cancel'
+        btnConfirm='Remove'
+      />
     </div>
   )
 }
-
-export default SideLeft

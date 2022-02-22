@@ -1,4 +1,6 @@
+// pkgs: numeral
 import numeral from 'numeral';
+import 'numeral/locales'
 
 export const numFormatter = (num) => {
   numeral.locale('es')

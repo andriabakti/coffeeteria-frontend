@@ -1,8 +1,23 @@
+// modules: axios-instance
 import axiosApiInstances from '../../utils/axios'
 
-export const getUserDetail = (id) => {
+export const registerUser = (data) => {
   return {
-    type: 'GET_USER_DETAIL',
+    type: 'SIGN_UP',
+    payload: axiosApiInstances.post('/auth/sign-up', data)
+  }
+}
+
+export const loginUser = (data) => {
+  return {
+    type: 'SIGN_IN',
+    payload: axiosApiInstances.post('/auth/sign-in', data)
+  }
+}
+
+export const getProfile = (id) => {
+  return {
+    type: 'GET_PROFILE',
     payload: axiosApiInstances.get(`/user/${id}`)
   }
 }
@@ -20,7 +35,7 @@ export const resetChange = () => {
   }
 }
 
-export const updateProfile = (data, id) => {
+export const updateProfile = (id, data) => {
   return {
     type: 'UPDATE_PROFILE',
     payload: axiosApiInstances.patch(`/user/${id}`, data)

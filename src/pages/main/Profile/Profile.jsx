@@ -1,38 +1,49 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-// components
-import SideLeft from './SideLeft/SideLeft'
-import SideRight from './SideRight/SideRight'
-import ModalExit from '../../../components/ModalExit/ModalExit'
-import Footer from '../../../components/Footer/Footer'
-// react-helmet
-import { Helmet } from 'react-helmet'
-// react-redux
-import { useSelector, useDispatch } from 'react-redux'
-import { getUserDetail, changeProfile, updateProfile } from '../../../redux/actions/user'
-// style
-import style from './Profile.module.css'
-import { useHistory } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+// pkgs: moment
 import moment from 'moment'
+// pkgs: react-helmet
+import Helmet from 'react-helmet'
+// pkgs: react-router
+import { useHistory } from 'react-router-dom'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
+// pkgs: react-redux
+import { useSelector, useDispatch } from 'react-redux'
+// modules: redux-action
+import {
+  getProfile,
+  changeProfile,
+  updateProfile
+} from '../../../redux/actions/user'
+import { resetCart } from '../../../redux/actions/cart'
+// components: side
+import { SideLeft } from './SideLeft/SideLeft'
+import { SideRight } from './SideRight/SideRight'
+// components: base
+import { ModalConfirm } from '../../../components/base/ModalConfirm/ModalConfirm'
+// styles: module
+import style from './Profile.module.css'
 
-
-const Profile = () => {
+export const Profile = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const { profile } = useSelector((state) => state.auth)
-  const { detail, detailTemp, msg } = useSelector((state) => state.user)
+  const { user, profile, profileTemp } = useSelector((state) => state.user)
   const defaultDate = moment().format('YYYY-MM-DD')
-  const getDate = moment(detailTemp.birth_date).format('YYYY-MM-DD')
-  const [date, setDate] = useState(detailTemp.birth_date !== null ? getDate : defaultDate)
-  const [image, setImage] = useState(detailTemp.image)
+  const getDate = moment(profileTemp.birth_date).format('YYYY-MM-DD')
+  const [date, setDate] = useState(
+    profileTemp.birth_date !== null ? getDate : defaultDate
+  )
+  const [image, setImage] = useState(profileTemp.image)
   const [show, setShow] = useState(false)
+  const [open, setOpen] = useState(false)
   const handleShow = () => setShow(!show)
+  const handleOpen = () => setOpen(!open)
 
   const handleDate = (date) => {
     let formatted
     let birthDate
     if (date !== null) {
-      formatted = moment(date).format('YYYY-MM-DD') + 'T00:00:00.000Z';
+      formatted = moment(date).format('YYYY-MM-DD') + 'T00:00:00.000Z'
       birthDate = moment(date).format('YYYY-MM-DD')
       setDate(birthDate)
     } else {
@@ -50,39 +61,44 @@ const Profile = () => {
   const handleImage = (e) => {
     const imageFile = e.target.files[0]
     setImage(imageFile)
-    dispatch(changeProfile({
-      image: URL.createObjectURL(imageFile)
-    }))
-  }
-
-  const removeImage = () => {
-    setImage(null)
-    dispatch(changeProfile({
-      image: null
-    }))
+    dispatch(
+      changeProfile({
+        image: URL.createObjectURL(imageFile)
+      })
+    )
   }
 
   const newProfile = new FormData()
-  newProfile.append('first_name', detailTemp.first_name)
-  newProfile.append('last_name', detailTemp.last_name)
+  newProfile.append('first_name', profileTemp.first_name)
+  newProfile.append('last_name', profileTemp.last_name)
   newProfile.append('birth_date', date)
-  newProfile.append('gender', parseInt(detailTemp.gender))
-  newProfile.append('address', detailTemp.address)
+  newProfile.append('gender', profileTemp.gender)
+  newProfile.append('address', profileTemp.address)
   newProfile.append('image', image)
-  newProfile.append('username', detailTemp.username)
-  newProfile.append('email', detailTemp.email)
-  newProfile.append('phone', detailTemp.phone)
+  newProfile.append('username', profileTemp.username)
+  newProfile.append('email', profileTemp.email)
+  newProfile.append('phone', profileTemp.phone)
 
   const editProfile = async () => {
-    await dispatch(updateProfile(newProfile, detail.id))
-    alert(msg)
-    await dispatch(getUserDetail(detail.id))
-    history.push('/main/profile')
+    await toast.promise(dispatch(updateProfile(profile.id, newProfile)), {
+      pending: 'Updating',
+      success: 'Profile updated successfully',
+      error: 'Update failed'
+    })
+    dispatch(getProfile(profile.id))
+    handleOpen()
+  }
+
+  const logOut = () => {
+    resetCart()
+    localStorage.removeItem('token')
+    toast.info('Log out success')
+    history.push('/main')
   }
 
   useEffect(() => {
-    dispatch(getUserDetail(profile.id))
-  }, [dispatch, profile])
+    dispatch(getProfile(user.id))
+  }, [dispatch, user])
 
   return (
     <div className={`${style.container}`}>
@@ -94,28 +110,36 @@ const Profile = () => {
         <div className={`container ${style.content}`}>
           <div className={`row ${style.title}`}>
             <h2 className={`text-white`}>
-              {profile.role === 'admin' ? 'Admin' : 'User'} Profile
+              {user.role === 'admin' ? 'Admin' : 'User'} Profile
             </h2>
           </div>
           <div className={`row card ${style.section}`}>
             <SideLeft
-              onShow={handleShow}
               changeImage={handleImage}
-              resetImage={removeImage}
-              handleUpdate={editProfile}
+              resetImage={setImage}
+              toSave={handleOpen}
+              toLogout={handleShow}
             />
-            <SideRight
-              changeDate={handleDate}
-            />
+            <SideRight changeDate={handleDate} />
           </div>
         </div>
-        <Footer />
       </div>
-      <ModalExit show={show}
-        onHide={handleShow}
+      <ModalConfirm
+        show={open}
+        closeModal={handleOpen}
+        text='save the changes'
+        eventClick={editProfile}
+        btnBack='Cancel'
+        btnConfirm='Save'
+      />
+      <ModalConfirm
+        show={show}
+        closeModal={handleShow}
+        text='log out'
+        eventClick={logOut}
+        btnBack='Cancel'
+        btnConfirm='Log out'
       />
     </div>
   )
 }
-
-export default Profile

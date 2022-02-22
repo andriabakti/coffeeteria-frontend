@@ -1,14 +1,13 @@
 import React from 'react'
-// component
-import SideLeft from './SideLeft/SideLeft'
-import SideRight from './SideRight/SideRight'
-import Footer from '../../../components/Footer/Footer'
-// react-helmet
-import { Helmet } from 'react-helmet'
-// style
+// pkgs: react-helmet
+import Helmet from 'react-helmet'
+// components: side
+import { SideLeft } from './SideLeft/SideLeft'
+import { SideRight } from './SideRight/SideRight'
+// styles: module
 import style from './Product.module.css'
 
-const Product = () => {
+export const Product = () => {
   return (
     <div className={`col ${style.container}`}>
       <Helmet>
@@ -20,10 +19,7 @@ const Product = () => {
           <SideLeft />
           <SideRight />
         </div>
-        <Footer />
       </div>
     </div>
   )
 }
-
-export default Product

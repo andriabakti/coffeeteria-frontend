@@ -1,11 +1,5 @@
 .container {
-  max-height: 100vh !important;
-  /* overflow-y: hidden !important; */
-}
-
-.main {
-  max-height: calc(100vh - 90px) !important;
-  /* overflow-y: auto !important; */
+  height: 100% !important;
 }
 
 .content {
@@ -23,6 +17,7 @@
 .crumb_page:hover {
   padding-bottom: 3px !important;
   border-bottom: 3px solid #6A4029 !important;
+  color: #0B132A !important;
 }
 
 .crumb_active {
