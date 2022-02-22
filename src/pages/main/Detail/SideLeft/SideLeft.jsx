@@ -27,6 +27,7 @@ export const SideLeft = (props) => {
         image: null
       })
     )
+    handleShow()
   }
   return (
     <div className={`col-md-6 ${style.section}`}>
