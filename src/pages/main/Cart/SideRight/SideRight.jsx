@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
 import { resetCart } from '../../../../redux/actions/cart'
 import { purchaseOrder } from '../../../../redux/actions/order'
+import { changePage } from '../../../../redux/actions/product'
 // components: base
 import { ModalConfirm } from '../../../../components/base/ModalConfirm/ModalConfirm'
 // assets: icon
@@ -47,6 +48,7 @@ export const SideRight = () => {
       success: 'Item(s) purchased successfully',
       error: 'Purchase failed'
     })
+    dispatch(changePage(1))
     history.push('/main/product')
     dispatch(resetCart())
   }

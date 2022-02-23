@@ -1,5 +1,5 @@
 .container {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
   height: 645px !important;
   background-image: url('../../../../assets/images/bg_home.png');
   background-size: cover;

@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   /* font */
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
   color: #0B132A;
 }
 

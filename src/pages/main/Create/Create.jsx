@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { addProduct, getProduct } from '../../../redux/actions/product'
+import { addProduct, changePage } from '../../../redux/actions/product'
 //
 import { NotFound } from '../../NotFound/NotFound'
 // components: base
@@ -77,7 +77,7 @@ export const Create = () => {
       success: 'New product added successfully',
       error: 'New product failed to added'
     })
-    dispatch(getProduct(1, '', ''))
+    dispatch(changePage(1))
     history.push('/main/product')
   }
 

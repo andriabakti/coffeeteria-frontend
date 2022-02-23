@@ -1,5 +1,5 @@
 .wrapper {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
   display: flex;
   flex-direction: column;
   align-items: center;

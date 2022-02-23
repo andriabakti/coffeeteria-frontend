@@ -1,6 +1,6 @@
 .wrapper {
   height: 90px;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
 }
 
 @media (min-width: 768px) {

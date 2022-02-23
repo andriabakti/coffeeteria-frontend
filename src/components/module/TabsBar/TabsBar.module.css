@@ -4,7 +4,7 @@
   justify-content: space-around;
   align-items: center;
   margin-bottom: 30px !important;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
 }
 
 .tabs {

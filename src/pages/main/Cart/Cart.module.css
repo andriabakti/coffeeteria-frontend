@@ -4,9 +4,7 @@
 }
 
 .main {
-  /* overflow-y: auto !important; */
-  font-family: 'Rubik', sans-serif;
-  /* max-height: calc(100vh - 90px) !important; */
+  font-family: 'Rubik', sans-serif !important;
   background-image: url('../../../assets/images/bg_cart.png');
   background-size: cover;
 }
@@ -26,5 +24,5 @@
 .section {
   display: flex;
   justify-content: space-between;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif !important;
 }
