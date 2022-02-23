@@ -38,7 +38,7 @@ export const SideLeft = (props) => {
   return (
     <div className={`col-md-3 ${style.container}`}>
       <div className={`${style.section}`}>
-        <div className={`${style.img_box}`}>
+        <div className={`text-center ${style.img_box}`}>
           <div className={`${style.img}`}>
             <img
               src={profileTemp.image ? profileTemp.image : blank}
@@ -46,7 +46,7 @@ export const SideLeft = (props) => {
             />
           </div>
           <span>
-            <b>{profile.username ? profile.username : 'Your Username'}</b>
+            <b>{profile.username ? profile.username : 'Your Display Name'}</b>
           </span>
           <span>{profile.email}</span>
         </div>

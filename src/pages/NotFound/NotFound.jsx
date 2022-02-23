@@ -8,7 +8,7 @@ export const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>Not Found - CoffeeTeria</title>
+        <title>Page: Not Found - CoffeeTeria</title>
         <meta name='description' content='Not Found' />
       </Helmet>
       <div className={`text-center ${style.body}`}>

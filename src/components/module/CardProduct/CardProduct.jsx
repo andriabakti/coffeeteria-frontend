@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { deleteProduct } from '../../../redux/actions/product'
+import { deleteProduct, changePage } from '../../../redux/actions/product'
 // modules: numeral-formatter
 import { numFormatter } from '../../../utils/numeral'
 // components: base
@@ -31,6 +31,7 @@ export const CardProduct = ({ id, name, price, image, clickEvent }) => {
       success: 'Product deleted successfully',
       error: 'Delete failed'
     })
+    dispatch(changePage(1))
     history.push('/main/product')
   }
   return (

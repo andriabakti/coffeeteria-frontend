@@ -11,7 +11,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   getDetail,
   changeDetail,
-  updateProduct
+  updateProduct,
+  changePage
 } from '../../../redux/actions/product'
 import { addCart } from '../../../redux/actions/cart'
 // components: page
@@ -65,6 +66,7 @@ export const Detail = () => {
       success: 'Product updated successfully',
       error: 'Update failed'
     })
+    dispatch(changePage(1))
     history.push('/main/product')
   }
 

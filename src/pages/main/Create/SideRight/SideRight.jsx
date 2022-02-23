@@ -1,6 +1,10 @@
 import React from 'react'
 // pkgs: react-router
 import { useHistory } from 'react-router-dom'
+// pkgs: react-redux
+import { useDispatch } from 'react-redux'
+// modules: redux-action
+import { changePage } from '../../../../redux/actions/product'
 // modules: numeral
 import { numFormatter } from '../../../../utils/numeral'
 // styles: module
@@ -8,6 +12,7 @@ import style from './SideRight.module.css'
 
 export const SideRight = (props) => {
   const history = useHistory()
+  const dispatch = useDispatch()
   const { name, desc, category } = props.product
   const price = props.price
   return (
@@ -103,7 +108,10 @@ export const SideRight = (props) => {
       </button>
       <button
         className={`btn ${style.btn} ${style.btn_grey}`}
-        onClick={() => history.push('/main/product')}
+        onClick={() => {
+          dispatch(changePage(1))
+          history.push('/main/product')
+        }}
         type='button'>
         Cancel
       </button>

@@ -17,7 +17,7 @@
 .crumb {
   font-size: 20px;
   color: #4F5665;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
   margin-bottom: 40px;
 }
 

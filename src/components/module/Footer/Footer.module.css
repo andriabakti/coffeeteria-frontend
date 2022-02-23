@@ -1,6 +1,6 @@
 .bg {
   background-color: #f8f8f8;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
 }
 
 .wrapper {

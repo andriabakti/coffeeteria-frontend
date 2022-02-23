@@ -5,7 +5,7 @@
 .main {
   /* overflow-y: auto; */
   /* max-height: calc(100vh - 90px); */
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
   background-image: url('../../../assets/images/bg_profile.png');
   background-size: cover;
 }
@@ -27,6 +27,6 @@
   justify-content: space-between !important;
   background-color: #F8F8F8 !important;
   border-radius: 20px !important;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif !important;
   margin: 0 !important;
 }

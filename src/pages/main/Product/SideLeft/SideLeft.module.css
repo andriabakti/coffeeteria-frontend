@@ -1,6 +1,6 @@
 .wrapper {
   height: calc(100vh - 90px);
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
 }
 
 .container {
@@ -28,7 +28,7 @@
 .header>span {
   text-align: center;
   font-size: 12px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .coupon {

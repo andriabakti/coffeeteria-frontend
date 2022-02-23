@@ -1,6 +1,6 @@
 .container {
   height: 115vh !important;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', sans-serif !important;
   display: flex;
   justify-content: center;
   align-items: center;
