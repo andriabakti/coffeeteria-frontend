@@ -1,12 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 // pkgs: query-string
 import qs from 'query-string'
 // pkgs: react-router
 import { Link, useLocation, useHistory } from 'react-router-dom'
 // pkgs: react-redux
-import { useSelector, useDispatch } from 'react-redux'
-// modules: redux-action
-import { getProfile } from '../../../../redux/actions/user'
+import { useSelector } from 'react-redux'
 // assets: image
 import blank from '../../../../assets/images/blank_profile.jpg'
 // assets: icon
@@ -18,8 +16,7 @@ export const PartRight = () => {
   const ref = useRef()
   const history = useHistory()
   const { pathname, search } = useLocation()
-  const { user, profile } = useSelector((state) => state.user)
-  const dispatch = useDispatch()
+  const { profile } = useSelector((state) => state.user)
   const parsed = qs.parse(search)
   const token = localStorage.getItem('token')
   const link = {
@@ -34,9 +31,6 @@ export const PartRight = () => {
         }search=${e.target.value}`
       )
   }
-  useEffect(() => {
-    user.token && dispatch(getProfile(user.id))
-  }, [dispatch, user.id, user.token])
 
   return (
     <>

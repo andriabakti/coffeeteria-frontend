@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
-import { loginUser } from '../../../redux/actions/user'
+import { loginUser, getProfile } from '../../../redux/actions/user'
 // components: base
 import { InputAuth } from '../../../components/base/InputAuth/InputAuth'
 // styles: module
@@ -37,6 +37,7 @@ export const SignIn = () => {
       error: 'Login failed'
     })
     localStorage.setItem('token', user.token)
+    await dispatch(getProfile(user.id))
     history.push('/main/product')
   }
 
