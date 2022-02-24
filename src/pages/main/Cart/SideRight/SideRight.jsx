@@ -21,7 +21,8 @@ import style from './SideRight.module.css'
 export const SideRight = () => {
   const history = useHistory()
   const { cart, total } = useSelector((state) => state.cart)
-  const { id, address, phone } = useSelector((state) => state.user.profile)
+  const { id } = useSelector((state) => state.user.user)
+  const { address, phone } = useSelector((state) => state.user.profile)
   const [payment, setPayment] = useState('')
   const [show, setShow] = useState(false)
 
