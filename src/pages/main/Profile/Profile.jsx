@@ -95,17 +95,10 @@ export const Profile = () => {
     toast.info('Log out success')
     history.push('/main')
   }
-  const loadProfile = () => {
-    toast.promise(dispatch(getProfile(user.id)), {
-      pending: 'Loading',
-      success: 'Profile loaded sucessfully',
-      error: 'Failed to load'
-    })
-  }
 
   useEffect(() => {
-    loadProfile()
-  })
+    dispatch(getProfile(user.id))
+  }, [dispatch, user.id])
 
   return (
     <div className={`${style.container}`}>
