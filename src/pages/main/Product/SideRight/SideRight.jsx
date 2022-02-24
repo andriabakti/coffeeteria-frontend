@@ -38,7 +38,7 @@ export const SideRight = () => {
         parsed.filter !== undefined ? parsed.filter : ''
       )
     )
-    toast.success('History loaded successfully')
+    toast.success('Products loaded successfully')
   }, [dispatch, location, page])
   return (
     <div className={`col-md-9 p-0 ${style.wrapper}`}>
