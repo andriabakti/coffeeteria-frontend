@@ -15,7 +15,7 @@ import style from './History.module.css'
 
 export const History = () => {
   const dispatch = useDispatch()
-  const { id } = useSelector((state) => state.user.profile)
+  const { id } = useSelector((state) => state.user.user)
   const { history, pages, isLoading } = useSelector((state) => state.order)
   const page = pages.current_page
 
