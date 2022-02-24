@@ -37,7 +37,12 @@ export const SignIn = () => {
       error: 'Login failed'
     })
     localStorage.setItem('token', user.token)
-    await dispatch(getProfile(user.id))
+    await toast.promise(
+      dispatch(getProfile(user.id)), {
+      pending: 'Loading profile',
+      success: 'Profile loaded successfully',
+      error: 'Failed to Loaded'
+    })
     history.push('/main/product')
   }
 

@@ -49,9 +49,9 @@ export const SideRight = () => {
       success: 'Item(s) purchased successfully',
       error: 'Purchase failed'
     })
-    await dispatch(changePage(1))
-    await history.push('/main/product')
-    await dispatch(resetCart())
+    dispatch(changePage(1))
+    history.push('/main/product')
+    dispatch(resetCart())
   }
   return (
     <div className={`col-md-5 ${style.container}`}>
