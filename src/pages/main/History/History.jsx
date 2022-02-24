@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 // pkgs: react-helmet
 import Helmet from 'react-helmet'
+// pkgs: react-toastify
+import { toast } from 'react-toastify'
 // pkgs: react-redux
 import { useSelector, useDispatch } from 'react-redux'
 // modules: redux-action
@@ -24,6 +26,7 @@ export const History = () => {
 
   useEffect(() => {
     dispatch(getHistory(page, id))
+    toast.success('History loaded successfully')
   }, [dispatch, page, id])
 
   return (

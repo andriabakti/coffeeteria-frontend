@@ -63,7 +63,7 @@ export const Detail = () => {
   const editProduct = async () => {
     await toast.promise(dispatch(updateProduct(detail.id, formData)), {
       pending: 'Updating',
-      success: 'Product updated successfully',
+      success: `${detail.name} updated successfully`,
       error: 'Update failed'
     })
     dispatch(changePage(1))
@@ -76,8 +76,12 @@ export const Detail = () => {
   }
 
   useEffect(() => {
-    dispatch(getDetail(id))
-  }, [dispatch, id])
+    toast.promise(dispatch(getDetail(id)), {
+      pending: 'Loading',
+      success: `${detail.name} loaded sucessfully`,
+      error: 'Failed to load'
+    })
+  }, [dispatch, id, detail])
 
   if (isNaN(paramsId) || statusCode === 404) {
     return <NotFound />
