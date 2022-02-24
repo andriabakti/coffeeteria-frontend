@@ -76,11 +76,7 @@ export const Detail = () => {
   }
 
   useEffect(() => {
-    toast.promise(dispatch(getDetail(id)), {
-      pending: 'Loading',
-      success: `${detail.name} loaded sucessfully`,
-      error: 'Failed to load'
-    })
+    dispatch(getDetail(id))
   }, [dispatch, id, detail])
 
   if (isNaN(paramsId) || statusCode === 404) {

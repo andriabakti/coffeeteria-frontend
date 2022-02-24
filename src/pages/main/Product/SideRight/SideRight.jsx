@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 // pkgs: query-string
 import qs from 'query-string'
-// pkgs: react-toastify
-import { toast } from 'react-toastify'
 // pkgs: react-router
 import { useHistory, useLocation } from 'react-router-dom'
 // pkgs: react-redux
@@ -38,7 +36,6 @@ export const SideRight = () => {
         parsed.filter !== undefined ? parsed.filter : ''
       )
     )
-    toast.success('Products loaded successfully')
   }, [dispatch, location, page])
   return (
     <div className={`col-md-9 p-0 ${style.wrapper}`}>
