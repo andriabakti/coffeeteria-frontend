@@ -52,7 +52,7 @@ export const SideRight = (props) => {
             <textarea
               className={`form-control ${style.input_area} ${style.input_md}`}
               onChange={handleChange}
-              value={profileTemp.address}
+              value={profileTemp.address === null ? '' : profileTemp.address}
               type='textarea'
               name='address'
               id='address'
@@ -89,7 +89,7 @@ export const SideRight = (props) => {
             <input
               className={`form-control ${style.input_area} ${style.input_sm}`}
               onChange={handleChange}
-              value={profileTemp.username}
+              value={profileTemp.username === null ? '' : profileTemp.username}
               name='username'
               id='name'
               type='text'
