@@ -97,7 +97,11 @@ export const Profile = () => {
   }
 
   useEffect(() => {
-    dispatch(getProfile(user.id))
+    toast.promise(dispatch(getProfile(user.id)), {
+      pending: 'Loading',
+      success: 'Profile loaded sucessfully',
+      error: 'Failed to load'
+    })
   }, [dispatch, user])
 
   return (
