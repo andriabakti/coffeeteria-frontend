@@ -1,70 +1,115 @@
-# CoffeeTeria
+<p align="center">
+  <h3 align="center">CoffeeTeria</h3>
+  <p align="center">
+    <a href="https://github.com/andriabakti/coffeeteria-frontend">
+      <strong>Explore the docs »</strong>
+    </a>
+    <br />
+    <br />
+    <a href="https://andria-coffeeteria.netlify.app/main">View Demo</a>
+    ·
+    <a href="https://github.com/andriabakti/coffeeteria-frontend/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/andriabakti/coffeeteria-frontend/issues">Request Feature</a>
+  </p>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- TABLE OF CONTENTS -->
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [Related Project](#related-project)
+- [Contact](#contact)
 
-### `npm start`
+<!-- ABOUT THE PROJECT -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Introduction
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![GitHub repo size in bytes](https://img.shields.io/github/repo-size/andriabakti/coffeeteria-frontend)
 
-### `npm test`
+The Hiring Channel Web is a Website that contains data from Company and Engineer, which is made for Engineers to enter their profiles so that Companies can searching for Engineers that match their specifications.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Built With
 
-### `npm build`
+- [ReactJs](https://reactjs.org/)
+- [React Bootstrap](https://react-bootstrap.github.io/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- GETTING STARTED -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm eject`
+This is an example of how to list things you need to use the software and how to install them.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [nodejs](https://nodejs.org/en/download/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone the repo
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
+git clone https://github.com/andriabakti/coffeeteria-frontend.git
+```
 
-## Learn More
+2. Install NPM packages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Add .env file at root folder project, and add following
 
-### Code Splitting
+```sh
+REACT_APP_BASE_URL=[Backend API]
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<!-- ROADMAP -->
 
-### Analyzing the Bundle Size
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<p align='center'>
+  <span>
+      <image width="200" src='./previews/home.png' />
+      <image width="200" src='./previews/auth_register.png' />
+      <image width="200" src='./previews/auth_login.png' />
+      <image width="200" src='./previews/product.png' />
+      <image width="200" src='./previews/product_admin.png' />
+      <image width="200" src='./previews/product_detail.png' />
+      <image width="200" src='./previews/product_edit.png' />
+      <image width="200" src='./previews/product_new.png' />
+      <image width="200" src='./previews/order_cart.png' />
+      <image width="200" src='./previews/order_history.png' />
+      <image width="200" src='./previews/user_profile.png' />
 
-### Making a Progressive Web App
+<!-- CONTRIBUTING -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Deployment
+## Related Project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- [`coffeeteria-backend`](https://github.com/andriabakti/coffeeteria-backend)
 
-### `npm build` fails to minify
+<!-- CONTACT -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+
+My Email : andriabaktimahendra@gmail.com
+
+Project Link: [https://github.com/andriabakti/coffeeteria-frontend](https://github.com/andriabakti/coffeeteria-frontend)
