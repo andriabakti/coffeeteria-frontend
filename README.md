@@ -1,8 +1,9 @@
-<h1 align="center">CoffeeTeria - Web</h1>
+<h2 align="center">CoffeeTeria - Web</h2>
 <p align="center">
   <a href="https://github.com/andriabakti/coffeeteria-frontend">
     <strong>Explore the Docs</strong>
   </a>
+  <br/>
   <br/>
   <a href="https://andria-coffeeteria.netlify.app/main">View Demo</a>
   ·
