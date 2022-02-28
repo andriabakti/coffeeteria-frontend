@@ -1,5 +1,6 @@
-<h2 align="center">CoffeeTeria - Web</h2>
+<h1 align="center">CoffeeTeria - Web</h2>
 <p align="center">
+  <br/>
   <a href="https://github.com/andriabakti/coffeeteria-frontend">
     <strong>Explore the Docs</strong>
   </a>
