@@ -88,7 +88,7 @@ export const Footer = (props) => {
                   alt='btn_ig'
                 />
               </div>
-              <span>@2022CoffeeTeria</span>
+              <span>&copy;2022CoffeeTeria</span>
             </div>
           </div>
           <div className={`col-lg-4 ${style.right}`}>
