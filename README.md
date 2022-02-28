@@ -62,7 +62,7 @@ git clone https://github.com/andriabakti/coffeeteria-frontend.git`
 npm install
 ```
 
-3. Create .env file in your project's root folder & set the varible below
+3. Create .env file in your project's root folder & set the variable below
 
 ```sh
 REACT_APP_BASE_URL='CoffeeTeria_API_Base_URL'
