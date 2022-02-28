@@ -28,7 +28,7 @@
 
 ## Introduction
 
-<b>CoffeeTeria</b> is a web-based café or coffee shop application that allows customer to easily orders available foods & beverages in the menu by their own self. This app also provides some features to manage the products only for admin user, such as adding new product, updating & deleting existed product.
+<b>CoffeeTeria</b> is a web-based café or coffee shop application that allows customer to easily orders the available foods & beverages in the menu by their own self. This app also provides some features to manage the products only for admin user, such as adding new product, updating & deleting existed product.
 
 ### Features
 
@@ -50,7 +50,7 @@
 
 ### Installation
 
-1. Clone this repo
+1. Clone the repository
 
 ```sh
 git clone https://github.com/andriabakti/coffeeteria-frontend.git`
@@ -62,13 +62,13 @@ git clone https://github.com/andriabakti/coffeeteria-frontend.git`
 npm install
 ```
 
-3. Create and set .env (Environment Variable) file in project's root folder
+3. Create .env file in your project's root folder & set the varible below
 
 ```sh
-REACT_APP_BASE_URL='CoffeeTeria API Base URL'
+REACT_APP_BASE_URL='CoffeeTeria_API_Base_URL'
 ```
 
-4. Make sure you already run the [backend](https://github.com/andriabakti/coffeeteria-backend.git) first, then run this app locally
+4. Make sure you already run the [back-end](https://github.com/andriabakti/coffeeteria-backend.git) first, then run this app locally
 
 ```sh
 npm start
@@ -94,7 +94,7 @@ npm start
 
 ## Related Project
 
-- [`CoffeeTeria: Backend`](https://github.com/andriabakti/coffeeteria-backend)
+- [`CoffeeTeria: Back-end`](https://github.com/andriabakti/coffeeteria-backend)
 
 ## Contact
 
