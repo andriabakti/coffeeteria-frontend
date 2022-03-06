@@ -6,7 +6,7 @@
   </a>
   <br/>
   <br/>
-  <a href="https://andria-coffeeteria.netlify.app/main">View Demo</a>
+  <a href="https://andria-coffeeteria.netlify.app/main">See Demo</a>
   ·
   <a href="https://github.com/andriabakti/coffeeteria-frontend/issues">Report Bug</a>
   ·
@@ -32,7 +32,7 @@
 
 ### Features
 
-- Customer must sign up & login to see and purchase the product
+- Customer must sign up & login to see, order and purchase the product
 - Customer also can see and update their profile after login
 - Only admin user that can do product management
 
@@ -46,7 +46,7 @@
 ### Requirements
 
 - [Node.js](https://nodejs.org/en/download/)
-- [CoffeeTeria API](https://github.com/andriabakti/coffeeteria-backend.git)
+- [CoffeeTeria: API (Back-end)](https://github.com/andriabakti/coffeeteria-backend.git)
 
 ### Installation
 
@@ -65,10 +65,10 @@ npm install
 3. Create .env file in your project's root folder & set the variable below
 
 ```sh
-REACT_APP_BASE_URL='CoffeeTeria_API_Base_URL'
+REACT_APP_BASE_URL='backend_API_base_URL'
 ```
 
-4. Make sure you already run the [back-end](https://github.com/andriabakti/coffeeteria-backend.git) first, then run this app locally
+4. Make sure you already run the [Back-end](https://github.com/andriabakti/coffeeteria-backend.git) first, then run this app locally
 
 ```sh
 npm start
