@@ -23,7 +23,7 @@
   - [Requirements](#requirements)
   - [Installation](#installation)
 - [Screenshots](#screenshots)
-- [Related Project](#related-project)
+- [R](#r)
 - [Contact](#contact)
 
 ## Introduction
@@ -92,9 +92,9 @@ npm start
   </span>
 </p>
 
-## Related Project
+## R
 
-- [`CoffeeTeria: Back-end`](https://github.com/andriabakti/coffeeteria-backend)
+- [CoffeeTeria: Back-end](https://github.com/andriabakti/coffeeteria-backend)
 
 ## Contact
 
