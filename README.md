@@ -26,7 +26,7 @@
 
 ## Introduction
 
-<b>CoffeeTeria</b> is a web-based café or coffee shop application that allows customer to easily orders the available foods & beverages in the menu by their own self. This app also provides some features to manage the products only for admin user, such as adding new product, updating & deleting existed product. This app is built with:
+<b>CoffeeTeria</b> is a web-based café or coffee shop application that allows customer to easily orders the available foods & beverages in the menu by their own self. This app also provides some features to manage the products only for admin user, such as adding new product, updating & deleting existed product. <b>This app is built with:</b>
 
 - [React.js](https://reactjs.org/)
 - [React Bootstrap](https://react-bootstrap.github.io/)
