@@ -43,7 +43,7 @@
 1. Clone the repository
 
 ```sh
-git clone https://github.com/andriabakti/coffeeteria-frontend.git`
+git clone https://github.com/andriabakti/coffeeteria-frontend.git
 ```
 
 2. Install package dependencies
