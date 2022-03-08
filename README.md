@@ -17,26 +17,16 @@
 
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
-  - [Features](#features)
-  - [Built With](#built-with)
 - [Setup for Development](#setup-for-development)
   - [Requirements](#requirements)
   - [Installation](#installation)
 - [Screenshots](#screenshots)
-- [R](#r)
+- [Related Project](#related-project)
 - [Contact](#contact)
 
 ## Introduction
 
-<b>CoffeeTeria</b> is a web-based café or coffee shop application that allows customer to easily orders the available foods & beverages in the menu by their own self. This app also provides some features to manage the products only for admin user, such as adding new product, updating & deleting existed product.
-
-### Features
-
-- Customer must sign up & login to see, order and purchase the product
-- Customer also can see and update their profile after login
-- Only admin user that can do product management
-
-### Built With
+<b>CoffeeTeria</b> is a web-based café or coffee shop application that allows customer to easily orders the available foods & beverages in the menu by their own self. This app also provides some features to manage the products only for admin user, such as adding new product, updating & deleting existed product. This app is built with:
 
 - [React.js](https://reactjs.org/)
 - [React Bootstrap](https://react-bootstrap.github.io/)
@@ -46,7 +36,7 @@
 ### Requirements
 
 - [Node.js](https://nodejs.org/en/download/)
-- [CoffeeTeria: API (Back-end)](https://github.com/andriabakti/coffeeteria-backend.git)
+- [CoffeeTeria: API (Back-end)](https://github.com/andriabakti/coffeeteria-backend)
 
 ### Installation
 
@@ -65,10 +55,10 @@ npm install
 3. Create .env file in your project's root folder & set the variable below
 
 ```sh
-REACT_APP_BASE_URL='backend_API_base_URL'
+REACT_APP_BASE_URL='your_backend_API_base_URL'
 ```
 
-4. Make sure you already run the [Back-end](https://github.com/andriabakti/coffeeteria-backend.git) first, then run this app locally
+4. Make sure you already run the [Back-end](https://github.com/andriabakti/coffeeteria-backend) first, then run this app locally
 
 ```sh
 npm start
@@ -92,7 +82,7 @@ npm start
   </span>
 </p>
 
-## R
+## Related Project
 
 - [CoffeeTeria: Back-end](https://github.com/andriabakti/coffeeteria-backend)
 
