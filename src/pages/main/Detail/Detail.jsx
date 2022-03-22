@@ -77,7 +77,7 @@ export const Detail = () => {
 
   useEffect(() => {
     dispatch(getDetail(id))
-  }, [dispatch, id, detail])
+  }, [dispatch, id])
 
   if (isNaN(paramsId) || statusCode === 404) {
     return <NotFound />

@@ -22,7 +22,7 @@ export const SignUp = () => {
     email: '',
     password: '',
     phone: '',
-    role: 2
+    role: 'customer'
   })
 
   const handleChange = (e) => {
